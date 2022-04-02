@@ -1,6 +1,7 @@
 name: frontend_management
 
 on:
+  workflow_dispatch:
   repository_dispatch:
   push:
     branches:

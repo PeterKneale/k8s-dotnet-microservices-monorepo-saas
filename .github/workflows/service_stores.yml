@@ -1,6 +1,7 @@
 name: service_stores
 
 on:
+  workflow_dispatch:
   repository_dispatch:
   push:
     branches:

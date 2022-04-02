@@ -1,6 +1,7 @@
 name: ingress_public
 
 on:
+  workflow_dispatch:
   repository_dispatch:
   push:
     branches:

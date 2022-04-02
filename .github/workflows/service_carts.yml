@@ -1,6 +1,7 @@
 name: service_carts
 
 on:
+  workflow_dispatch:
   repository_dispatch:
   push:
     branches:

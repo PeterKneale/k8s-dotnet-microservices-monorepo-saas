@@ -1,6 +1,7 @@
 name: frontend_registration
 
 on:
+  workflow_dispatch:
   repository_dispatch:
   push:
     branches:
