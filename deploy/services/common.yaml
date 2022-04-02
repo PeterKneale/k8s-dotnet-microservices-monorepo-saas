@@ -1,0 +1,5 @@
+type: service
+version: latest
+environment:
+  HTTP_PORT: 80
+  GRPC_PORT: 81

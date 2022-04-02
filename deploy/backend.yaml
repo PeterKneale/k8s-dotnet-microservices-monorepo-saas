@@ -1,9 +1,0 @@
-type: backend
-version: latest
-environment:
-  HTTP_PORT: 80
-  GRPC_PORT: 81
-  INFRA_RABBIT_HOST: infra-rabbitmq
-  INFRA_POSTGRES_HOST: infra-postgresql
-  INFRA_ELASTICSEARCH_HOST: infra-elasticsearch-master
-  INFRA_MINIO_HOST: infra-minio

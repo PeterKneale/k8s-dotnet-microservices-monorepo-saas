@@ -1,0 +1,14 @@
+environment:
+  # Services
+  SERVICE_ACCOUNTS_HOST: service-accounts-saas
+  SERVICE_CARTS_HOST: service-carts-saas
+  SERVICE_CATALOG_HOST: service-catalog-saas
+  SERVICE_MEDIA_HOST: service-media-saas
+  SERVICE_SEARCH_HOST: service-search-saas
+  SERVICE_STORES_HOST: service-stores-saas  
+  # Infrastructure
+  INFRA_RABBITMQ_HOST: infra-rabbitmq.saas-infra-development
+  INFRA_POSTGRESQL_DATABASE: infra-postgresql.saas-infra-development
+  INFRA_ELASTICSEARCH_HOST: infra-elasticsearch-master.saas-infra-development
+  INFRA_MINIO_HOST: infra-minio.saas-infra-development
+  

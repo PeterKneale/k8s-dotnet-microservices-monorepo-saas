@@ -6,12 +6,15 @@ namespace BuildingBlocks.Infrastructure.Configuration
     public static class NginxConfigurationExtensions
     {
         private const string DefaultNginxScheme = "http";
-        private const string DefaultNginxHost = "ingress_public";
+        private const string DefaultNginxHost = "localhost";
         private const int DefaultNginxPort = 80;
         
-        public static string GetNginxScheme(this IConfiguration configuration) => configuration.GetString("infra_nginx_scheme", DefaultNginxScheme);
-        public static string GetNginxHost(this IConfiguration configuration) => configuration.GetString("infra_nginx_host",DefaultNginxHost);
-        public static int GetNginxHostPort(this IConfiguration configuration) => configuration.GetInt("infra_nginx_port", DefaultNginxPort);
+        public static string GetNginxScheme(this IConfiguration configuration) => 
+            configuration.GetString("INFRA_NGINX_SCHEME", DefaultNginxScheme);
+        public static string GetNginxHost(this IConfiguration configuration) => 
+            configuration.GetString("INFRA_NGINX_HOST",DefaultNginxHost);
+        public static int GetNginxHostPort(this IConfiguration configuration) => 
+            configuration.GetInt("INFRA_NGINX_PORT", DefaultNginxPort);
         
         public static Uri GetNginxUri(this IConfiguration configuration)
         {
