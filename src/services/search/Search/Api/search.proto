@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option csharp_namespace = "Search.Api";
+
+package search;
+
+service SearchApi {
+  rpc Search (SearchRequest) returns (SearchResponse);
+}
+
+message SearchRequest{
+  string query = 1;
+  string categoryIdPath = 2;
+  int32 page_offset = 3;
+  int32 page_size = 4;
+}
+
+message SearchResponse{
+  repeated SearchResult results = 1;
+  int64 total = 2;
+}
+
+message SearchResult{
+  string product_id = 1;
+  string name = 2;
+}
