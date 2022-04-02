@@ -256,7 +256,6 @@ Services
  
 * Setup Secrets
   * `DIGITALOCEAN_ACCESS_TOKEN`
-  * `K8S_CLUSTER_NAME`
   * `REGISTRY_ENDPOINT` in the form `ghcr.io/peterkneale/k8s-dotnet-microservices-monorepo-saas`
   * `REGISTRY_HOST` in the form `ghcr.io`
 
