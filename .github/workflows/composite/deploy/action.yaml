@@ -25,7 +25,7 @@ runs:
 
   - name: Save DigitalOcean kubeconfig
     shell: bash
-    run: doctl kubernetes cluster kubeconfig save cluster
+    run: doctl kubernetes cluster kubeconfig save saas
   
   - name: Deploy Chart
     shell: bash
