@@ -11,7 +11,7 @@ namespace Management.Application
         
         public static string GetParentDomain(this IConfiguration configuration)
         {
-            return "saas.io";
+            return "ecommerce-store-builder.dev";
         }
     }
 }

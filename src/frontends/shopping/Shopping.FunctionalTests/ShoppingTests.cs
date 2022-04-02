@@ -22,7 +22,7 @@ namespace Shopping.FunctionalTests
         {
             // Arrange
             using var client = _fixture.CreateDefaultClient();
-            client.DefaultRequestHeaders.Host = $"{Guid.NewGuid()}.saas.io";
+            client.DefaultRequestHeaders.Host = $"{Guid.NewGuid()}.ecommerce-store-builder.dev";
                 
             // Act
             var response = await client.GetAsync(new Uri("/", UriKind.Relative));

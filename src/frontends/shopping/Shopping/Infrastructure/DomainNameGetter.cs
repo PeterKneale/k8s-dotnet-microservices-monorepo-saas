@@ -17,6 +17,6 @@ namespace Shopping.Infrastructure
             _context = context.HttpContext ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public string GetDomainName() => "example3.saas.io";// _context.Request.Host.Value;
+        public string GetDomainName() => "example3.ecommerce-store-builder.dev";// _context.Request.Host.Value;
     }
 }
