@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+option csharp_namespace = "Stores.Api";
+
+package stores;
+
+import "google/protobuf/empty.proto";
+
+service StoresApi {
+  // commands
+  rpc AddStore (AddStoreRequest) returns (google.protobuf.Empty);
+  rpc SetSubdomain(SetSubdomainRequest) returns (google.protobuf.Empty);
+  rpc SetDomain (SetDomainRequest) returns (google.protobuf.Empty);
+  rpc SetTheme (SetThemeRequest) returns (google.protobuf.Empty);
+  // queries
+  rpc GetStore (GetStoreRequest) returns (Store);
+  rpc ListStores (ListStoresRequest) returns (StoresReply);
+}
+
+// commands
+message AddStoreRequest {
+  string store_id = 1;
+  string name = 2;
+}
+message SetThemeRequest {
+  string store_id = 1;
+  string theme = 2;
+}
+message SetSubdomainRequest {
+  string store_id = 1;
+  string subdomain = 2;
+}
+message SetDomainRequest {
+  string store_id = 1;
+  string domain = 2;
+}
+
+// queries
+message GetStoreRequest{
+  string store_id = 1;
+}
+
+message ListStoresRequest{
+
+}
+message StoresReply{
+  repeated Store Stores = 1;
+}
+
+// Dto
+message Store{
+  string store_id = 1;
+  string account_id = 2;
+  string name = 3;
+  string theme = 4;
+  string subdomain = 5;
+  string domain = 6;
+  bool domain_validated = 7; 
+}
