@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+option csharp_namespace = "Shopping.Api";
+
+package shopping;
+
+import "google/protobuf/empty.proto";
+import "google/type/money.proto";
+
+service ShoppingApi {
+  // commands
+  rpc AddProductToShoppingCart (AddProductToShoppingCartRequest) returns (google.protobuf.Empty);
+  rpc RemoveProductFromShoppingCart (RemoveProductFromShoppingCartRequest) returns (google.protobuf.Empty);
+  rpc AdjustProductQuantityInShoppingCart (AdjustProductQuantityInShoppingCartRequest) returns (google.protobuf.Empty);
+  // queries
+  rpc GetStore(GetStoreRequest) returns (Store);
+  rpc SearchProducts(SearchProductsRequest) returns (SearchProductsResults);
+  rpc GetShoppingCart (GetShoppingCartRequest) returns (ShoppingCart);
+}
+
+// commands
+message AddProductToShoppingCartRequest {
+  string cart_id = 1;
+  string product_id = 2;
+  int32 quantity = 3;
+}
+
+message RemoveProductFromShoppingCartRequest {
+  string cart_id = 1;
+  string product_id = 2;
+}
+
+message AdjustProductQuantityInShoppingCartRequest {
+  string cart_id = 1;
+  string product_id = 2;
+  int32 quantity = 3;
+}
+
+// queries
+message GetShoppingCartRequest{
+  string cart_id = 1;
+}
+
+message GetStoreRequest{
+  string domain = 1;
+}
+
+message SearchProductsRequest{
+  string query = 1;
+  int32 page_size=2;
+  int32 page_offset=3;
+}
+message SearchProductsResults{
+  repeated Product Products = 1;
+  int64 total = 2;
+}
+
+// data
+message ShoppingCart{
+  string cart_id = 1;
+  google.type.Money total_price = 2;
+  repeated ShoppingCartItem Items = 3;
+}
+
+message ShoppingCartItem{
+  string product_id = 1;
+  string description = 2;
+  google.type.Money unit_price = 3;
+  int32 quantity = 4;
+  google.type.Money price = 5;
+}
+
+message Store{
+  string account_id = 1;
+  string account_name = 2;
+  string store_id = 3;
+  string store_name = 4;
+  string store_theme = 5;
+}
+
+message Product{
+  string product_id = 1;
+  string name = 2;
+  string description = 3;
+  repeated string picture_url = 4;
+}
