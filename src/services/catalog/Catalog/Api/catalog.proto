@@ -1,0 +1,99 @@
+syntax = "proto3";
+
+option csharp_namespace = "Catalog.Api";
+
+package catalog;
+
+import "google/protobuf/empty.proto";
+import "google/type/money.proto";
+
+service CatalogApi {  
+  // commands
+  rpc AddCategory(AddCategoryRequest) returns (google.protobuf.Empty);
+  rpc AddProduct (AddProductRequest) returns (google.protobuf.Empty);
+  rpc UpdateCategory (UpdateCategoryRequest) returns (google.protobuf.Empty);
+  rpc DeleteCategory (DeleteCategoryRequest) returns (google.protobuf.Empty);
+  rpc RemoveProduct (RemoveProductRequest) returns (google.protobuf.Empty);
+  rpc UpdateProductDetails (UpdateProductDetailsRequest) returns (google.protobuf.Empty);
+  rpc UpdateProductPrice (UpdateProductPriceRequest) returns (google.protobuf.Empty);
+  rpc UpdateProductCategory (UpdateProductCategoryRequest) returns (google.protobuf.Empty);
+  // queries
+  rpc GetProduct (GetProductRequest) returns (Product);
+  rpc GetCategory (GetCategoryRequest) returns (Category);
+  rpc ListProducts (ListProductsRequest) returns (ProductsReply);
+  rpc ListCategories (ListCategoriesRequest) returns (CategoriesReply);
+}
+
+// commands
+message AddCategoryRequest {
+  string category_id = 1;
+  string parent_category_id = 2;
+  string name = 3;
+}
+message UpdateCategoryRequest {
+  string category_id = 1;
+  string name = 2;
+}
+message DeleteCategoryRequest {
+  string category_id = 1;
+}
+message AddProductRequest {
+  string product_id = 1;
+  string category_id = 2;
+  string name = 3;
+  string description = 4;
+  google.type.Money price = 5;
+}
+message UpdateProductDetailsRequest {
+  string product_id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message RemoveProductRequest {
+  string product_id = 1;
+}
+message UpdateProductPriceRequest {
+  string product_id = 1;
+  google.type.Money price = 2;
+}
+message UpdateProductCategoryRequest {
+  string product_id = 1;
+  string category_id = 2;
+}
+// queries
+message GetProductRequest{
+  string product_id = 1;
+}
+message GetCategoryRequest{
+  string category_id = 1;
+}
+message ListProductsRequest{
+  string category_id = 1;
+}
+message ListCategoriesRequest{
+}
+message ProductsReply{
+  repeated Product Products=1;
+}
+message CategoriesReply{
+  repeated Category Categories=1;
+}
+
+// Dto
+message Category{
+  string category_id = 1;
+  string parent_category_id = 2;
+  string name = 3;
+  int32 level = 4;
+  string id_path = 5;
+  string name_path = 6;
+}
+
+message Product{
+  string product_id = 1;
+  string category_id = 2;
+  string name = 3;
+  string description = 4;
+  google.type.Money price = 5;
+}
