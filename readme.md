@@ -68,6 +68,34 @@ A work in progress demonstrating
 
 [![service_stores](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_stores.yml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_stores.yml)
 
+# Environments
+
+## Development
+- [marketing.ecommerce-store-builder.dev](http://marketing.ecommerce-store-builder.dev)
+- [registration.ecommerce-store-builder.dev](http://registration.ecommerce-store-builder.dev)
+- [shopping.ecommerce-store-builder.dev](http://shopping.ecommerce-store-builder.dev)
+- [management.ecommerce-store-builder.dev](http://management.ecommerce-store-builder.dev)
+- [admin.ecommerce-store-builder.dev](http://admin.ecommerce-store-builder.dev)
+- [example1.ecommerce-store-builder.dev](http://example1.ecommerce-store-builder.dev)
+- [example2.ecommerce-store-builder.dev](http://example2.ecommerce-store-builder.dev)
+- [example3.ecommerce-store-builder.dev](http://example3.ecommerce-store-builder.dev)
+- [example-store-1.xyz](http://example-store-1.xyz)
+- [example-store-2.xyz](http://example-store-2.xyz)
+- [example-store-3.xyz](http://example-store-3.xyz)
+
+## Development
+- [marketing.ecommerce-store-builder.com](http://marketing.ecommerce-store-builder.com)
+- [registration.ecommerce-store-builder.com](http://registration.ecommerce-store-builder.com)
+- [shopping.ecommerce-store-builder.com](http://shopping.ecommerce-store-builder.com)
+- [management.ecommerce-store-builder.com](http://management.ecommerce-store-builder.com)
+- [admin.ecommerce-store-builder.com](http://admin.ecommerce-store-builder.com)
+- [example4.ecommerce-store-builder.com](http://example4.ecommerce-store-builder.com)
+- [example5.ecommerce-store-builder.com](http://example5.ecommerce-store-builder.com)
+- [example6.ecommerce-store-builder.com](http://example6.ecommerce-store-builder.com)
+- [example-store-4.xyz](http://example-store-4.xyz)
+- [example-store-5.xyz](http://example-store-5.xyz)
+- [example-store-6.xyz](http://example-store-6.xyz)
+
 # Solution Diagrams
 
 # Context
@@ -217,22 +245,6 @@ docker-compose -f docker-compose.yml down
 127.0.0.1 example2.io
 127.0.0.1 example3.io
 ```
-
-# Ingress
-- Production Domain: ecommerce-store-builder.com
-- Development Domain: ecommerce-store-builder.dev
-
-- [marketing.ecommerce-store-builder.dev](http://marketing.ecommerce-store-builder.dev)
-- [registration.ecommerce-store-builder.dev](http://registration.ecommerce-store-builder.dev)
-- [shopping.ecommerce-store-builder.dev](http://shopping.ecommerce-store-builder.dev)
-- [management.ecommerce-store-builder.dev](http://management.ecommerce-store-builder.dev)
-- [admin.ecommerce-store-builder.dev](http://admin.ecommerce-store-builder.dev)
-- [example1.ecommerce-store-builder.dev](http://example1.ecommerce-store-builder.dev)
-- [example2.ecommerce-store-builder.dev](http://example2.ecommerce-store-builder.dev)
-- [example3.ecommerce-store-builder.dev](http://example3.ecommerce-store-builder.dev)
-- [example1.io](http://example1.io) (todo)
-- [example2.io](http://example2.io) (todo)
-- [example3.io](http://example3.io) (todo)
 
 ## Port registry
 
