@@ -5,7 +5,6 @@ environment:
   FRONTEND_MARKETING_HOST: frontend-marketing-saas
   FRONTEND_REGISTRATION_HOST: frontend-registration-saas
   FRONTEND_SHOPPING_HOST: frontend-shoppping-saas
-
   # Backends
   BACKEND_REGISTRATION_HOST: backend-registration-saas
   BACKEND_SHOPPING_HOST: backend-shopping-saas
