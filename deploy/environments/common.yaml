@@ -1,4 +1,14 @@
 environment:
+  # Frontends
+  FRONTEND_ADMIN_HOST: frontend-admin-saas
+  FRONTEND_MANAGEMENT_HOST: frontend-management-saas
+  FRONTEND_MARKETING_HOST: frontend-marketing-saas
+  FRONTEND_REGISTRATION_HOST: frontend-registration-saas
+  FRONTEND_SHOPPING_HOST: frontend-shoppping-saas
+
+  # Backends
+  BACKEND_REGISTRATION_HOST: backend-registration-saas
+  BACKEND_SHOPPING_HOST: backend-shopping-saas
   # Services
   SERVICE_ACCOUNTS_HOST: service-accounts-saas
   SERVICE_CARTS_HOST: service-carts-saas
