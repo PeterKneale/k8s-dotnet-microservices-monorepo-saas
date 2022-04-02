@@ -17,7 +17,7 @@ namespace BuildingBlocks.Infrastructure.ExceptionHandling
         {
             _logger = logger;
         }
-        
+
         public override async Task<TResponse> UnaryServerHandler<TRequest, TResponse>(TRequest request, ServerCallContext context, UnaryServerMethod<TRequest, TResponse> continuation)
         {
             try
@@ -26,29 +26,29 @@ namespace BuildingBlocks.Infrastructure.ExceptionHandling
             }
             catch (BusinessRuleBrokenException e)
             {
-                _logger.LogWarning(e, $"Business rule broken when calling {context.Method}");
+                _logger.LogWarning(e, "Business rule broken when calling {Method}", context.Method);
                 // is there a more appropriate status
                 throw new RpcException(new Status(StatusCode.FailedPrecondition, e.Message));
             }
             catch (AccountContextMissingException e)
             {
-                _logger.LogWarning(e, $"Account context missing when calling {context.Method}");
+                _logger.LogWarning(e, "Account context missing when calling {Method}", context.Method);
                 // is there a more appropriate status
                 throw new RpcException(new Status(StatusCode.PermissionDenied, e.Message));
             }
             catch (NotFoundException e)
             {
-                _logger.LogWarning(e, $"Not Found when calling {context.Method}");
+                _logger.LogWarning(e, "Not Found when calling {Method}", context.Method);
                 throw new RpcException(new Status(StatusCode.NotFound, e.Message));
             }
             catch (ValidationFailedException e)
             {
-                _logger.LogWarning(e, $"Validation Failed when calling {context.Method}");
+                _logger.LogWarning(e, "Validation Failed when calling {Method}", context.Method);
                 throw new RpcException(new Status(StatusCode.InvalidArgument, e.Message));
             }
             catch (Exception e)
             {
-                _logger.LogError(e, $"An error occurred when calling {context.Method}: {e.GetType().Name}");
+                _logger.LogError(e, "An unknown error occurred when calling {Method}", context.Method);
                 throw new RpcException(Status.DefaultCancelled, e.Message);
             }
         }
