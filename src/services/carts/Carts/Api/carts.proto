@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+option csharp_namespace = "Carts.Api";
+
+package carts;
+
+import "google/protobuf/empty.proto";
+import "google/type/money.proto";
+
+service CartsApi {
+  // commands
+  rpc AddProductToCart (AddProductToCartRequest) returns (google.protobuf.Empty);
+  rpc RemoveProductFromCart (RemoveProductFromCartRequest) returns (google.protobuf.Empty);
+  rpc AdjustProductQuantityInCart (AdjustProductQuantityInCartRequest) returns (google.protobuf.Empty);  
+  // queries
+  rpc GetCart (GetCartRequest) returns (Cart);
+}
+
+message GetCartRequest{
+  string cart_id = 1;
+}
+
+message AddProductToCartRequest {
+  string cart_id = 1;
+  string product_id = 2;
+  string description = 3;
+  google.type.Money unit_price = 4;
+  int32 quantity = 5;
+}
+
+message RemoveProductFromCartRequest {
+  string cart_id = 1;
+  string product_id = 2;
+}
+
+message AdjustProductQuantityInCartRequest {
+  string cart_id = 1;
+  string product_id = 2;
+  int32 quantity = 3;
+}
+
+message Cart{
+  string cart_id = 1;
+  google.type.Money total_price = 2;
+  repeated CartItem Items = 3;
+}
+
+message CartItem{
+  string product_id = 1;
+  string description = 2;
+  google.type.Money unit_price = 3;
+  int32 quantity = 4;
+  google.type.Money price = 5;
+}
