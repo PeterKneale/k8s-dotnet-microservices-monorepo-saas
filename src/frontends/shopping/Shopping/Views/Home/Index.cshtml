@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section Head
+{ 
+    <style>                      
+    .htmx-indicator{opacity:0;transition: opacity 200ms ease-in;}       
+    </style>
+}
+
+
+<div class="row">
+    <div class="col-12">
+       <input class="form-control"
+              type="search"
+              name="query"
+              placeholder="Search for products..."
+              hx-post="/home/search"
+              hx-trigger="keyup changed delay:500ms, search"
+              hx-target="#results"
+              hx-indicator=".htmx-indicator">
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+    </div>
+    <div class="col-9" id="products-list">
+        <span class="htmx-indicator">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </span>
+        <div id="results">
+        </div>
+    </div>
+</div>

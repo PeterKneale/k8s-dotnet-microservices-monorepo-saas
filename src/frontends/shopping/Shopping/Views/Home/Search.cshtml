@@ -1,0 +1,33 @@
+﻿@model Shopping.Api.SearchProductsResults
+
+@if (Model.Products.Any())
+{
+    <div class="row row-cols-2 row-cols-md-4 g-4">
+
+        @foreach (var product in Model.Products)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    @if (product.PictureUrl.Any())
+                    {
+                        <img src="@product.PictureUrl.First()" height="200" width="150" class="card-img-top" alt="">
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text text-truncate">@product.Description</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    
+    <div class="alert alert-info" role="alert">
+        No results found
+    </div>
+}
