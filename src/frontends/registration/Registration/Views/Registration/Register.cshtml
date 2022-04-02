@@ -1,0 +1,40 @@
+﻿@model RegisterModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form method="post">
+    <div class="mb-3">
+        
+        @Html.LabelFor(x => x.Email, new
+        {
+            @class = "form-label"
+        })
+        @Html.TextBoxFor(x => x.Email, new
+        {
+            id = "email",
+            type="email",
+            @class = "form-control  form-control-lg"
+        })
+        <div class="form-text">we will email you a link to verify your account</div>
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(x => x.Name, new
+        {
+            @class = "form-label"
+        })
+        @Html.TextBoxFor(x => x.Name, new
+        {
+            id = "name",
+            @class = "form-control  form-control-lg"
+        })
+        <div class="form-text">a name for your store</div>
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+    </div>
+
+
+    @Html.HiddenFor(x => x.Reference)
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

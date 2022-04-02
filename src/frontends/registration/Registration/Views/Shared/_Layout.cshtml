@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    @await RenderSectionAsync("Head", required: false)
+    <title>@ViewData["Title"] - Registration</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/Registration.styles.css" asp-append-version="true"/>
+</head>
+    <body>
+        <div class="container">
+            <main role="main" class="pb-3">
+                <div class="row">
+                    <div class="col col-md-6 offset-md-3">
+                        @RenderBody()
+                    </div>
+                </div>
+            </main>
+        </div>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </body>
+</html>
