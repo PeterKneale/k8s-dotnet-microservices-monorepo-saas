@@ -11,8 +11,11 @@ inputs:
   component_type:
     description: "Type of component to deploy e.g. service"
     required: true
-  k8s_cluster_name:
-    description: "Name of k8s cluster"
+  k8s_cluster:
+    description: "K8S cluster to deploy to"
+    required: true
+  k8s_namespace:
+    description: "K8s namespace to deploy to"
     required: true
 
 runs:
@@ -25,12 +28,14 @@ runs:
 
   - name: Save DigitalOcean kubeconfig
     shell: bash
-    run: doctl kubernetes cluster kubeconfig save ${{ inputs.k8s_cluster_name }}
+    run: doctl kubernetes cluster kubeconfig save ${{ inputs.k8s_cluster }}
   
   - name: Deploy Chart
     shell: bash
     run: |
-      helm upgrade --install ${{ inputs.component_type }}-${{ inputs.component_name }} \
+      helm upgrade \
+        --install ${{ inputs.component_type }}-${{ inputs.component_name }} \
+        --namespace ${{ inputs.k8s_namespace }} \
         ./deploy/chart \
         -f ./deploy/${{ inputs.component_type }}.yaml  \
         -f ./deploy/${{ inputs.component_type }}-${{ inputs.component_name }}.yaml 
