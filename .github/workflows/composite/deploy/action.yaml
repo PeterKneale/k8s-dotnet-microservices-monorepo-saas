@@ -37,4 +37,5 @@ runs:
           -f ./deploy/environments/common.yaml \
           -f ./deploy/environments/${{ inputs.environment }}.yaml \
           -f ./deploy/${{ inputs.component_type }}s/common.yaml \
+          -f ./deploy/${{ inputs.component_type }}s/cloud.yaml \
           -f ./deploy/${{ inputs.component_type }}s/${{ inputs.component_name }}.yaml
