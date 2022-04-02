@@ -1,0 +1,18 @@
+﻿@model StoreDomainViewModel
+@{
+    var editUrl = Url.Action("Edit", "Domain");
+    var scheme = "http://";
+    var url = $"{scheme}{Model.Domain}";
+}
+@if (Model.HasCustomDomain)
+{
+    <a hx-get="@editUrl" hx-target="#store-domain" class="btn btn-primary btn-large float-end">Edit Custom Domain</a>
+    <h5 class="card-title">Custom Domain</h5>
+    <div class="card-text"><a href="@url">@url</a></div>
+}
+else
+{
+    <a hx-get="@editUrl" hx-target="#store-domain" class="btn btn-primary btn-large float-end">Add Custom Domain</a>
+    <h5 class="card-title">Custom Domain</h5>
+    <div class="card-text">No custom domain has been configured</div>
+}

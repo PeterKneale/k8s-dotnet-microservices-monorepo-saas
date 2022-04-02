@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Categories";
+    var listUrl = Url.Action("List", "Categories");
+    var createUrl = Url.Action("Create", "Categories");
+}
+
+<a 
+    hx-get="@createUrl"
+    hx-target="#pane"
+    class="btn btn-primary btn-large float-end">Create Category
+</a>
+
+<h1 class="mb-4">Categories</h1>
+
+<div class="row">
+    <div class="col-3" id="list" hx-get="@listUrl" hx-trigger="load, list-refresh from:body">
+        
+    </div>
+    <div class="col-9">
+        <div class="row">
+            <div class="col" id="pane">
+                
+            </div>
+        </div>
+    </div>
+</div>

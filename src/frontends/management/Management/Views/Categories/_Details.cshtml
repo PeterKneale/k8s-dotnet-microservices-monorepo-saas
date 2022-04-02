@@ -1,0 +1,25 @@
+﻿@model Management.Models.CategoryDetailsPageModel
+
+@{
+    var editUrl = Url.Action("Edit", "Categories", new { Model.CategoryId });
+    var createUrl = Url.Action("Create", "Categories", new { ParentCategoryId = Model.CategoryId });
+    var deleteUrl = Url.Action("Delete", "Categories", new { Model.CategoryId });
+}
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title" data-test-id="category-name">@Model.Name</h5>
+        <p class="card-text" data-test-id="category-name-path">@Model.NamePath</p>
+    </div>
+</div>
+
+<a hx-get="@editUrl" hx-target="#pane" class="btn btn-primary">
+    Edit Category
+</a>
+
+<a hx-get="@createUrl" hx-target="#pane" class="btn btn-primary">
+    Create Child Category
+</a>
+<a hx-delete="@deleteUrl" hx-target="#pane" class="btn btn-danger" hx-confirm="Are you sure?">
+    Delete Category
+</a>

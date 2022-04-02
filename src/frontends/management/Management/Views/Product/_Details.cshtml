@@ -1,0 +1,11 @@
+﻿@model Management.Application.GetProduct.Result
+@{
+    var editUrl = Url.Action("Edit", "Product", new{Model.ProductId});
+}
+<div class="card mb-4">
+    <div class="card-body">
+        <a hx-get="@editUrl" hx-target="#details" class="btn btn-primary float-end">Edit Product</a>
+        <div class="card-title" data-test-id="product-name">@Model.Name</div>
+        <p class="card-text" data-test-id="product-description">@Model.Description</p>
+    </div>
+</div>

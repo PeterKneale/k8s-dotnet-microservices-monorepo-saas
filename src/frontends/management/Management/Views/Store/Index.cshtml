@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var themeUrl = Url.Action("Details", "Theme");
+    var subdomainUrl = Url.Action("Details", "Subdomain");
+    var domainUrl = Url.Action("Details", "Domain");
+}
+<!-- theme -->
+<div class="card mb-4">
+    <div class="card-body">
+        <div id="store-theme" hx-get="@themeUrl" hx-trigger="load">
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body" id="store-subdomain" hx-get="@subdomainUrl" hx-trigger="load">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <div class="card-body" id="store-domain" hx-get="@domainUrl" hx-trigger="load">
+
+            </div>
+        </div>
+    </div>
+</div>

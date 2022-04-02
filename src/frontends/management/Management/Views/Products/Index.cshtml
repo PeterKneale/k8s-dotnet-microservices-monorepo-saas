@@ -1,0 +1,23 @@
+@{
+    ViewBag.Title = "Products";
+    
+    var listCategoriesUrl = Url.Action("ListCategories", "Products");
+    var listProductsUrl = Url.Action("ListProducts", "Products");
+}
+
+
+<h1 class="mb-4">Products</h1>
+
+<div class="row">
+    <div class="col-3" id="list" hx-get="@listCategoriesUrl" hx-trigger="load">
+        
+    </div>
+    <div class="col-9">
+        <div class="row">
+            <div class="col" id="pane" hx-get="@listProductsUrl" hx-trigger="load">
+                
+                
+            </div>
+        </div>
+    </div>
+</div>

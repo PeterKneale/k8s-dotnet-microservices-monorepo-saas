@@ -1,0 +1,18 @@
+﻿<h1>User is authenticated</h1>
+<table>
+    <tr>
+        <td>Type</td>
+        <td>Value</td>
+        <td>ValueType</td>
+        <td>Issuer</td>
+    </tr>
+    @foreach (var x in User.Claims)
+    {
+        <tr>
+            <td>@x.Type</td>
+            <td>@x.Value</td>
+            <td>@x.ValueType</td>
+            <td>@x.Issuer</td>
+        </tr>
+    }
+</table>

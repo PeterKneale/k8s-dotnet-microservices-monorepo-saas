@@ -1,0 +1,18 @@
+﻿@model Management.Models.ProductEditPageModel
+@{
+    var updateUrl = Url.Action("Edit", "Product");
+    var cancelUrl = Url.Action("Details", "Product", new { Model.ProductId });
+}
+
+<form method="post" hx-post='@updateUrl' hx-target="#details">
+    <div class="form-group">
+        @Html.TextBoxFor(x=>x.Name, new {@class="form-control"})
+    </div>
+    <div class="form-group mt-4">
+        @Html.TextBoxFor(x=>x.Description, new {@class="form-control"})
+        @Html.ValidationMessageFor(x=>x.Description)
+    </div>
+    @Html.HiddenFor(x=>x.ProductId)
+    <button type="submit" class="btn btn-primary mt-4">Save</button>
+    <button hx-get="@cancelUrl" class="btn btn-secondary mt-4">Cancel</button>
+</form>

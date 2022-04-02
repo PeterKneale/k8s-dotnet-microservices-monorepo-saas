@@ -1,0 +1,13 @@
+﻿@model Management.Models.CategoryCreatePageModel
+@{
+    var url = Url.Action("Create", "Categories");
+}
+
+<form method="post" hx-post="@url" hx-target="#pane">
+    <div class="form-group">
+        @Html.TextBoxFor(x=>x.Name, new {@class="form-control", placeholder="Category name"})
+        @Html.ValidationMessageFor(x=>x.Name)
+    </div>
+    @Html.HiddenFor(x=>x.ParentCategoryId)
+    <button type="submit" class="btn btn-primary mt-4">Save</button>
+</form>

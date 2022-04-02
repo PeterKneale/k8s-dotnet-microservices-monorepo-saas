@@ -1,0 +1,18 @@
+@model Management.Models.ProductPageModel
+@{
+    ViewBag.Title = "Product";
+    
+    var detailsUrl = Url.Action("Details", "Product", new{Model.ProductId});
+    var galleryUrl = Url.Action("Details", "Gallery", new{Model.ProductId});
+}
+
+<h1 class="mb-4">Product</h1>
+
+<div class="row">
+    <div class="col" id="details" hx-get="@detailsUrl" hx-trigger="load">
+        
+    </div>
+    <div class="col" id="gallery" hx-get="@galleryUrl" hx-trigger="load, gallery-refresh from:body">
+        
+    </div>
+</div>

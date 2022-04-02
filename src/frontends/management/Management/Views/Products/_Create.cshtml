@@ -1,0 +1,18 @@
+﻿@model Management.Models.ProductsCreatePageModel
+@{
+    var url = Url.Action("Create", "Products");
+}
+
+<form method="post" hx-post="@url" hx-target="#pane">
+    <div class="form-group">
+        @Html.TextBoxFor(x=>x.Name, new {@class="form-control", placeholder="Product name"})
+        @Html.ValidationMessageFor(x=>x.Name)
+    </div>
+    <div class="form-group mt-4">
+        @Html.TextBoxFor(x=>x.Description, new {@class="form-control", placeholder="Product description"})
+        @Html.ValidationMessageFor(x=>x.Description)
+    </div>
+    @Html.HiddenFor(x=>x.ProductId)
+    @Html.HiddenFor(x=>x.CategoryId)
+    <button type="submit" class="btn btn-primary mt-4">Save</button>
+</form>

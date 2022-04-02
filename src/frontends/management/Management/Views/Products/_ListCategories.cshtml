@@ -1,0 +1,30 @@
+﻿@model Management.Models.CategoryListPageModel
+@if (Model.Categories.Categories.Any())
+{
+    <div class="card">
+        <ul class="list-group list-group-flush">
+            @foreach (var category in Model.Categories.Categories)
+            {
+                var active = category.Selected ? "active" : "";
+                var indent = string.Join("", Enumerable.Repeat("&nbsp;", category.Level));
+                var url = Url.Action("ListProducts", "Products", new
+                {
+                    category.CategoryId
+                });
+                <a
+                    hx-get="@url"
+                    hx-target="#pane"
+                    _="on click remove .active from .list-group-item add .active to me"
+                    class="list-group-item list-group-item-action @active">
+                    @Html.Raw(indent) @category.Name
+                </a>
+            }
+        </ul>
+    </div>
+}
+else
+{
+    <div class="alert alert-info" role="alert">
+        You will need to create <a asp-action="Index" asp-controller="Categories">create categories</a> to get started
+    </div>   
+}

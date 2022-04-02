@@ -1,0 +1,20 @@
+﻿@model StoreDomainEditModel
+@{
+    var updateUrl = Url.Action("Edit", "Domain");
+    var cancelUrl = Url.Action("Details", "Domain");
+    var scheme = "http://";
+}
+    
+<h5 class="card-title">Custom Domain</h5>
+<form method="post" hx-post='@updateUrl' hx-target="#store-domain">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="subdomain">@scheme</label>
+        </div>
+        @Html.TextBoxFor(x => x.Domain, new{@class = "form-control"})
+    </div>
+    <button type="submit" class="btn btn-primary mt-4">Save</button>
+    <button hx-get="@cancelUrl" class="btn btn-secondary mt-4">Cancel</button>
+</form>
+
+@Html.ValidationSummary()

@@ -1,0 +1,14 @@
+﻿@model Management.Models.StoreThemeEditModel
+@{
+    var updateUrl = Url.Action("Edit", "Theme");
+    var cancelUrl = Url.Action("Details", "Theme");
+}
+
+<h5 class="card-title">Theme</h5>
+<form method="post" hx-post='@updateUrl' hx-target="#store-theme">
+    <div class="form-group">
+        @Html.DropDownListFor(x => x.CurrentTheme, Model.Themes, new{@class = "form-control"})
+    </div>
+    <button type="submit" class="btn btn-primary mt-4">Save</button>
+    <button hx-get="@cancelUrl" class="btn btn-secondary mt-4">Cancel</button>
+</form>

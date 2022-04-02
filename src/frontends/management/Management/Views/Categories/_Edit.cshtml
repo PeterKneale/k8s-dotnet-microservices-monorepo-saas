@@ -1,0 +1,14 @@
+﻿@model Management.Models.CategoryEditPageModel
+@{
+    var updateUrl = Url.Action("Edit", "Categories");
+    var cancelUrl = Url.Action("Details", "Categories", new { Model.CategoryId });
+}
+
+<form method="post" hx-post='@updateUrl' hx-target="#pane">
+    <div class="form-group">
+        @Html.TextBoxFor(x=>x.Name, new {@class="form-control"})
+    </div>
+    @Html.HiddenFor(x=>x.CategoryId)
+    <button type="submit" class="btn btn-primary mt-4">Save</button>
+    <button hx-get="@cancelUrl" class="btn btn-secondary mt-4">Cancel</button>
+</form>

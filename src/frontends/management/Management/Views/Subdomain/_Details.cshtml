@@ -1,0 +1,14 @@
+﻿@model StoreSubdomainViewModel
+@{
+    var editUrl = Url.Action("Edit", "Subdomain");
+    var scheme = "http://";
+    var subdomain = Model.Subdomain;
+    var parentDomain = Model.ParentDomain;
+    var url = $"{scheme}{subdomain}{parentDomain}";
+}   
+
+<a hx-get="@editUrl" hx-target="#store-subdomain" class="btn btn-primary btn-large float-end">Edit Subdomain</a>
+<h5 class="card-title">Subdomain</h5>
+<div class="card-text">
+    <a href="@url">@url</a>
+</div>

@@ -1,0 +1,35 @@
+﻿@model Management.Application.ListProducts.Result
+@{
+    var createUrl = Url.Action("Create", "Products", new
+    {
+        Model.CategoryId
+    });
+}
+
+    @if (Model.CategoryId != null)
+    {
+        <a hx-get="@createUrl" hx-target="#pane" class="btn btn-primary btn-large float-end">Create Product</a>
+    }
+
+<div class="row row-cols-2 row-cols-md-4 g-4">
+    @foreach (var product in Model.Products)
+    {
+        var detailUrl = Url.Action("Index", "Product", new
+        {
+            product.ProductId
+        });
+        <div class="col">
+            <div class="card h-100">
+                <img src="http://management.saas.io/@product.PictureUrl" height="200" width="150" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title" data-test-id="product-name">@product.Name</h5>
+                    <p class="card-text text-truncate">@product.Description</p>
+                    <a href="@detailUrl" class="card-link stretched-link">Details</a>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,9 @@
+﻿@model StoreThemeViewModel
+@{
+    var editUrl = Url.Action("Edit", "Theme");
+}
+
+<a hx-get="@editUrl" hx-target="#store-theme" class="btn btn-primary btn-large float-end">Edit Theme</a>
+<h5 class="card-title">Theme</h5>
+<div class="card-text">@Model.CurrentTheme</div>
+    
