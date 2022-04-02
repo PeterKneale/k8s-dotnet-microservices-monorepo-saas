@@ -7,7 +7,7 @@ on:
     - deploy
   push:
     branches:
-      - master
+      - main
     paths:
       - deploy/service.yaml
       - deploy/service-search.yaml
