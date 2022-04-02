@@ -26,29 +26,29 @@ namespace BuildingBlocks.Infrastructure.ExceptionHandling
             }
             catch (BusinessRuleBrokenException e)
             {
-                _logger.LogWarning(e, "Business rule broken when calling {Method}", context.Method);
+                _logger.LogWarning(e, "Business rule broken when calling {grpc_method}", context.Method);
                 // is there a more appropriate status
                 throw new RpcException(new Status(StatusCode.FailedPrecondition, e.Message));
             }
             catch (AccountContextMissingException e)
             {
-                _logger.LogWarning(e, "Account context missing when calling {Method}", context.Method);
+                _logger.LogWarning(e, "Account context missing when calling {grpc_method}", context.Method);
                 // is there a more appropriate status
                 throw new RpcException(new Status(StatusCode.PermissionDenied, e.Message));
             }
             catch (NotFoundException e)
             {
-                _logger.LogWarning(e, "Not Found when calling {Method}", context.Method);
+                _logger.LogWarning(e, "Not Found when calling {grpc_method}", context.Method);
                 throw new RpcException(new Status(StatusCode.NotFound, e.Message));
             }
             catch (ValidationFailedException e)
             {
-                _logger.LogWarning(e, "Validation Failed when calling {Method}", context.Method);
+                _logger.LogWarning(e, "Validation Failed when calling {grpc_method}", context.Method);
                 throw new RpcException(new Status(StatusCode.InvalidArgument, e.Message));
             }
             catch (Exception e)
             {
-                _logger.LogError(e, "An unknown error occurred when calling {Method}", context.Method);
+                _logger.LogError(e, "An unknown error occurred when calling {grpc_method}", context.Method);
                 throw new RpcException(Status.DefaultCancelled, e.Message);
             }
         }
