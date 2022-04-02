@@ -1,0 +1,20 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+Person(user_tenant, "Business", "Business wishing to sell products to consumers")
+Person(user_consumer, "Consumer", "A consumer who wishes to purchase a product")
+System_Boundary("platform", "Platform") {
+    System_Ext("marketing", "Marketing","Static marketing website driving users to the registration website")
+    System("registration", "Registration","Registration forms that provision a new store")  
+    System("sales", "Sales Site","Customer facing sales site")      
+    System("management", "Management", "Store, Product and Order management website")  
+    System("support", "Support Site","Support website for supporting the platform")
+    Person_Ext(team_support, "Support Team", "Supports the platform")
+    Person_Ext(team_marketing, "Marketing Team", "Manages content driving conversions")
+}
+Rel_D(user_tenant, marketing, "Finds the platform, learns of its features")
+Rel_D(user_tenant, registration, "Registers to use the platform")
+Rel_D(user_tenant, management, "Manages their store, the products available and orders to be fulfilled")
+Rel_D(user_consumer, sales, "Searches for products, adds to cart and orders them")
+Rel_U(team_marketing, marketing, "Manages content")
+Rel_U(team_support, support, "Supports businesses")
+@enduml

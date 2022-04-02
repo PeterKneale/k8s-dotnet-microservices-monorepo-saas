@@ -1,0 +1,8 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+Person(user_tenant, "Business", "Business wishing to sell products to consumers")
+Person(user_consumer, "Consumer", "A consumer who wishes to purchase a product")
+System(system, "System")
+Rel(user_tenant, system, "Manages their store, the products available and orders to be fulfilled")
+Rel(user_consumer, system, "Searches for products, adds to cart and orders them")
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+Person(user_consumer, "Consumer", "A consumer who wishes to purchase a product")
+System_Boundary(c1, "Platform") {
+    Container(sales, "Sales Website", "MVC", "")
+    Container(bff_sales, "Sales Backend for Frontend", "MVC", "")
+    Container(service_stores, "Stores Service", "C#, Docker Container")
+    Container(service_search, "Search Service", "C#, Docker Container")
+    Container(service_products, "Products Service", "C#, Docker Container")
+    Container(service_cart, "Cart Service", "C#, Docker Container")
+    Container(service_orders, "Orders Service", "C#, Docker Container")
+    Container(service_payments, "Payments Service", "C#, Docker Container")
+}
+System_Ext(email_system, "E-Mail System", "Email verifications")
+Rel(user_consumer, sales, "Uses", "HTTPS")
+Rel(sales, bff_sales, "Uses", "GRPC")
+Rel(bff_sales, service_products, "Uses", "sync, GRPC")
+Rel(bff_sales, service_search, "Uses", "sync, GRPC")
+Rel(bff_sales, service_cart, "Uses", "sync, GRPC")
+Rel(bff_sales, service_orders, "Uses", "sync, GRPC")
+Rel(bff_sales, service_stores, "Uses", "sync, GRPC")
+Rel(bff_sales, service_payments, "Uses", "sync, GRPC")
+Rel_Back(user_consumer, email_system, "Sends e-mails to")
+Rel_Back(email_system, service_orders, "Sends order notifications", "sync, SMTP")
+@enduml

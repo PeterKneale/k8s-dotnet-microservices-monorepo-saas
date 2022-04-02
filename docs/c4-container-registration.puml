@@ -1,0 +1,15 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+Person(user_tenant, "Business" , "A business with a store on the platform" )
+System_Boundary(c1, "Platform") {
+    Container(registration, "Registration Website", "MVC", "Allows businesses to register for a store")
+    Container(service_stores, "Stores Service", "C#, Docker Container")
+    Container(service_users, "Users Service", "C#, Docker Container")
+}
+System_Ext(email_system, "E-Mail System", "Email verifications")
+Rel(user_tenant, registration, "Registers", "HTTPS")
+Rel(registration, service_stores, "Creates Store", "sync, GRPC")
+Rel(registration, service_users, "Creates User", "sync, GRPC")
+Rel_Back(user_tenant, email_system, "Sends e-mails to")
+Rel_Back(email_system, service_stores, "Sends email verifications", "sync, SMTP")
+@enduml

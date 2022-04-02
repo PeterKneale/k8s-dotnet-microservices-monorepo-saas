@@ -1,0 +1,12 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+Person(user_tenant, "Business" , "A business with a store on the platform" )
+System_Boundary(c1, "Platform") {
+    Container(marketing, "Marketing Website", "Static Html", "Static marketing website driving users to the registration website")
+    ContainerDb(marketing_content, "Marketing Content", "Static Html", "Marketing content in a repository")
+    Person_Ext(team_marketing, "Marketing Team", "Manages content driving conversions")
+}
+Rel_D(user_tenant, marketing, "Discovers and browses")
+Rel_R(marketing_content, marketing, "Publishes")
+Rel_U(team_marketing, marketing_content, "Uses")
+@enduml
