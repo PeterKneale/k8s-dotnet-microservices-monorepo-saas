@@ -268,8 +268,34 @@ Services
 ```sh
 export GITHUB_USERNAME=peterkneale
 export GITHUB_TOKEN=XXXXXXXXXXXXXX
+export DIGITALOCEAN_TOKEN=XXXXXXXXXXXXXX
 export REGISTRY_HOST=ghcr.io
 export REGISTRY_ENDPOINT=ghcr.io/peterkneale/k8s-dotnet-microservices-monorepo-saas
 export TAG=latest
 echo $GITHUB_TOKEN | docker login $REGISTRY_HOST -u $GITHUB_USERNAME --password-stdin
+echo $DIGITALOCEAN_TOKEN | doctl auth init --context saas
+
 ```
+
+# K8s
+## Accessing cluster resources
+
+Accessing a resource in the k8s cluster can be performed by using kubectl's port forwarding feature
+
+- To access an application service
+    ```shell
+    # Forward a local port to the remote service
+    kubectl port-forward svc/service-accounts-saas 8080:80
+    ```
+    ```shell
+    # Access the mapped port locally
+    $ curl localhost:8080/health/alive
+    Healthy
+    ```
+
+- To access an an infrastructure component
+    ```shell
+    # Forward a local port to the remote service
+    kubectl port-forward svc/infra-kibana 8080:5601
+    ```
+    - Access the mapped port locally [http://localhost:8080](http://localhost:8080)
