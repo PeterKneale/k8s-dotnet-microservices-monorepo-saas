@@ -1,0 +1,11 @@
+name: management
+ingress:
+  hosts:
+    - host: management.saas.io
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: management-tls
+      hosts:
+        - management.saas.io

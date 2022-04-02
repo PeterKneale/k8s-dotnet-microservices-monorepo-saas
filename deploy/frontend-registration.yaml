@@ -1,0 +1,11 @@
+name: registration
+ingress:
+  hosts:
+    - host: registration.saas.io
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: registration-tls
+      hosts:
+        - registration.saas.io

@@ -1,0 +1,4 @@
+auth:
+  database: saas
+  username: admin
+  password: password

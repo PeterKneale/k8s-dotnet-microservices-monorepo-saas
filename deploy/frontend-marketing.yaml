@@ -1,0 +1,11 @@
+name: marketing
+ingress:
+  hosts:
+    - host: marketing.saas.io
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: marketing-tls
+      hosts:
+        - marketing.saas.io

@@ -1,0 +1,11 @@
+name: shopping
+ingress:
+  hosts:
+    - host: shopping.saas.io
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: shopping-tls
+      hosts:
+        - shopping.saas.io

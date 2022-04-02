@@ -1,0 +1,9 @@
+type: frontend
+version: latest
+environment:
+  HTTP_PORT: 80
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    cert-manager.io/cluster-issuer: selfsigned-cluster-issuer
