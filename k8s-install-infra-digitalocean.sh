@@ -33,5 +33,5 @@ do
     helm upgrade --install --namespace $env infra-minio            bitnami/minio           -f ./deploy/infra-minio.yaml
     helm upgrade --install --namespace $env infra-fluentd          bitnami/fluentd         -f ./deploy/infra-fluentd.yaml
     
-    echo "✔ Configured environment: $env"
+    echo "✔ installed $env"
 done
