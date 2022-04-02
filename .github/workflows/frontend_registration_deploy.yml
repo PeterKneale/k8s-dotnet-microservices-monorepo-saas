@@ -1,0 +1,32 @@
+name: frontend_registration_deploy
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types:
+    - deploy
+  push:
+    branches:
+      - master
+    paths:
+      - deploy/frontend.yaml
+      - deploy/frontend-registration.yaml
+
+env:
+  COMPONENT_NAME: registration
+  COMPONENT_TYPE: frontend
+
+jobs:
+
+  deploy:
+    runs-on: ubuntu-latest    
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - uses: ./.github/workflows/composite/deploy
+        with:
+          digitalocean_access_token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+          component_name: ${{ env.COMPONENT_NAME }}
+          component_type: ${{ env.COMPONENT_TYPE }}
+          k8s_cluster_name: ${{ secrets.K8S_CLUSTER_NAME }}

@@ -1,0 +1,36 @@
+name: "Deploy"
+description: "Deploys a helm chart to AKS"
+
+inputs:
+  digitalocean_access_token:
+    description: "Digital ocean access token"
+    required: true
+  component_name:
+    description: "Name of component to deploy e.g. carts"
+    required: true
+  component_type:
+    description: "Type of component to deploy e.g. service"
+    required: true
+  k8s_cluster_name:
+    description: "Name of k8s cluster"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+  - name: Install DigitalOcean CLI
+    uses: digitalocean/action-doctl@v2
+    with:
+      token: ${{ inputs.digitalocean_access_token }}
+
+  - name: Save DigitalOcean kubeconfig
+    shell: bash
+    run: doctl kubernetes cluster kubeconfig save ${{ inputs.k8s_cluster_name }}
+  
+  - name: Deploy Chart
+    shell: bash
+    run: |
+      helm upgrade --install ${{ inputs.component_type }}-${{ inputs.component_name }} \
+        ./deploy/chart \
+        -f ./deploy/${{ inputs.component_type }}.yaml  \
+        -f ./deploy/${{ inputs.component_type }}-${{ inputs.component_name }}.yaml 

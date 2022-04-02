@@ -1,0 +1,28 @@
+name: "Unit Test"
+description: "Runs unit tests from within a docker container"
+
+inputs:
+  component:
+    description: "Component to test e.g. service_carts"
+    required: true
+  registry_endpoint:
+    description: "Image registry repo e.g. ghcr.io/saas"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+
+  - name: Build unit tests
+    shell: bash
+    run: sudo -E docker-compose -f docker-compose-unit-tests.yml build ${{ inputs.component }}
+    env:
+      TAG: ${{ env.BRANCH }}
+      REGISTRY_ENDPOINT: ${{ inputs.registry_endpoint }}
+
+  - name: Run unit tests
+    shell: bash
+    run: sudo -E docker-compose -f docker-compose-unit-tests.yml run ${{ inputs.component }}
+    env:
+      TAG: ${{ env.BRANCH }}
+      REGISTRY_ENDPOINT: ${{ inputs.registry_endpoint }}

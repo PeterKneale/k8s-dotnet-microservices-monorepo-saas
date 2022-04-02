@@ -1,0 +1,57 @@
+name: frontend_shopping
+
+on:
+  repository_dispatch:
+  push:
+    branches:
+      - master
+
+    paths:
+      - src/building_blocks/**
+      - src/frontends/shopping/**
+      - .github/workflows/frontend_shopping.yml
+
+  pull_request:
+    branches:
+      - master
+
+    paths:
+      - src/building_blocks/**
+      - src/frontends/shopping/**
+      - .github/workflows/frontend_shopping.yml
+
+env:
+  COMPONENT: frontend_shopping
+  IMAGE: frontend_shopping
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - uses: ./.github/workflows/composite/build
+        with:
+          component: ${{ env.COMPONENT }}
+          registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}
+      - uses: ./.github/workflows/composite/unit_test
+        with:
+          component: ${{ env.COMPONENT }}
+          registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}
+
+  push:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'pull_request' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - uses: ./.github/workflows/composite/push
+        with:
+          component: ${{ env.COMPONENT }}
+          image_name: ${{ env.IMAGE }}
+          registry_host: ${{ secrets.REGISTRY_HOST }}
+          registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}
+          registry_username: ${{ github.actor }}
+          registry_password: ${{ secrets.GITHUB_TOKEN }}
