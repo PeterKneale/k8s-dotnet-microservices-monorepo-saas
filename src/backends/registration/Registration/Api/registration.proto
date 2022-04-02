@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "Registration.Api";
+
+package registration;
+
+import "google/protobuf/empty.proto";
+
+service RegistrationApi {
+  // commands
+  rpc SubmitRegistration (SubmitRegistrationRequest) returns (google.protobuf.Empty);
+
+  // queries
+  rpc GetRegistrationStatus (GetRegistrationStatusRequest) returns (GetRegistrationStatusReply);
+}
+
+message SubmitRegistrationRequest {
+  string name = 1;
+  string email = 2;
+  string reference = 3;
+}
+
+message GetRegistrationStatusRequest {
+  string reference = 1;
+}
+
+message GetRegistrationStatusReply {
+  bool complete = 1;
+  bool failed = 2;
+}
