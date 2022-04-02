@@ -9,14 +9,14 @@ on:
     branches:
       - main
     paths:
-      - deploy/service.yaml
-      - deploy/service-stores.yaml
+      - deploy/environments/common.yaml
+      - deploy/environments/development.yaml
+      - deploy/services/common.yaml
+      - deploy/services/stores.yaml
 
 env:
   COMPONENT_NAME: stores
   COMPONENT_TYPE: service
-  K8S_CLUSTER: saas
-  K8S_NAMESPACE: saas-app-development
 
 jobs:
 
@@ -32,5 +32,4 @@ jobs:
           digitalocean_access_token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
           component_name: ${{ env.COMPONENT_NAME }}
           component_type: ${{ env.COMPONENT_TYPE }}
-          k8s_cluster: ${{ env.K8S_CLUSTER }}
-          k8s_namespace: ${{ env.K8S_NAMESPACE }}
+          environment: development

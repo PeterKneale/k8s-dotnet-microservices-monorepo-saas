@@ -1,0 +1,6 @@
+# configuration related to all backend services
+type: backend
+version: latest
+environment:
+  HTTP_PORT: 80
+  GRPC_PORT: 81

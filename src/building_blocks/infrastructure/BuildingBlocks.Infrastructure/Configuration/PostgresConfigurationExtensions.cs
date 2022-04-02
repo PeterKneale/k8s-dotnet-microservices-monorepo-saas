@@ -5,17 +5,26 @@ namespace BuildingBlocks.Infrastructure.Configuration
     public static class PostgresConfigurationExtensions
     {
         // Postgres
-        private const string DefaultDatabaseHost = "infra_postgres";
+        private const string DefaultDatabaseHost = "localhost";
         private const string DefaultDatabaseName = "saas";
         private const string DefaultDatabaseSchema = "public";
         private const string DefaultDatabaseUserName = "admin";
         private const string DefaultDatabasePassword = "password";
         
-        public static string GetPostgresHost(this IConfiguration configuration) => configuration.GetString("INFRA_POSTGRESQL_SERVICE_HOST", DefaultDatabaseHost);
-        public static string GetPostgresDatabase(this IConfiguration configuration) => configuration.GetString("infra_postgres_database",DefaultDatabaseName);
-        public static string GetPostgresSchema(this IConfiguration configuration) => configuration.GetString("infra_postgres_schema", DefaultDatabaseSchema);
-        public static string GetPostgresUserName(this IConfiguration configuration) => configuration.GetString("infra_postgres_username", DefaultDatabaseUserName);
-        public static string GetPostgresPassword(this IConfiguration configuration) => configuration.GetString("infra_postgres_password", DefaultDatabasePassword);
+        public static string GetPostgresHost(this IConfiguration configuration) => 
+            configuration.GetString("INFRA_POSTGRESQL_HOST", DefaultDatabaseHost);
+
+        public static string GetPostgresDatabase(this IConfiguration configuration) => 
+            configuration.GetString("INFRA_POSTGRESQL_DATABASE",DefaultDatabaseName);
+
+        public static string GetPostgresSchema(this IConfiguration configuration) => 
+            configuration.GetString("INFRA_POSTGRESQL_SCHEMA", DefaultDatabaseSchema);
+
+        public static string GetPostgresUserName(this IConfiguration configuration) => 
+            configuration.GetString("INFRA_POSTGRESQL_USERNAME", DefaultDatabaseUserName);
+
+        public static string GetPostgresPassword(this IConfiguration configuration) => 
+            configuration.GetString("INFRA_POSTGRESQL_PASSWORD", DefaultDatabasePassword);
         
         public static string GetPostgresConnectionString(this IConfiguration configuration)
         {

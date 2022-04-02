@@ -28,12 +28,13 @@ namespace BuildingBlocks.Infrastructure.Configuration
         public static Uri GetServiceHttpUri(this IConfiguration configuration, string name) => new Uri($"http://{configuration.GetHost(SERVICE, name)}:{configuration.GetHttpPort(SERVICE, name)}");
         public static Uri GetHttpUri(this IConfiguration configuration, string type, string name) => new Uri($"http://{configuration.GetHost(type, name)}:{configuration.GetHttpPort(type, name)}");
         public static Uri GetGrpcUri(this IConfiguration configuration, string type, string name) => new Uri($"http://{configuration.GetHost(type, name)}:{configuration.GetGrpcPort(type, name)}");
-        
-        private const int DefaultHttpPort = 80;
-        private const int DefaultGrpcPort = 81;
-        public static string GetHost(this IConfiguration configuration, string type, string name) => configuration.GetString($"{type}_{name}_SAAS_SERVICE_HOST", $"{type}_{name}");
-        public static int GetHttpPort(this IConfiguration configuration, string type, string name) => configuration.GetInt($"{type}_{name}_SAAS_SERVICE_PORT_HTTP", DefaultHttpPort);
-        public static int GetGrpcPort(this IConfiguration configuration, string type, string name) => configuration.GetInt($"{type}_{name}_SAAS_SERVICE_PORT_GRPC", DefaultGrpcPort);
+
+        private const string DefaultHost = "localhost";
+        private const int DefaultHttpPort = 5000;
+        private const int DefaultGrpcPort = 5001;
+        public static string GetHost(this IConfiguration configuration, string type, string name) => configuration.GetString($"{type}_{name}_HOST", DefaultHost);
+        public static int GetHttpPort(this IConfiguration configuration, string type, string name) => configuration.GetInt($"{type}_{name}_PORT_HTTP", DefaultHttpPort);
+        public static int GetGrpcPort(this IConfiguration configuration, string type, string name) => configuration.GetInt($"{type}_{name}_PORT_GRPC", DefaultGrpcPort);
 
         // utility
         public static Uri GetUri(this IConfiguration configuration, string key, string defaultValue) => new(configuration.GetString(key, defaultValue));
