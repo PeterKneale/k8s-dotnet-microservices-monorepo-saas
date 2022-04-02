@@ -1,0 +1,162 @@
+# tye application configuration file
+# read all about it at https://github.com/dotnet/tye
+#
+# when you've given us a try, we'd love to know what you think:
+#    https://aka.ms/AA7q20u
+#
+name: saas
+services:
+
+- name: ingress-public
+  dockerFile: ./src/ingress/public/Dockerfile
+  dockerFileContext: ./src/ingress/public
+  bindings:
+  - name: HTTP_PORT
+    port: 8000
+
+- name: frontend-marketing
+  dockerFile: ./src/frontends/marketing/Dockerfile
+  dockerFileContext: ./src/frontends/marketing
+  bindings:
+  - name: HTTP_PORT
+    port: 8010
+
+- name: frontend-registration
+  project: src/frontends/registration/Registration/Registration.csproj
+  env:
+    - name: HTTP_PORT
+      value: "8020"
+  bindings:
+  - name: HTTP_PORT
+    port: 8020
+
+- name: frontend-shopping
+  project: src/frontends/shopping/Shopping/Shopping.csproj
+  env:
+    - name: HTTP_PORT
+      value: "8030"
+  bindings:
+  - name: HTTP_PORT
+    port: 8030
+    
+- name: frontend-management
+  project: src/frontends/management/Management/Management.csproj
+  env:
+    - name: HTTP_PORT
+      value: "8040"
+  bindings:
+  - name: HTTP_PORT
+    port: 8040
+
+- name: frontend-admin
+  project: src/frontends/admin/Admin/Admin.csproj
+  env:
+    - name: HTTP_PORT
+      value: "8050"
+  bindings:
+  - name: HTTP_PORT
+    port: 8050
+
+- name: backend-registration
+  project: src/backends/registration/Registration/Registration.csproj 
+  env:
+    - name: HTTP_PORT
+      value: "6020"
+    - name: GRPC_PORT
+      value: "6021"
+  bindings:
+  - name: HTTP_PORT
+    port: 6020    
+  - name: GRPC_PORT
+    port: 6021
+
+- name: backend-shopping
+  project: src/backends/shopping/Shopping/Shopping.csproj 
+  env:
+    - name: HTTP_PORT
+      value: "6030"
+    - name: GRPC_PORT
+      value: "6031"
+  bindings:
+  - name: HTTP_PORT
+    port: 6030    
+  - name: GRPC_PORT
+    port: 6031
+
+- name: service-catalog
+  project: src/services/catalog/Catalog/Catalog.csproj
+  env:
+    - name: HTTP_PORT
+      value: "5010"
+    - name: GRPC_PORT
+      value: "5011"
+  bindings:
+  - name: HTTP_PORT
+    port: 5010    
+  - name: GRPC_PORT
+    port: 5011
+
+- name: service-carts
+  project: src/services/carts/Carts/Carts.csproj
+  env:
+    - name: HTTP_PORT
+      value: "5020"
+    - name: GRPC_PORT
+      value: "5021"
+  bindings:
+  - name: HTTP_PORT
+    port: 5020    
+  - name: GRPC_PORT
+    port: 5021
+
+- name: service-media
+  project: src/services/media/Media/Media.csproj  
+  env:
+    - name: HTTP_PORT
+      value: "5030"
+    - name: GRPC_PORT
+      value: "5031"
+  bindings:
+  - name: HTTP_PORT
+    port: 5030    
+  - name: GRPC_PORT
+    port: 5031
+
+- name: service-search
+  project: src/services/search/Search/Search.csproj   
+  env:
+    - name: HTTP_PORT
+      value: "5040"
+    - name: GRPC_PORT
+      value: "5041"
+  bindings:
+  - name: HTTP_PORT
+    port: 5040    
+  - name: GRPC_PORT
+    port: 5041
+
+- name: service-stores
+  project: src/services/stores/Stores/Stores.csproj   
+  env:
+    - name: HTTP_PORT
+      value: "5050"
+    - name: GRPC_PORT
+      value: "5051"
+  bindings:
+  - name: HTTP_PORT
+    port: 5050    
+  - name: GRPC_PORT
+    port: 5051
+
+- name: service-accounts
+  project: src/services/accounts/Accounts/Accounts.csproj  
+  env:
+    - name: HTTP_PORT
+      value: "5060"
+    - name: GRPC_PORT
+      value: "5061"
+  bindings:
+  - name: HTTP_PORT
+    port: 5060    
+  - name: GRPC_PORT
+    port: 5061
