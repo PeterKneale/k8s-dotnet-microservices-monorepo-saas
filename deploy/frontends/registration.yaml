@@ -1,11 +1,11 @@
 name: registration
 ingress:
   hosts:
-    - host: registration.saas.io
+    - host: registration.ecommerce-store-builder.dev
       paths:
         - path: /
           pathType: Prefix
   tls:
     - secretName: registration-tls
       hosts:
-        - registration.saas.io
+        - registration.ecommerce-store-builder.dev

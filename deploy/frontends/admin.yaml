@@ -1,11 +1,11 @@
 name: admin
 ingress:
   hosts:
-    - host: admin.saas.io
+    - host: admin.ecommerce-store-builder.dev
       paths:
         - path: /
           pathType: Prefix
   tls:
     - secretName: admin-tls
       hosts:
-        - admin.saas.io
+        - admin.ecommerce-store-builder.dev

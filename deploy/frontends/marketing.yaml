@@ -1,11 +1,11 @@
 name: marketing
 ingress:
   hosts:
-    - host: marketing.saas.io
+    - host: marketing.ecommerce-store-builder.dev
       paths:
         - path: /
           pathType: Prefix
   tls:
     - secretName: marketing-tls
       hosts:
-        - marketing.saas.io
+        - marketing.ecommerce-store-builder.dev

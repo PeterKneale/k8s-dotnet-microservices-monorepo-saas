@@ -62,7 +62,7 @@ namespace Shopping.Application
                 }
                 
                 // todo: Refactor
-                var subdomain = domain.Replace(".saas.io", string.Empty);
+                var subdomain = domain.Replace(".ecommerce-store-builder.dev", string.Empty);
                 store = await _reader.GetStoreBySubdomain(subdomain);
                 if (store != null)
                 {
