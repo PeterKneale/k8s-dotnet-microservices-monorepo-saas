@@ -32,7 +32,7 @@ runs:
     run: |
       helm upgrade \
         --install ${{ inputs.component_type }}-${{ inputs.component_name }} \
-        --namespace saas-app-${{ inputs.environment }} \
+        --namespace ${{ inputs.environment }} \
         ./deploy/chart \
           -f ./deploy/environments/common.yaml \
           -f ./deploy/environments/${{ inputs.environment }}.yaml \

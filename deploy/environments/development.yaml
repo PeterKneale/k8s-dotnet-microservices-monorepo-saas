@@ -1,5 +1,1 @@
 environment:
-  INFRA_RABBITMQ_HOST: infra-rabbitmq.saas-infra-development
-  INFRA_POSTGRESQL_DATABASE: infra-postgresql.saas-infra-development
-  INFRA_ELASTICSEARCH_HOST: infra-elasticsearch-master.saas-infra-development
-  INFRA_MINIO_HOST: infra-minio.saas-infra-development
