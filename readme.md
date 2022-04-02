@@ -71,27 +71,39 @@ A work in progress demonstrating
 # Environments
 
 ## Development
-- [marketing.ecommerce-store-builder.dev](http://marketing.ecommerce-store-builder.dev)
-- [registration.ecommerce-store-builder.dev](http://registration.ecommerce-store-builder.dev)
-- [shopping.ecommerce-store-builder.dev](http://shopping.ecommerce-store-builder.dev)
-- [management.ecommerce-store-builder.dev](http://management.ecommerce-store-builder.dev)
-- [admin.ecommerce-store-builder.dev](http://admin.ecommerce-store-builder.dev)
-- [example1.ecommerce-store-builder.dev](http://example1.ecommerce-store-builder.dev)
-- [example2.ecommerce-store-builder.dev](http://example2.ecommerce-store-builder.dev)
-- [example3.ecommerce-store-builder.dev](http://example3.ecommerce-store-builder.dev)
+
+The top level domain is `ecommerce-store-builder.dev`
+- [marketing](http://marketing.ecommerce-store-builder.dev)
+- [registration](http://registration.ecommerce-store-builder.dev)
+- [shopping](http://shopping.ecommerce-store-builder.dev)
+- [management](http://management.ecommerce-store-builder.dev)
+- [admin](http://admin.ecommerce-store-builder.dev)
+
+Example stores
+- [example1](http://example1.ecommerce-store-builder.dev)
+- [example2](http://example2.ecommerce-store-builder.dev)
+- [example3](http://example3.ecommerce-store-builder.dev)
+
+Custom domain names for example stores
 - [example-store-1.xyz](http://example-store-1.xyz)
 - [example-store-2.xyz](http://example-store-2.xyz)
 - [example-store-3.xyz](http://example-store-3.xyz)
 
-## Development
-- [marketing.ecommerce-store-builder.com](http://marketing.ecommerce-store-builder.com)
-- [registration.ecommerce-store-builder.com](http://registration.ecommerce-store-builder.com)
-- [shopping.ecommerce-store-builder.com](http://shopping.ecommerce-store-builder.com)
-- [management.ecommerce-store-builder.com](http://management.ecommerce-store-builder.com)
-- [admin.ecommerce-store-builder.com](http://admin.ecommerce-store-builder.com)
-- [example4.ecommerce-store-builder.com](http://example4.ecommerce-store-builder.com)
-- [example5.ecommerce-store-builder.com](http://example5.ecommerce-store-builder.com)
-- [example6.ecommerce-store-builder.com](http://example6.ecommerce-store-builder.com)
+## Production  
+
+The top level domain is `ecommerce-store-builder.com`
+- [marketing](http://marketing.ecommerce-store-builder.com)
+- [registration](http://registration.ecommerce-store-builder.com)
+- [shopping](http://shopping.ecommerce-store-builder.com)
+- [management](http://management.ecommerce-store-builder.com)
+- [admin](http://admin.ecommerce-store-builder.com)
+
+Example stores
+- [example4](http://example4.ecommerce-store-builder.com)
+- [example5](http://example5.ecommerce-store-builder.com)
+- [example6](http://example6.ecommerce-store-builder.com)
+
+Custom domain names for example stores
 - [example-store-4.xyz](http://example-store-4.xyz)
 - [example-store-5.xyz](http://example-store-5.xyz)
 - [example-store-6.xyz](http://example-store-6.xyz)
