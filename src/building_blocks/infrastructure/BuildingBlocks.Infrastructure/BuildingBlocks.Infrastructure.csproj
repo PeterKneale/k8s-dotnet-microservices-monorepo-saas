@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Grpc.Core.Api" Version="2.43.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.2" />
+      <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="6.0.2" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\application\BuildingBlocks.Application\BuildingBlocks.Application.csproj" />
+      <ProjectReference Include="..\..\domain\BuildingBlocks.Domain.DDD\BuildingBlocks.Domain.DDD.csproj" />
+    </ItemGroup>
+
+</Project>
