@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AspNetCore.HealthChecks.Uris" Version="6.0.3" />
+        <PackageReference Include="Grpc.AspNetCore" Version="2.42.0" />
+        <PackageReference Include="Google.Api.CommonProtos" Version="2.5.0" />
+        <PackageReference Include="Minio" Version="4.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Protobuf Include="Api\media.proto" ProtoRoot="Api" GrpcServices="Both" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\building_blocks\infrastructure\BuildingBlocks.Infrastructure\BuildingBlocks.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>

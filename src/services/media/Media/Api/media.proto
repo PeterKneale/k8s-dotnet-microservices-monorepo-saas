@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+option csharp_namespace = "Media";
+
+package media;
+
+service MediaApi {
+  rpc GetPreSignedUrl(GetPreSignedUrlRequest) returns (GetPreSignedUrlReply);
+  rpc GetProductGallery (GetProductGalleryRequest) returns (GetProductGalleryReply);
+  rpc GetProductsGalleries (GetProductsGalleriesRequest) returns (GetProductsGalleriesReply);
+}
+
+message GetPreSignedUrlRequest {
+  string product_id = 1;
+  string picture_id = 2;
+}
+message GetPreSignedUrlReply {
+  string url = 1;
+}
+
+// Gallery
+message GetProductGalleryRequest {
+  string product_id = 1;
+}
+message GetProductGalleryReply {
+  Gallery gallery = 1;
+}
+
+// Galleries
+message GetProductsGalleriesRequest {
+  repeated string product_ids = 1;
+}
+message GetProductsGalleriesReply {
+  repeated ProductGallery product_galleries = 1;
+}
+
+// Data
+message ProductGallery{
+  string product_id = 1;
+  Gallery gallery = 2;
+}
+
+message Gallery{
+  repeated string picture_urls = 1;
+}
