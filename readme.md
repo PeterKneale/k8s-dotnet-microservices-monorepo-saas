@@ -1,3 +1,12 @@
+# k8s-dotnet-microservices-monorepo-saas
+
+A work in progress demonstrating
+- k8s deployments to digital ocean using helm charts
+- microservices using dotnet
+- CI-CD using github actions
+- monorepo
+- to build a demo software as a service application
+
 <!-- vscode-markdown-toc -->
 
 *
