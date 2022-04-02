@@ -1,3 +1,12 @@
+# k8s-dotnet-microservices-monorepo-saas
+
+A work in progress demonstrating
+- k8s deployments to digital ocean using helm charts
+- microservices using dotnet
+- CI-CD using github actions
+- monorepo
+- to build a demo software as a service application
+
 <!-- vscode-markdown-toc -->
 
 *
@@ -196,28 +205,30 @@ docker-compose -f docker-compose.yml down
 ## Host file setup
 
 ```txt
-127.0.0.1 marketing.saas.io
-127.0.0.1 registration.saas.io
-127.0.0.1 shopping.saas.io
-127.0.0.1 management.saas.io
-127.0.0.1 admin.saas.io
-127.0.0.1 example1.saas.io
-127.0.0.1 example2.saas.io
-127.0.0.1 example3.saas.io
+127.0.0.1 marketing.ecommerce-store-builder.dev
+127.0.0.1 registration.ecommerce-store-builder.dev
+127.0.0.1 shopping.ecommerce-store-builder.dev
+127.0.0.1 management.ecommerce-store-builder.dev
+127.0.0.1 admin.ecommerce-store-builder.dev
+127.0.0.1 example1.ecommerce-store-builder.dev
+127.0.0.1 example2.ecommerce-store-builder.dev
+127.0.0.1 example3.ecommerce-store-builder.dev
 127.0.0.1 example1.io
 127.0.0.1 example2.io
 127.0.0.1 example3.io
 ```
 
 # Ingress
-- [marketing.saas.io](http://marketing.saas.io)
-- [registration.saas.io](http://registration.saas.io)
-- [shopping.saas.io](http://shopping.saas.io)
-- [management.saas.io](http://management.saas.io)
-- [admin.saas.io](http://admin.saas.io)
-- [example1.saas.io](http://example1.saas.io)
-- [example2.saas.io](http://example2.saas.io)
-- [example3.saas.io](http://example3.saas.io)
+- Production Domain: ecommerce-store-builder.com
+- Development Domain: ecommerce-store-builder.dev
+- [marketing.ecommerce-store-builder.dev](http://marketing.ecommerce-store-builder.dev)
+- [registration.ecommerce-store-builder.dev](http://registration.ecommerce-store-builder.dev)
+- [shopping.ecommerce-store-builder.dev](http://shopping.ecommerce-store-builder.dev)
+- [management.ecommerce-store-builder.dev](http://management.ecommerce-store-builder.dev)
+- [admin.ecommerce-store-builder.dev](http://admin.ecommerce-store-builder.dev)
+- [example1.ecommerce-store-builder.dev](http://example1.ecommerce-store-builder.dev)
+- [example2.ecommerce-store-builder.dev](http://example2.ecommerce-store-builder.dev)
+- [example3.ecommerce-store-builder.dev](http://example3.ecommerce-store-builder.dev)
 - [example1.io](http://example1.io)
 - [example2.io](http://example2.io)
 - [example3.io](http://example3.io)
