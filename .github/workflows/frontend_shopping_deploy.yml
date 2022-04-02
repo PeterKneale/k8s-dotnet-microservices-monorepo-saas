@@ -19,7 +19,8 @@ env:
 jobs:
 
   deploy:
-    runs-on: ubuntu-latest    
+    runs-on: ubuntu-latest     
+    environment: development   
     if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' }}
     steps:
       - name: Checkout code
