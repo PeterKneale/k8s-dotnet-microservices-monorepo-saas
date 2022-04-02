@@ -10,7 +10,7 @@ namespace BuildingBlocks.Infrastructure.Configuration
         private const int DefaultMinioPort = 9000;
         private const string DefaultMinioUserName = "admin";
         private const string DefaultMinioPassword = "password";
-        private const string DefaultMinioTraceEnabled = "false";
+        private const bool DefaultMinioTraceEnabled = false;
 
         public static string GetMinioScheme(this IConfiguration configuration) => 
             configuration.GetString("INFRA_MINIO_SCHEME", DefaultMinioScheme);
@@ -23,7 +23,7 @@ namespace BuildingBlocks.Infrastructure.Configuration
         public static string GetMinioSecretKey(this IConfiguration configuration) => 
             configuration.GetString("INFRA_MINIO_SECRET_KEY", DefaultMinioPassword);
         public static bool GetMinioTraceEnabled(this IConfiguration configuration) => 
-            configuration.GetBool("INFRA_MINIO_TRACE_ENABLED", false);
+            configuration.GetBool("INFRA_MINIO_TRACE_ENABLED", DefaultMinioTraceEnabled);
 
         public static Uri GetMinioUri(this IConfiguration configuration)
         {
