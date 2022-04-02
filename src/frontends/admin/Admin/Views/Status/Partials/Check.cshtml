@@ -1,0 +1,22 @@
+﻿@model StatusModel
+@if (Model.Success)
+{
+    <a href="#" class="list-group-item list-group-item-success flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">@Model.Type</h5>
+            <small>Passed</small>
+        </div>
+        <p class="mb-1">@Model.Message</p>
+    </a>
+}
+else
+{
+    <a href="#" class="list-group-item list-group-item-danger flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">@Model.Type</h5>
+            <small>Failed</small>
+        </div>
+        <p class="mb-1">@Model.Message</p>
+    </a>
+}
+

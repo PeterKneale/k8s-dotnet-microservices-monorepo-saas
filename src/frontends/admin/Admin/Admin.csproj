@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.Uris" Version="6.0.2" />
+    <PackageReference Include="Google.Api.CommonProtos" Version="2.5.0" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.42.0" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.42.0" />
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.42.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.43.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+    <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.2.0-rc3" />
+    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.0.0-rc9" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.0.0-rc9" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="1.0.0-rc9" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.0.0-rc9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="..\..\..\services\stores\Stores\Api\stores.proto" ProtoRoot="..\..\..\services\stores\Stores\Api\" GrpcServices="Client" />
+    <Protobuf Include="..\..\..\services\accounts\Accounts\Api\accounts.proto" ProtoRoot="..\..\..\services\accounts\Accounts\Api\" GrpcServices="Client" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\building_blocks\infrastructure\BuildingBlocks.Infrastructure\BuildingBlocks.Infrastructure.csproj" />
+  </ItemGroup>
+  
+</Project>

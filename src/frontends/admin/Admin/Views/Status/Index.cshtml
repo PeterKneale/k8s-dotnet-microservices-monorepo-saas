@@ -1,0 +1,50 @@
+﻿@using BuildingBlocks.Infrastructure.Configuration
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration;
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@functions
+{
+    void Display(string prefix, string name, Uri uri)
+    {
+        var alive = new Uri(uri, new Uri("/health/alive", UriKind.Relative));
+        var ready = new Uri(uri, new Uri("/health/ready", UriKind.Relative));
+        var check_alive = $"status/check?uri={alive}&type=Alive Check";
+        var check_ready = $"status/check?uri={ready}&type=Ready Check";
+        var alive_target = $"{prefix}_{name}_alive";
+        var ready_target = $"{prefix}_{name}_ready";
+        var trigger = "load";
+        <div class="col">
+            <div hx-get="@check_alive" hx-trigger="@trigger" hx-target="#@alive_target"></div>
+            <div hx-get="@check_ready" hx-trigger="@trigger" hx-target="#@ready_target"></div>
+            <div class="card text-dark bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">@prefix - @name</h5>
+                </div>
+                <ul class="list-group list-group-flush" id="@alive_target">
+                    <li class="list-group-item"></li>
+                </ul>
+                <ul class="list-group list-group-flush" id="@ready_target">
+                    <li class="list-group-item"></li>
+                </ul>
+            </div>
+        </div>
+    }
+}
+
+<div class="row row-cols-2 row-cols-md-4 g-4">
+    @foreach (var name in Names.FrontendNames)
+    {
+        Display("frontend", name, Configuration.GetFrontendHttpUri(name));
+    }
+    @foreach (var name in Names.BackendNames)
+    {
+        Display("backend", name, Configuration.GetBackendHttpUri(name));
+    }
+    @foreach (var name in Names.ServiceNames)
+    {
+        Display("service", name, Configuration.GetServiceHttpUri(name));
+    }
+</div>

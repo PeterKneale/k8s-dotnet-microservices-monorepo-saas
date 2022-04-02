@@ -1,0 +1,38 @@
+﻿@model Stores.Api.StoresReply
+
+<h3>Stores</h3>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th class="col-3">Id</th>
+        <th class="col-3">Name</th>
+        <th class="col-2">Theme</th>
+        <th class="col-2">Subdomain</th>
+        <th class="col-2">Domain</th>
+    </tr>
+    </thead>
+    @foreach (var account in Model.Stores)
+    {
+        <tr>
+            <td>
+                @account.StoreId
+            </td>
+            <td>
+                @account.Name
+            </td>
+            <td>
+                @account.Theme
+            </td>
+            <td>
+                <a href="http://@account.Subdomain">@account.Subdomain</a>
+            </td>
+            <td>
+                @if (string.IsNullOrWhiteSpace(account.Domain) == false)
+                {
+                    <a href="http://@account.Domain">@account.Domain</a>    
+                }
+            </td>
+        </tr>
+    }
+</table>

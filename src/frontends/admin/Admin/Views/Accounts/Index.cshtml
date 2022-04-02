@@ -1,0 +1,23 @@
+﻿@model Accounts.Api.AccountsReply
+
+<h3>Accounts</h3>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th class="col-4">Id</th>
+        <th class="col-12">Name</th>
+    </tr>
+    </thead>
+    @foreach (var account in Model.Accounts)
+    {
+        <tr>
+            <td>
+                @account.AccountId
+            </td>
+            <td>
+                @account.Name
+            </td>
+        </tr>
+    }
+</table>
