@@ -281,21 +281,28 @@ echo $DIGITALOCEAN_TOKEN | doctl auth init --context saas
 ## Accessing cluster resources
 
 Accessing a resource in the k8s cluster can be performed by using kubectl's port forwarding feature
+Forwarding the local port 8080 to the below services will make them available on [http://localhost:8080](http://localhost:8080)
 
-- To access an application service
+- Kibana
     ```shell
-    # Forward a local port to the remote service
+    kubectl port-forward svc/infra-kibana 8080:5601
+    ```
+
+- Prometheus Web Pane
+    ```shell
+    kubectl port-forward svc/kube-prometheus-stack-prometheus 8080:9090 -n kube-prometheus-stack
+    ```
+
+- Grafana Web Panel
+    ```shell
+    kubectl port-forward svc/kube-prometheus-stack-grafana 8080:80 -n kube-prometheus-stack
+    ```
+
+- A service
+    ```shell
     kubectl port-forward svc/service-accounts-saas 8080:80
     ```
     ```shell
-    # Access the mapped port locally
     $ curl localhost:8080/health/alive
     Healthy
     ```
-
-- To access an an infrastructure component
-    ```shell
-    # Forward a local port to the remote service
-    kubectl port-forward svc/infra-kibana 8080:5601
-    ```
-    - Access the mapped port locally [http://localhost:8080](http://localhost:8080)
