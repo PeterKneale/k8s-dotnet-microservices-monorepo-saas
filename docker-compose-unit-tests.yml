@@ -1,0 +1,159 @@
+version: '3.8'
+
+services:
+
+###########################################################
+######################## frontends ########################
+###########################################################
+
+  frontend_registration:
+    image: ${REGISTRY:-saas}/frontend_registration_unit_tests:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/frontends/registration/Registration/Dockerfile
+      target: unit_tests
+    entrypoint:
+      - dotnet
+      - test
+      - -c=Release
+      - --verbosity=normal
+
+  frontend_shopping:
+    image: ${REGISTRY:-saas}/frontend_shopping_unit_tests:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/frontends/shopping/Shopping/Dockerfile
+      target: unit_tests
+    entrypoint:
+      - dotnet
+      - test
+      - -c=Release
+      - --verbosity=normal
+
+  frontend_management:
+    image: ${REGISTRY:-saas}/frontend_management_unit_tests:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/frontends/management/Management/Dockerfile
+      target: unit_tests
+    entrypoint:
+      - dotnet
+      - test
+      - -c=Release
+      - --verbosity=normal
+
+  frontend_admin:
+    image: ${REGISTRY:-saas}/frontend_admin_unit_tests:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/frontends/admin/Admin/Dockerfile
+      target: unit_tests
+    entrypoint:
+      - dotnet
+      - test
+      - -c=Release
+      - --verbosity=normal
+
+###########################################################
+######################## backends #########################
+###########################################################
+
+  backend_registration:
+    image: ${REGISTRY:-saas}/backend_registration_unit_tests:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/backends/registration/Registration/Dockerfile
+      target: unit_tests
+    entrypoint:
+      - dotnet
+      - test
+      - -c=Release
+      - --verbosity=normal
+
+  backend_shopping:
+    image: ${REGISTRY:-saas}/backend_shopping_unit_tests:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/backends/shopping/Shopping/Dockerfile
+      target: unit_tests
+    entrypoint:
+      - dotnet
+      - test
+      - -c=Release
+      - --verbosity=normal
+
+  ###########################################################
+  ######################## services #########################
+  ###########################################################
+
+  service_catalog:
+    image: ${REGISTRY:-saas}/service_catalog_unit_tests:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/services/catalog/Catalog/Dockerfile
+      target: unit_tests
+    entrypoint:
+      - dotnet
+      - test
+      - -c=Release
+      - --verbosity=normal
+
+  service_carts:
+    image: ${REGISTRY:-saas}/service_carts_unit_tests:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/services/carts/Carts/Dockerfile
+      target: unit_tests
+    entrypoint:
+      - dotnet
+      - test
+      - -c=Release
+      - --verbosity=normal
+
+  service_media:
+    image: ${REGISTRY:-saas}/service_media_unit_tests:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/services/media/Media/Dockerfile
+      target: unit_tests
+    entrypoint:
+      - dotnet
+      - test
+      - -c=Release
+      - --verbosity=normal
+
+  service_search:
+    image: ${REGISTRY:-saas}/service_search_unit_tests:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/services/search/Search/Dockerfile
+      target: unit_tests
+    entrypoint:
+      - dotnet
+      - test
+      - -c=Release
+      - --verbosity=normal
+
+  service_stores:
+    image: ${REGISTRY:-saas}/service_stores_unit_tests:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/services/stores/Stores/Dockerfile
+      target: unit_tests
+    entrypoint:
+      - dotnet
+      - test
+      - -c=Release
+      - --verbosity=normal
+        
+  service_accounts:
+    image: ${REGISTRY:-saas}/service_accounts_unit_tests:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/services/accounts/Accounts/Dockerfile
+      target: unit_tests
+    entrypoint:
+      - dotnet
+      - test
+      - -c=Release
+      - --verbosity=normal

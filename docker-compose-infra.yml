@@ -1,0 +1,118 @@
+version: '3.8'
+
+services:
+
+  infra_elasticsearch:
+    image: 'docker.elastic.co/elasticsearch/elasticsearch:7.5.2'
+    container_name: infra_elasticsearch
+    environment:
+      - discovery.type=single-node
+      - http.port=9200
+      - http.cors.enabled=true
+      - http.cors.allow-origin=*
+      - http.cors.allow-headers=X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization,x-search-query
+      - http.cors.allow-credentials=true
+      - bootstrap.memory_lock=true
+      - 'ES_JAVA_OPTS=-Xms512m -Xmx512m'
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - infra_elasticsearch:/usr/share/elasticsearch/data
+    networks:
+      - saas_private
+
+  infra_elasticsearch_admin:
+    image: appbaseio/dejavu:3.4.7
+    container_name: infra_elasticsearch_admin
+    ports:
+      - '1358:1358'
+    networks:
+      - saas_private
+          
+  infra_postgres:
+    image: postgres:14-alpine
+    container_name: infra_postgres
+    environment:
+      POSTGRES_DB: saas
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      PGDATA: /data/postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - infra_postgres:/data/postgres
+    networks:
+      - saas_private
+
+  infra_postgres_admin:
+    image: dpage/pgadmin4
+    container_name: infra_postgres_admin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.org
+      PGADMIN_DEFAULT_PASSWORD: password
+      PGADMIN_LISTEN_PORT: 5433
+    ports:
+      - "5433:5433"
+    volumes:
+      - infra_pgadmin:/root/.pgadmin
+    networks:
+      - saas_private
+
+  infra_rabbit:
+    image: rabbitmq:3-management-alpine
+    container_name: infra_rabbit
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=password
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    networks:
+      - saas_private
+
+  infra_redis:
+    image: redis:alpine
+    container_name: infra_redis
+    ports:
+      - '6379:6379'
+    networks:
+      - saas_private
+
+  infra_redis_admin:
+    container_name: infra_redis_admin
+    hostname: infra_redis_admin
+    image: rediscommander/redis-commander:latest
+    environment:
+      - REDIS_HOSTS=infra_redis:infra_redis:6379
+    ports:
+      - "16379:8081"
+    networks:
+      - saas_private
+
+  infra_minio:
+    container_name: infra_minio
+    hostname: infra_minio
+    image: quay.io/minio/minio
+    command: minio server --console-address ":9001" /data
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=password
+    volumes:
+      - infra_minio:/data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    networks:
+      - saas_private    
+
+volumes:
+  infra_elasticsearch:
+  infra_postgres:
+  infra_pgadmin:
+  infra_minio:
+
+networks:
+  saas_private:
+    name: saas_private
+    driver: bridge

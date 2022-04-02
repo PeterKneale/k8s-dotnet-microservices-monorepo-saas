@@ -1,0 +1,139 @@
+version: '3.8'
+
+services:
+
+###########################################################
+######################## ingress ##########################
+###########################################################
+
+  ingress_public:
+    image: ${REGISTRY_ENDPOINT:-saas}/ingress_public:${TAG:-latest}
+    build:
+      context: ./src/ingress/public
+    networks:
+      - saas_public
+      - saas_private
+    restart: always
+
+###########################################################
+######################## frontends ########################
+###########################################################
+
+  frontend_marketing:
+    image: ${REGISTRY_ENDPOINT:-saas}/frontend_marketing:${TAG:-latest}
+    build:
+      context: ./src/frontends/marketing
+    networks:
+      - saas_private
+
+  frontend_registration:
+    image: ${REGISTRY_ENDPOINT:-saas}/frontend_registration:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/frontends/registration/Registration/Dockerfile
+    networks:
+      - saas_private
+
+  frontend_shopping:
+    image: ${REGISTRY_ENDPOINT:-saas}/frontend_shopping:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/frontends/shopping/Shopping/Dockerfile
+    networks:
+      - saas_private
+
+  frontend_management:
+    image: ${REGISTRY_ENDPOINT:-saas}/frontend_management:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/frontends/management/Management/Dockerfile
+    networks:
+      - saas_private
+
+  frontend_admin:
+    image: ${REGISTRY_ENDPOINT:-saas}/frontend_admin:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/frontends/admin/Admin/Dockerfile
+    networks:
+      - saas_private
+
+###########################################################
+######################## backends #########################
+###########################################################
+
+  backend_registration:
+    image: ${REGISTRY_ENDPOINT:-saas}/backend_registration:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/backends/registration/Registration/Dockerfile
+    networks:
+      - saas_private
+
+  backend_shopping:
+    image: ${REGISTRY_ENDPOINT:-saas}/backend_shopping:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/backends/shopping/Shopping/Dockerfile
+    networks:
+      - saas_private
+
+  ###########################################################
+  ######################## services #########################
+  ###########################################################
+
+  service_catalog:
+    image: ${REGISTRY_ENDPOINT:-saas}/service_catalog:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/services/catalog/Catalog/Dockerfile
+    networks:
+      - saas_private
+
+  service_carts:
+    image: ${REGISTRY_ENDPOINT:-saas}/service_carts:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/services/carts/Carts/Dockerfile
+    networks:
+      - saas_private
+
+  service_media:
+    image: ${REGISTRY_ENDPOINT:-saas}/service_media:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/services/media/Media/Dockerfile
+    networks:
+      - saas_private
+
+  service_search:
+    image: ${REGISTRY_ENDPOINT:-saas}/service_search:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/services/search/Search/Dockerfile
+    networks:
+      - saas_private
+
+  service_stores:
+    image: ${REGISTRY_ENDPOINT:-saas}/service_stores:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/services/stores/Stores/Dockerfile
+    networks:
+      - saas_private
+        
+  service_accounts:
+    image: ${REGISTRY_ENDPOINT:-saas}/service_accounts:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./src/services/accounts/Accounts/Dockerfile
+    networks:
+      - saas_private
+
+networks:
+  saas_public:
+    name: saas_public
+    driver: bridge
+  saas_private:
+    name: saas_private
+    driver: bridge
