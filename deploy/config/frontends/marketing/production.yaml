@@ -1,0 +1,11 @@
+name: marketing
+ingress:
+  hosts:
+    - host: marketing.ecommerce-store-builder.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: marketing-tls
+      hosts:
+        - marketing.ecommerce-store-builder.com

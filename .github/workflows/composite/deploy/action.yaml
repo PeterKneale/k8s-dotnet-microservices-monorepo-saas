@@ -27,6 +27,12 @@ runs:
     shell: bash
     run: doctl kubernetes cluster kubeconfig save saas
   
+  # Deploys a cart using the below hierarchy of configuration
+  # - config/environments/common
+  # - config/environments/development
+  # - config/frontends/common
+  # - config/frontends/admin/common
+  # - config/frontends/admin/development
   - name: Deploy Chart
     shell: bash
     run: |
@@ -34,8 +40,8 @@ runs:
         --install ${{ inputs.component_type }}-${{ inputs.component_name }} \
         --namespace ${{ inputs.environment }} \
         ./deploy/chart \
-          -f ./deploy/environments/common.yaml \
-          -f ./deploy/environments/${{ inputs.environment }}.yaml \
-          -f ./deploy/${{ inputs.component_type }}s/common.yaml \
-          -f ./deploy/${{ inputs.component_type }}s/cloud.yaml \
-          -f ./deploy/${{ inputs.component_type }}s/${{ inputs.component_name }}.yaml
+          -f ./deploy/config/environments/common.yaml \          
+          -f ./deploy/config/environments/${{ inputs.environment }}.yaml \
+          -f ./deploy/config/${{ inputs.component_type }}s/common.yaml \
+          -f ./deploy/config/${{ inputs.component_type }}s/${{ inputs.component_name }}/common.yaml
+          -f ./deploy/config/${{ inputs.component_type }}s/${{ inputs.component_name }}/${{ inputs.environment }}.yaml

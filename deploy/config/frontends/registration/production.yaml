@@ -1,0 +1,11 @@
+name: registration
+ingress:
+  hosts:
+    - host: registration.ecommerce-store-builder.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: registration-tls
+      hosts:
+        - registration.ecommerce-store-builder.com

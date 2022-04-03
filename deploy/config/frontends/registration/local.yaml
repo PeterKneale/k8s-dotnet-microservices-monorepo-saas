@@ -1,0 +1,13 @@
+name: registration
+ingress:
+  annotations:
+    cert-manager.io/issuer: selfsigned-issuer
+  hosts:
+    - host: registration.ecommerce-store-builder.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: registration-tls
+      hosts:
+        - registration.ecommerce-store-builder.local

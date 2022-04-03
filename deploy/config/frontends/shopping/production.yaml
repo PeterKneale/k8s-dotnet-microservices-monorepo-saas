@@ -1,0 +1,11 @@
+name: shopping
+ingress:
+  hosts:
+    - host: shopping.ecommerce-store-builder.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: shopping-tls
+      hosts:
+        - shopping.ecommerce-store-builder.com

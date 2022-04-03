@@ -1,0 +1,13 @@
+name: admin
+ingress:
+  annotations:
+    cert-manager.io/issuer: selfsigned-issuer
+  hosts:
+    - host: admin.ecommerce-store-builder.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: admin-tls
+      hosts:
+        - admin.ecommerce-store-builder.local
