@@ -1,18 +1,17 @@
 # DigitalOcean Cert Manager
 # https://marketplace.digitalocean.com/apps/cert-manager
+# https://github.com/digitalocean/Kubernetes-Starter-Kit-Developers/blob/main/03-setup-ingress-controller/nginx.md
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
-  name: letsencrypt-nginx
-  namespace: cert-manager
+  name: issuer
 spec:
   acme:
     email: peterkneale@gmail.com
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
-      name: letsencrypt-nginx-private-key
+      name: issuer-private-key
     solvers:
-      # Use the HTTP-01 challenge provider
       - http01:
           ingress:
             class: nginx
