@@ -25,20 +25,16 @@ namespace BuildingBlocks.Infrastructure.UnitTests
         }
     
         [Fact] 
-        public void GetRabbitUri() => 
-            _configuration.GetRabbitUri().Should().Be("amqp://admin:password@rabbit_host:1234/");
+        public void GetRabbitUri() => _configuration.GetRabbitUri().Should().Be("amqp://admin:password@rabbit_host:1234/");
         
         [Fact] 
-        public void GetElasticSearchHost() => 
-            _configuration.GetElasticSearchUri().Should().Be("http://elastic_host:5678/");
+        public void GetElasticSearchHost() => _configuration.GetElasticSearchUri().Should().Be("http://elastic_host:5678/");
         
         [Fact] 
-        public void GetCartsServiceGrpcUri() => 
-            _configuration.GetCartsServiceGrpcUri().Should().Be("http://localhost:5001/");
+        public void GetCartsServiceGrpcUri() => _configuration.GetCartsServiceGrpcUri().Should().Be("http://localhost:5001/");
         
         [Fact] 
-        public void GetRegistrationBackendGrpcUri() => 
-            _configuration.GetRegistrationBackendGrpcUri().Should().Be("http://localhost:5001/");
+        public void GetRegistrationBackendGrpcUri() => _configuration.GetRegistrationBackendGrpcUri().Should().Be("http://localhost:5001/");
 
         private static Dictionary<string, string> GetEnvironmentVariables() => 
             GetK8SEnvVars()
