@@ -1,4 +1,4 @@
-name: service_stores
+name: service_stores_build
 
 on:
   workflow_dispatch:
