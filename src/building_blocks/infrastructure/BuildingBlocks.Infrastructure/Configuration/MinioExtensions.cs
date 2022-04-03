@@ -12,18 +12,23 @@ namespace BuildingBlocks.Infrastructure.Configuration
         private const string DefaultMinioPassword = "password";
         private const bool DefaultMinioTraceEnabled = false;
 
-        public static string GetMinioScheme(this IConfiguration configuration) => 
-            configuration.GetString("INFRA_MINIO_SCHEME", DefaultMinioScheme);
+        private static string GetMinioScheme(this IConfiguration configuration) => 
+            configuration.GetString("SAAS_INFRA_MINIO_SCHEME", DefaultMinioScheme);
+        
         public static string GetMinioHost(this IConfiguration configuration) => 
-            configuration.GetString("INFRA_MINIO_HOST", DefaultMinioHost);
+            configuration.GetString("SAAS_INFRA_MINIO_HOST", DefaultMinioHost);
+        
         public static int GetMinioPort(this IConfiguration configuration) => 
-            configuration.GetInt("INFRA_MINIO_PORT", DefaultMinioPort);
+            configuration.GetInt("SAAS_INFRA_MINIO_PORT", DefaultMinioPort);
+        
         public static string GetMinioAccessKey(this IConfiguration configuration) => 
-            configuration.GetString("INFRA_MINIO_ACCESS_KEY", DefaultMinioUserName);
+            configuration.GetString("SAAS_INFRA_MINIO_ACCESS_KEY", DefaultMinioUserName);
+        
         public static string GetMinioSecretKey(this IConfiguration configuration) => 
-            configuration.GetString("INFRA_MINIO_SECRET_KEY", DefaultMinioPassword);
+            configuration.GetString("SAAS_INFRA_MINIO_SECRET_KEY", DefaultMinioPassword);
+        
         public static bool GetMinioTraceEnabled(this IConfiguration configuration) => 
-            configuration.GetBool("INFRA_MINIO_TRACE_ENABLED", DefaultMinioTraceEnabled);
+            configuration.GetBool("SAAS_INFRA_MINIO_TRACE_ENABLED", DefaultMinioTraceEnabled);
 
         public static Uri GetMinioUri(this IConfiguration configuration)
         {

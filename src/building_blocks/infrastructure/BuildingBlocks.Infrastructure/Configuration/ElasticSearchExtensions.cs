@@ -8,15 +8,15 @@ namespace BuildingBlocks.Infrastructure.Configuration
         private const string DefaultElasticSearchScheme = "http";
         private const string DefaultElasticSearchHost = "localhost";
         private const int DefaultElasticSearchPort = 9200;
-        
-        public static string GetElasticSearchScheme(this IConfiguration configuration) => 
-            configuration.GetString("INFRA_ELASTICSEARCH_SCHEME", DefaultElasticSearchScheme);
-        
-        public static string GetElasticSearchHost(this IConfiguration configuration) => 
-            configuration.GetString("INFRA_ELASTICSEARCH_HOST",DefaultElasticSearchHost);
-        
-        public static int GetElasticSearchHostPort(this IConfiguration configuration) => 
-            configuration.GetInt("INFRA_ELASTICSEARCH_PORT", DefaultElasticSearchPort);
+
+        private static string GetElasticSearchScheme(this IConfiguration configuration) => 
+            configuration.GetString("SAAS_INFRA_ELASTICSEARCH_SCHEME", DefaultElasticSearchScheme);
+
+        private static string GetElasticSearchHost(this IConfiguration configuration) => 
+            configuration.GetString("SAAS_INFRA_ELASTICSEARCH_HOST",DefaultElasticSearchHost);
+
+        private static int GetElasticSearchHostPort(this IConfiguration configuration) => 
+            configuration.GetInt("SAAS_INFRA_ELASTICSEARCH_PORT", DefaultElasticSearchPort);
         
         public static Uri GetElasticSearchUri(this IConfiguration configuration)
         {

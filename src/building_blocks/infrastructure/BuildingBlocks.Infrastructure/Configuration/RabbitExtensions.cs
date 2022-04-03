@@ -12,15 +12,15 @@ namespace BuildingBlocks.Infrastructure.Configuration
         private const string DefaultRabbitVirtualHost = "";
         
         public static string GetRabbitHost(this IConfiguration configuration) => 
-            configuration.GetString("INFRA_RABBITMQ_HOST", DefaultRabbitHost);
+            configuration.GetString("SAAS_INFRA_RABBITMQ_HOST", DefaultRabbitHost);
         public static string GetRabbitUserName(this IConfiguration configuration) => 
-            configuration.GetString("INFRA_RABBITMQ_USERNAME", DefaultRabbitUserName);
+            configuration.GetString("SAAS_INFRA_RABBITMQ_USERNAME", DefaultRabbitUserName);
         public static string GetRabbitPassword(this IConfiguration configuration) => 
-            configuration.GetString("INFRA_RABBITMQ_PASSWORD", DefaultRabbitPassword);
-        public static int GetRabbitPort(this IConfiguration configuration) => 
-            configuration.GetInt("INFRA_RABBITMQ_PORT", DefaultRabbitPort);
-        public static string GetRabbitVirtualHost(this IConfiguration configuration) => 
-            configuration.GetString("INFRA_RABBITMQ_VHOST", DefaultRabbitVirtualHost);
+            configuration.GetString("SAAS_INFRA_RABBITMQ_PASSWORD", DefaultRabbitPassword);
+        private static int GetRabbitPort(this IConfiguration configuration) => 
+            configuration.GetInt("SAAS_INFRA_RABBITMQ_PORT", DefaultRabbitPort);
+        private static string GetRabbitVirtualHost(this IConfiguration configuration) => 
+            configuration.GetString("SAAS_INFRA_RABBITMQ_VHOST", DefaultRabbitVirtualHost);
         
         public static Uri GetRabbitUri(this IConfiguration configuration)
         {

@@ -16,7 +16,7 @@ environment:
   SERVICE_SEARCH_HOST: service-search-saas
   SERVICE_STORES_HOST: service-stores-saas  
   # Infrastructure
-  INFRA_RABBITMQ_HOST: infra-rabbitmq
-  INFRA_POSTGRESQL_HOST: infra-postgresql
-  INFRA_ELASTICSEARCH_HOST: infra-elasticsearch-master
-  INFRA_MINIO_HOST: infra-minio
+  SAAS_INFRA_RABBITMQ_HOST: infra-rabbitmq
+  SAAS_POSTGRESQL_HOST: infra-postgresql
+  SAAS_ELASTICSEARCH_HOST: infra-elasticsearch-master
+  SAAS_MINIO_HOST: infra-minio
