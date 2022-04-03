@@ -15,6 +15,11 @@ on:
       - deploy/config/frontends/admin/common.yaml
       - deploy/config/frontends/admin/development.yaml
 
+  workflow_run:
+    workflows: ["frontend_admin"]
+    branches: [main]
+    types: [completed]
+
 env:
   COMPONENT_NAME: admin
   COMPONENT_TYPE: frontend
@@ -24,7 +29,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest    
     environment: development    
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' || github.event_name == 'push' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
