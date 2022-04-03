@@ -29,7 +29,6 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -41,7 +40,6 @@ jobs:
   push:
     needs: [build]
     runs-on: ubuntu-latest
-    if: ${{ github.event_name != 'pull_request' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
