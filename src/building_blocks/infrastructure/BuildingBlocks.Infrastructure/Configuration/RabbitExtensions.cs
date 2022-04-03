@@ -13,12 +13,16 @@ namespace BuildingBlocks.Infrastructure.Configuration
         
         public static string GetRabbitHost(this IConfiguration configuration) => 
             configuration.GetString("SAAS_INFRA_RABBITMQ_HOST", DefaultRabbitHost);
+        
         public static string GetRabbitUserName(this IConfiguration configuration) => 
             configuration.GetString("SAAS_INFRA_RABBITMQ_USERNAME", DefaultRabbitUserName);
+        
         public static string GetRabbitPassword(this IConfiguration configuration) => 
             configuration.GetString("SAAS_INFRA_RABBITMQ_PASSWORD", DefaultRabbitPassword);
+        
         private static int GetRabbitPort(this IConfiguration configuration) => 
             configuration.GetInt("SAAS_INFRA_RABBITMQ_PORT", DefaultRabbitPort);
+        
         private static string GetRabbitVirtualHost(this IConfiguration configuration) => 
             configuration.GetString("SAAS_INFRA_RABBITMQ_VHOST", DefaultRabbitVirtualHost);
         
