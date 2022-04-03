@@ -33,7 +33,7 @@ runs:
 
   - name: Build docker image
     shell: bash
-    run: sudo -E docker-compose build ${{ inputs.component-type }}_${{ inputs.component-name }}
+    run: sudo -E docker-compose build ${{ inputs.component_type }}_${{ inputs.component_name }}
     working-directory: ./src
     env:
       TAG: latest
@@ -41,7 +41,7 @@ runs:
 
   - name: Push docker image
     shell: bash
-    run: sudo -E docker-compose push ${{ inputs.component-type }}_${{ inputs.component-name }}
+    run: sudo -E docker-compose push ${{ inputs.component_type }}_${{ inputs.component_name }}
     working-directory: ./src
     env:
       TAG: latest

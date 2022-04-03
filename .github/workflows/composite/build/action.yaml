@@ -17,7 +17,7 @@ runs:
   steps:
   - name: build docker image
     shell: bash
-    run: sudo -E docker-compose build ${{ inputs.component-type }}_${{ inputs.component-name }}
+    run: sudo -E docker-compose build ${{ inputs.component_type }}_${{ inputs.component_name }}
     env:
       TAG: ${{ env.BRANCH }}
       REGISTRY_ENDPOINT: ${{ inputs.registry_endpoint }}
