@@ -40,33 +40,61 @@ A work in progress demonstrating
 
 ## Builds
 
-[![ingress_public](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/ingress_public.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/ingress_public.yaml)
 
-[![frontend_admin](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_admin.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_admin.yaml)
+[![frontend_admin](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_admin_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_admin_build.yaml)
 
-[![frontend_marketing](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_marketing.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_marketing.yaml)
+[![frontend_marketing](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_marketing_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_marketing_build.yaml)
 
-[![frontend_management](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_management.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_marketing.yaml)
+[![frontend_management](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_management_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_marketing_build.yaml)
 
-[![frontend_registration](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_registration.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_registration.yaml)
+[![frontend_registration](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_registration_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_registration_build.yaml)
 
-[![frontend_shopping](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_shopping.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_shopping.yaml)
+[![frontend_shopping](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_shopping_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_shopping_build.yaml)
 
-[![backend_registration](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/backend_registration.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/backend_registration.yaml)
+[![backend_registration](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/backend_registration_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/backend_registration_build.yaml)
 
-[![backend_shopping](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/backend_shopping.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/backend_registration.yaml)
+[![backend_shopping](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/backend_shopping_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/backend_registration_build.yaml)
 
-[![service_accounts](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_accounts.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_accounts.yaml)
+[![service_accounts](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_accounts_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_accounts_build.yaml)
 
-[![service_accounts](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_accounts.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_accounts.yaml)
+[![service_accounts](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_accounts_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_accounts_build.yaml)
 
-[![service_catalog](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_catalog.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_catalog.yaml)
+[![service_catalog](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_catalog_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_catalog_build.yaml)
 
-[![service_catalog](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_catalog.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_catalog.yaml)
+[![service_catalog](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_catalog_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_catalog_build.yaml)
 
-[![service_search](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_search.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_search.yaml)
+[![service_search](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_search_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_search_build.yaml)
 
-[![service_stores](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_stores.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_stores.yaml)
+[![service_stores](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_stores_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_stores_build.yaml)
+
+## Deployments
+
+[![frontend_admin](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_admin_deploy.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_admin_build.yaml)
+
+[![frontend_marketing](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_marketing_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_marketing_build.yaml)
+
+[![frontend_management](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_management_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_marketing_build.yaml)
+
+[![frontend_registration](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_registration_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_registration_build.yaml)
+
+[![frontend_shopping](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_shopping_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/frontend_shopping_build.yaml)
+
+[![backend_registration](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/backend_registration_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/backend_registration_build.yaml)
+
+[![backend_shopping](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/backend_shopping_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/backend_registration_build.yaml)
+
+[![service_accounts](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_accounts_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_accounts_build.yaml)
+
+[![service_accounts](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_accounts_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_accounts_build.yaml)
+
+[![service_catalog](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_catalog_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_catalog_build.yaml)
+
+[![service_catalog](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_catalog_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_catalog_build.yaml)
+
+[![service_search](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_search_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_search_build.yaml)
+
+[![service_stores](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_stores_build.yaml/badge.svg)](https://github.com/PeterKneale/k8s-dotnet-microservices-monorepo-saas/actions/workflows/service_stores_build.yaml)
+
 
 # Environments
 
