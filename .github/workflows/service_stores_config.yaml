@@ -1,0 +1,31 @@
+name: service_stores_config
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - deploy/config/environments/common.yaml
+      - deploy/config/environments/development.yaml
+      - deploy/config/services/common.yaml
+      - deploy/config/services/stores/common.yaml
+      - deploy/config/services/stores/development.yaml
+
+env:
+  COMPONENT_NAME: stores
+  COMPONENT_TYPE: service
+
+jobs:
+
+  deploy:  
+    environment: development
+    runs-on: ubuntu-latest  
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - uses: ./.github/workflows/composite/deploy
+        with:
+          environment: development
+          component_name: ${{ env.COMPONENT_NAME }}
+          component_type: ${{ env.COMPONENT_TYPE }}
+          digitalocean_access_token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}

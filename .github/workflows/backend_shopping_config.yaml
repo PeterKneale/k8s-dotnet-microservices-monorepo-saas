@@ -1,0 +1,31 @@
+name: backend_shopping_config
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - deploy/config/environments/common.yaml
+      - deploy/config/environments/development.yaml
+      - deploy/config/backends/common.yaml
+      - deploy/config/backends/shopping/common.yaml
+      - deploy/config/backends/shopping/development.yaml
+
+env:
+  COMPONENT_NAME: shopping
+  COMPONENT_TYPE: backend
+
+jobs:
+
+  deploy:  
+    environment: development
+    runs-on: ubuntu-latest  
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - uses: ./.github/workflows/composite/deploy
+        with:
+          environment: development
+          component_name: ${{ env.COMPONENT_NAME }}
+          component_type: ${{ env.COMPONENT_TYPE }}
+          digitalocean_access_token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
