@@ -43,5 +43,5 @@ runs:
           -f ./deploy/config/environments/common.yaml \          
           -f ./deploy/config/environments/${{ inputs.environment }}.yaml \
           -f ./deploy/config/${{ inputs.component_type }}s/common.yaml \
-          -f ./deploy/config/${{ inputs.component_type }}s/${{ inputs.component_name }}/common.yaml
+          -f ./deploy/config/${{ inputs.component_type }}s/${{ inputs.component_name }}/common.yaml \
           -f ./deploy/config/${{ inputs.component_type }}s/${{ inputs.component_name }}/${{ inputs.environment }}.yaml
