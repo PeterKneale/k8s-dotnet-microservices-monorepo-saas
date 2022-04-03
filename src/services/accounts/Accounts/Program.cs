@@ -35,12 +35,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Logging
 builder.Services.AddLogging(c => {
-    c.AddJsonConsole(options => {
-        options.IncludeScopes = true;
-        options.JsonWriterOptions = new JsonWriterOptions
-        {
-            Indented = false
-        };
+    c.AddSimpleConsole(opt=>{
+        opt.SingleLine = true;
+        opt.IncludeScopes = true;
     });
 });
 

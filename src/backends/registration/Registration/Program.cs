@@ -28,7 +28,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Logging
 builder.Services.AddLogging(c => {
-    c.AddJsonConsole();
+    c.AddSimpleConsole(opt=>{
+        opt.SingleLine = true;
+        opt.IncludeScopes = true;
+    });
 });
 
 builder.Services.AddGrpc(c => {
