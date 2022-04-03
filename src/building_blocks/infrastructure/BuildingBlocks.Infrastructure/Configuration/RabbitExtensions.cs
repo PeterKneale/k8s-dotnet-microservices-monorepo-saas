@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace BuildingBlocks.Infrastructure.Configuration
 {
-    public static class RabbitConfigurationExtensions
+    public static class RabbitExtensions
     {
         private const string DefaultRabbitHost = "localhost";
         private const string DefaultRabbitUserName = "admin";

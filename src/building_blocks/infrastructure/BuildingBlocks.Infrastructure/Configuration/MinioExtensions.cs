@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace BuildingBlocks.Infrastructure.Configuration
 {
-    public static class MinioConfigurationExtensions
+    public static class MinioExtensions
     {
         private const string DefaultMinioScheme = "http";
         private const string DefaultMinioHost = "localhost";

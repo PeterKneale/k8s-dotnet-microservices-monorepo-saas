@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace BuildingBlocks.Infrastructure.Configuration
 {
-    public static class NginxConfigurationExtensions
+    public static class NginxExtensions
     {
         private const string DefaultNginxScheme = "http";
         private const string DefaultNginxHost = "localhost";

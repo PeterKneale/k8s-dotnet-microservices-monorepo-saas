@@ -2,7 +2,7 @@
 
 namespace BuildingBlocks.Infrastructure.Configuration
 {
-    public static class PostgresConfigurationExtensions
+    public static class PostgresExtensions
     {
         // Postgres
         private const string DefaultDatabaseHost = "localhost";
