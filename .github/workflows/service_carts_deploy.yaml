@@ -1,20 +1,6 @@
 name: service_carts_deploy
 
 on:
-  workflow_dispatch:
-  repository_dispatch:
-    types:
-    - deploy
-  push:
-    branches:
-      - main
-    paths:
-      - deploy/config/environments/common.yaml
-      - deploy/config/environments/development.yaml
-      - deploy/config/services/common.yaml
-      - deploy/config/services/carts/common.yaml
-      - deploy/config/services/carts/development.yaml
-
   workflow_run:
     workflows: ["service_carts_build"]
     branches: [main]
@@ -26,9 +12,9 @@ env:
 
 jobs:
 
-  deploy:
+  deploy:  
     environment: development    
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' || github.event_name == 'push' || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest  
     steps:
       - name: Checkout code

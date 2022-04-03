@@ -1,20 +1,24 @@
-name: frontend_registration_deploy
+name: backend_registration_config
 
 on:
-  workflow_run:
-    workflows: ["frontend_registration_build"]
-    branches: [main]
-    types: [completed]
+  push:
+    branches:
+      - main
+    paths:
+      - deploy/config/environments/common.yaml
+      - deploy/config/environments/development.yaml
+      - deploy/config/backends/common.yaml
+      - deploy/config/backends/registration/common.yaml
+      - deploy/config/backends/registration/development.yaml
 
 env:
   COMPONENT_NAME: registration
-  COMPONENT_TYPE: frontend
+  COMPONENT_TYPE: backend
 
 jobs:
 
   deploy:  
-    environment: development    
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    environment: development
     runs-on: ubuntu-latest  
     steps:
       - name: Checkout code
