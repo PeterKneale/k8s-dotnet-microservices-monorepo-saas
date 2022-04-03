@@ -18,14 +18,14 @@ runs:
 
   - name: Build unit tests
     shell: bash
-    run: sudo -E docker-compose -f docker-compose-unit-tests.yaml build ${{ inputs.component-type }}_${{ inputs.component-name }}
+    run: sudo -E docker-compose -f docker-compose-unit-tests.yaml build ${{ inputs.component_type }}_${{ inputs.component_name }}
     env:
       TAG: ${{ env.BRANCH }}
       REGISTRY_ENDPOINT: ${{ inputs.registry_endpoint }}
 
   - name: Run unit tests
     shell: bash
-    run: sudo -E docker-compose -f docker-compose-unit-tests.yaml run ${{ inputs.component-type }}_${{ inputs.component-name }}
+    run: sudo -E docker-compose -f docker-compose-unit-tests.yaml run ${{ inputs.component_type }}_${{ inputs.component_name }}
     env:
       TAG: ${{ env.BRANCH }}
       REGISTRY_ENDPOINT: ${{ inputs.registry_endpoint }}
