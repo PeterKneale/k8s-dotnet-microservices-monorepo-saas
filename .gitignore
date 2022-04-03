@@ -351,3 +351,4 @@ MigrationBackup/
 
 .logs/
 .tye/
+.idea/
