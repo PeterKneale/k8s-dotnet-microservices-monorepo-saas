@@ -1,1 +1,2 @@
 environment:
+  Logging__LogLevel__Default: Information

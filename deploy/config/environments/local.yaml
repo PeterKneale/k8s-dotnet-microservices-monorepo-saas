@@ -1,22 +1,2 @@
 environment:
-  # Frontends
-  FRONTEND_ADMIN_HOST: frontend-admin-saas
-  FRONTEND_MANAGEMENT_HOST: frontend-management-saas
-  FRONTEND_MARKETING_HOST: frontend-marketing-saas
-  FRONTEND_REGISTRATION_HOST: frontend-registration-saas
-  FRONTEND_SHOPPING_HOST: frontend-shoppping-saas
-  # Backends
-  BACKEND_REGISTRATION_HOST: backend-registration-saas
-  BACKEND_SHOPPING_HOST: backend-shopping-saas
-  # Services
-  SERVICE_ACCOUNTS_HOST: service-accounts-saas
-  SERVICE_CARTS_HOST: service-carts-saas
-  SERVICE_CATALOG_HOST: service-catalog-saas
-  SERVICE_MEDIA_HOST: service-media-saas
-  SERVICE_SEARCH_HOST: service-search-saas
-  SERVICE_STORES_HOST: service-stores-saas  
-  # Infrastructure
-  INFRA_RABBITMQ_HOST: infra-rabbitmq
-  INFRA_POSTGRESQL_HOST: infra-postgresql
-  INFRA_ELASTICSEARCH_HOST: infra-elasticsearch-master
-  INFRA_MINIO_HOST: infra-minio
+  Logging__LogLevel__Default: Debug
