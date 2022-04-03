@@ -1,2 +1,3 @@
 environment:
   Logging__LogLevel__Default: Information
+  Logging__LogLevel__Microsoft: Information
