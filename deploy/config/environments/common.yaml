@@ -20,4 +20,3 @@ environment:
   SAAS_INFRA_POSTGRESQL_HOST: infra-postgresql
   SAAS_INFRA_ELASTICSEARCH_HOST: infra-elasticsearch-master
   SAAS_INFRA_MINIO_HOST: infra-minio
-  
