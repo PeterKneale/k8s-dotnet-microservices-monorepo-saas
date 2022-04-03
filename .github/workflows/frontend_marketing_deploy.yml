@@ -9,10 +9,11 @@ on:
     branches:
       - main
     paths:
-      - deploy/environments/common.yaml
-      - deploy/environments/development.yaml
-      - deploy/frontends/common.yaml
-      - deploy/frontends/marketing.yaml
+      - deploy/config/environments/common.yaml
+      - deploy/config/environments/development.yaml
+      - deploy/config/frontends/common.yaml
+      - deploy/config/frontends/marketing/common.yaml
+      - deploy/config/frontends/marketing/development.yaml
 
 env:
   COMPONENT_NAME: marketing

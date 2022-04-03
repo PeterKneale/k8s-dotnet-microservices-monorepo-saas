@@ -9,10 +9,11 @@ on:
     branches:
       - main
     paths:
-      - deploy/environments/common.yaml
-      - deploy/environments/development.yaml
-      - deploy/services/common.yaml
-      - deploy/services/search.yaml
+      - deploy/config/environments/common.yaml
+      - deploy/config/environments/development.yaml
+      - deploy/config/services/common.yaml
+      - deploy/config/services/service/common.yaml
+      - deploy/config/services/service/development.yaml
 
 env:
   COMPONENT_NAME: search

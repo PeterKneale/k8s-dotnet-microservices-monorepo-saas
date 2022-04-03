@@ -9,10 +9,11 @@ on:
     branches:
       - main
     paths:
-      - deploy/environments/common.yaml
-      - deploy/environments/development.yaml
-      - deploy/backends/common.yaml
-      - deploy/backends/shopping.yaml
+      - deploy/config/environments/common.yaml
+      - deploy/config/environments/development.yaml
+      - deploy/config/backends/common.yaml
+      - deploy/config/backends/shopping/common.yaml
+      - deploy/config/backends/shopping/development.yaml
 
 env:
   COMPONENT_NAME: shopping

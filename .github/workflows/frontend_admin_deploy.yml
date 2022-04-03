@@ -9,10 +9,11 @@ on:
     branches:
       - main
     paths:
-      - deploy/environments/common.yaml
-      - deploy/environments/development.yaml
-      - deploy/backends/common.yaml
-      - deploy/frontends/admin.yaml
+      - deploy/config/environments/common.yaml
+      - deploy/config/environments/development.yaml
+      - deploy/config/frontends/common.yaml
+      - deploy/config/frontends/admin/common.yaml
+      - deploy/config/frontends/admin/development.yaml
 
 env:
   COMPONENT_NAME: admin
