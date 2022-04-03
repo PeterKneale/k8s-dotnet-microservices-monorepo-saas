@@ -1,4 +1,5 @@
 name: registration
+environment:
 ingress:
   hosts:
     - host: registration.ecommerce-store-builder.dev

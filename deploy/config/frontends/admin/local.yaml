@@ -1,4 +1,5 @@
 name: admin
+environment:
 ingress:
   annotations:
     cert-manager.io/issuer: selfsigned-issuer

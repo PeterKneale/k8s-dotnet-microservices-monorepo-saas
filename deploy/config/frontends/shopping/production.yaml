@@ -1,4 +1,5 @@
 name: shopping
+environment:
 ingress:
   hosts:
     - host: shopping.ecommerce-store-builder.com

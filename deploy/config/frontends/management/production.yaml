@@ -1,4 +1,5 @@
 name: management
+environment:
 ingress:
   hosts:
     - host: management.ecommerce-store-builder.com

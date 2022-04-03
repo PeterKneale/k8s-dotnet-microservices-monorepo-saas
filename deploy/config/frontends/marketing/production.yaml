@@ -1,4 +1,5 @@
 name: marketing
+environment:
 ingress:
   hosts:
     - host: marketing.ecommerce-store-builder.com
