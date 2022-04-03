@@ -15,6 +15,11 @@ on:
       - deploy/config/services/stores/common.yaml
       - deploy/config/services/stores/development.yaml
 
+  workflow_run:
+    workflows: ["service_stores_build"]
+    branches: [main]
+    types: [completed]
+
 env:
   COMPONENT_NAME: stores
   COMPONENT_TYPE: service
@@ -22,15 +27,15 @@ env:
 jobs:
 
   deploy:
-    runs-on: ubuntu-latest        
-    environment: development
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' || github.event_name == 'push' }}
+    environment: development    
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest  
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - uses: ./.github/workflows/composite/deploy
         with:
-          digitalocean_access_token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+          environment: development
           component_name: ${{ env.COMPONENT_NAME }}
           component_type: ${{ env.COMPONENT_TYPE }}
-          environment: development
+          digitalocean_access_token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}

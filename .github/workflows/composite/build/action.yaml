@@ -2,8 +2,11 @@ name: "Build Docker image"
 description: "Builds a docker image for a single component"
 
 inputs:
-  component:
-    description: "Component to build e.g. service_carts"
+  component_name:
+    description: "Name of component to deploy e.g. carts"
+    required: true
+  component_type:
+    description: "Type of component to deploy e.g. service"
     required: true
   registry_endpoint:
     description: "Image registry repo e.g. ghcr.io/saas"
@@ -12,9 +15,9 @@ inputs:
 runs:
   using: "composite"
   steps:
-  - name: docker-compose build ${{ inputs.component }}
+  - name: build docker image
     shell: bash
-    run: sudo -E docker-compose build ${{ inputs.component }}
+    run: sudo -E docker-compose build ${{ inputs.component-type }}_${{ inputs.component-name }}
     env:
       TAG: ${{ env.BRANCH }}
       REGISTRY_ENDPOINT: ${{ inputs.registry_endpoint }}

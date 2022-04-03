@@ -22,8 +22,8 @@ on:
       - .github/workflows/frontend_marketing.yaml
 
 env:
-  COMPONENT: frontend_marketing
-  IMAGE: frontend_marketing
+  COMPONENT_NAME: marketing
+  COMPONENT_TYPE: frontend
 
 jobs:
 
@@ -34,19 +34,26 @@ jobs:
         uses: actions/checkout@v2
       - uses: ./.github/workflows/composite/build
         with:
-          component: ${{ env.COMPONENT }}
+          component_name: ${{ env.COMPONENT_NAME }}
+          component_type: ${{ env.COMPONENT_TYPE }}
+          registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}
+      - uses: ./.github/workflows/composite/unit_test
+        with:
+          component_name: ${{ env.COMPONENT_NAME }}
+          component_type: ${{ env.COMPONENT_TYPE }}
           registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}
 
   push:
     needs: [build]
+    if: ${{ github.event_name != 'pull_request' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - uses: ./.github/workflows/composite/push
         with:
-          component: ${{ env.COMPONENT }}
-          image_name: ${{ env.IMAGE }}
+          component_name: ${{ env.COMPONENT_NAME }}
+          component_type: ${{ env.COMPONENT_TYPE }}
           registry_host: ${{ secrets.REGISTRY_HOST }}
           registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}
           registry_username: ${{ github.actor }}

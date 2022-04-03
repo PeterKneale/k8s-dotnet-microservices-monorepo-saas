@@ -2,8 +2,11 @@ name: "Unit Test"
 description: "Runs unit tests from within a docker container"
 
 inputs:
-  component:
-    description: "Component to test e.g. service_carts"
+  component_name:
+    description: "Name of component to deploy e.g. carts"
+    required: true
+  component_type:
+    description: "Type of component to deploy e.g. service"
     required: true
   registry_endpoint:
     description: "Image registry repo e.g. ghcr.io/saas"
@@ -15,14 +18,14 @@ runs:
 
   - name: Build unit tests
     shell: bash
-    run: sudo -E docker-compose -f docker-compose-unit-tests.yaml build ${{ inputs.component }}
+    run: sudo -E docker-compose -f docker-compose-unit-tests.yaml build ${{ inputs.component-type }}_${{ inputs.component-name }}
     env:
       TAG: ${{ env.BRANCH }}
       REGISTRY_ENDPOINT: ${{ inputs.registry_endpoint }}
 
   - name: Run unit tests
     shell: bash
-    run: sudo -E docker-compose -f docker-compose-unit-tests.yaml run ${{ inputs.component }}
+    run: sudo -E docker-compose -f docker-compose-unit-tests.yaml run ${{ inputs.component-type }}_${{ inputs.component-name }}
     env:
       TAG: ${{ env.BRANCH }}
       REGISTRY_ENDPOINT: ${{ inputs.registry_endpoint }}

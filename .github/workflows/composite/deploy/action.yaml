@@ -2,9 +2,6 @@ name: "Deploy"
 description: "Deploys a helm chart to AKS"
 
 inputs:
-  digitalocean_access_token:
-    description: "Digital ocean access token"
-    required: true
   component_name:
     description: "Name of component to deploy e.g. carts"
     required: true
@@ -12,7 +9,10 @@ inputs:
     description: "Type of component to deploy e.g. service"
     required: true
   environment:
-    description: "Environment to deploy to e.g. developement"
+    description: "Environment to deploy to e.g. development"
+    required: true
+  digitalocean_access_token:
+    description: "Digital ocean access token"
     required: true
 
 runs:

@@ -21,9 +21,10 @@ on:
       - src/frontends/admin/**
       - .github/workflows/frontend_admin.yaml
 
+
 env:
-  COMPONENT: frontend_admin
-  IMAGE: frontend_admin
+  COMPONENT_NAME: admin
+  COMPONENT_TYPE: frontend
 
 jobs:
 
@@ -34,24 +35,26 @@ jobs:
         uses: actions/checkout@v2
       - uses: ./.github/workflows/composite/build
         with:
-          component: ${{ env.COMPONENT }}
+          component_name: ${{ env.COMPONENT_NAME }}
+          component_type: ${{ env.COMPONENT_TYPE }}
           registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}
       - uses: ./.github/workflows/composite/unit_test
         with:
-          component: ${{ env.COMPONENT }}
+          component_name: ${{ env.COMPONENT_NAME }}
+          component_type: ${{ env.COMPONENT_TYPE }}
           registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}
 
   push:
-    if: ${{ github.event_name != 'pull_request' }}
     needs: [build]
+    if: ${{ github.event_name != 'pull_request' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - uses: ./.github/workflows/composite/push
         with:
-          component: ${{ env.COMPONENT }}
-          image_name: ${{ env.IMAGE }}
+          component_name: ${{ env.COMPONENT_NAME }}
+          component_type: ${{ env.COMPONENT_TYPE }}
           registry_host: ${{ secrets.REGISTRY_HOST }}
           registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}
           registry_username: ${{ github.actor }}

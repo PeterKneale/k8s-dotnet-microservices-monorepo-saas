@@ -2,11 +2,11 @@ name: "Push Docker Image"
 description: "Pushes a docker image for a single component"
 
 inputs:
-  component:
-    description: "Component to push e.g. service_carts"
+  component_name:
+    description: "Name of component to deploy e.g. carts"
     required: true
-  image_name:
-    description: "Name of image"
+  component_type:
+    description: "Type of component to deploy e.g. service"
     required: true
   registry_host:
     description: "Image registry host e.g. ghcr.io"
@@ -31,17 +31,17 @@ runs:
       username: ${{ inputs.registry_username }}
       password: ${{ inputs.registry_password }}
 
-  - name: Compose build ${{ inputs.component }}
+  - name: Build docker image
     shell: bash
-    run: sudo -E docker-compose build ${{ inputs.component }}
+    run: sudo -E docker-compose build ${{ inputs.component-type }}_${{ inputs.component-name }}
     working-directory: ./src
     env:
       TAG: latest
       REGISTRY_ENDPOINT: ${{ inputs.registry_endpoint }}
 
-  - name: Compose push ${{ inputs.component }}
+  - name: Push docker image
     shell: bash
-    run: sudo -E docker-compose push ${{ inputs.component }}
+    run: sudo -E docker-compose push ${{ inputs.component-type }}_${{ inputs.component-name }}
     working-directory: ./src
     env:
       TAG: latest
