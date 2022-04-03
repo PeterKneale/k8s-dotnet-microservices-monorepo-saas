@@ -37,11 +37,6 @@ jobs:
           component_name: ${{ env.COMPONENT_NAME }}
           component_type: ${{ env.COMPONENT_TYPE }}
           registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}
-      - uses: ./.github/workflows/composite/unit_test
-        with:
-          component_name: ${{ env.COMPONENT_NAME }}
-          component_type: ${{ env.COMPONENT_TYPE }}
-          registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}
 
   push:
     needs: [build]
