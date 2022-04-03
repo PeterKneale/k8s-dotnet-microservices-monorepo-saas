@@ -10,7 +10,7 @@ on:
     paths:
       - src/building_blocks/**
       - src/services/carts/**
-      - .github/workflows/service_carts.yml
+      - .github/workflows/service_carts.yaml
 
   pull_request:
     branches:
@@ -19,7 +19,7 @@ on:
     paths:
       - src/building_blocks/**
       - src/services/carts/**
-      - .github/workflows/service_carts.yml
+      - .github/workflows/service_carts.yaml
 
 env:
   COMPONENT: service_carts

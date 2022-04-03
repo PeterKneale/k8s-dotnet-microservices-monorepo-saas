@@ -1,4 +1,4 @@
-name: service_catalog
+name: frontend_management
 
 on:
   workflow_dispatch:
@@ -9,8 +9,8 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/services/catalog/**
-      - .github/workflows/service_catalog.yml
+      - src/frontends/management/**
+      - .github/workflows/frontend_management.yaml
 
   pull_request:
     branches:
@@ -18,12 +18,12 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/services/catalog/**
-      - .github/workflows/service_catalog.yml
+      - src/frontends/management/**
+      - .github/workflows/frontend_management.yaml
 
 env:
-  COMPONENT: service_catalog
-  IMAGE: service_catalog
+  COMPONENT: frontend_management
+  IMAGE: frontend_management
 
 jobs:
 

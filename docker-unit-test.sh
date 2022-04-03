@@ -9,4 +9,4 @@ then
     exit -1
 fi
 
-docker-compose -f docker-compose-unit-tests.yml up --abort-on-container-exit --exit-code-from $COMPONENT $COMPONENT
+docker-compose -f docker-compose-unit-tests.yaml up --abort-on-container-exit --exit-code-from $COMPONENT $COMPONENT

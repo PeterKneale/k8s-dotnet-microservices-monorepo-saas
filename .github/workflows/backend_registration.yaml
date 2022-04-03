@@ -1,4 +1,4 @@
-name: service_search
+name: backend_registration
 
 on:
   workflow_dispatch:
@@ -9,8 +9,8 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/services/search/**
-      - .github/workflows/service_search.yml
+      - src/backends/registration/**
+      - .github/workflows/backend_registration.yaml
 
   pull_request:
     branches:
@@ -18,12 +18,12 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/services/search/**
-      - .github/workflows/service_search.yml
+      - src/backends/registration/**
+      - .github/workflows/backend_registration.yaml
 
 env:
-  COMPONENT: service_search
-  IMAGE: service_search
+  COMPONENT: backend_registration
+  IMAGE: backend_registration
 
 jobs:
 

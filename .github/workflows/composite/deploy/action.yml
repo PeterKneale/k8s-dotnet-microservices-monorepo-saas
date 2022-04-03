@@ -1,0 +1,47 @@
+name: "Deploy"
+description: "Deploys a helm chart to AKS"
+
+inputs:
+  digitalocean_access_token:
+    description: "Digital ocean access token"
+    required: true
+  component_name:
+    description: "Name of component to deploy e.g. carts"
+    required: true
+  component_type:
+    description: "Type of component to deploy e.g. service"
+    required: true
+  environment:
+    description: "Environment to deploy to e.g. developement"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+  - name: Install DigitalOcean CLI
+    uses: digitalocean/action-doctl@v2
+    with:
+      token: ${{ inputs.digitalocean_access_token }}
+
+  - name: Save DigitalOcean kubeconfig
+    shell: bash
+    run: doctl kubernetes cluster kubeconfig save saas
+  
+  # Deploys a cart using the below hierarchy of configuration
+  # - config/environments/common
+  # - config/environments/development
+  # - config/frontends/common
+  # - config/frontends/admin/common
+  # - config/frontends/admin/development
+  - name: Deploy Chart
+    shell: bash
+    run: |
+      helm upgrade \
+        --install ${{ inputs.component_type }}-${{ inputs.component_name }} \
+        --namespace ${{ inputs.environment }} \
+        ./deploy/chart \
+          -f ./deploy/config/environments/common.yaml \
+          -f ./deploy/config/environments/${{ inputs.environment }}.yaml \
+          -f ./deploy/config/${{ inputs.component_type }}s/common.yaml \
+          -f ./deploy/config/${{ inputs.component_type }}s/${{ inputs.component_name }}/common.yaml \
+          -f ./deploy/config/${{ inputs.component_type }}s/${{ inputs.component_name }}/${{ inputs.environment }}.yaml

@@ -1,4 +1,4 @@
-name: service_stores
+name: frontend_admin
 
 on:
   workflow_dispatch:
@@ -9,8 +9,8 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/services/stores/**
-      - .github/workflows/service_stores.yml
+      - src/frontends/admin/**
+      - .github/workflows/frontend_admin.yaml
 
   pull_request:
     branches:
@@ -18,12 +18,12 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/services/stores/**
-      - .github/workflows/service_stores.yml
+      - src/frontends/admin/**
+      - .github/workflows/frontend_admin.yaml
 
 env:
-  COMPONENT: service_stores
-  IMAGE: service_stores
+  COMPONENT: frontend_admin
+  IMAGE: frontend_admin
 
 jobs:
 

@@ -1,4 +1,4 @@
-name: backend_shopping
+name: service_media
 
 on:
   workflow_dispatch:
@@ -9,8 +9,8 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/backends/shopping/**
-      - .github/workflows/backend_shopping.yml
+      - src/services/media/**
+      - .github/workflows/service_media.yaml
 
   pull_request:
     branches:
@@ -18,12 +18,12 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/backends/shopping/**
-      - .github/workflows/backend_shopping.yml
+      - src/services/media/**
+      - .github/workflows/service_media.yaml
 
 env:
-  COMPONENT: backend_shopping
-  IMAGE: backend_shopping
+  COMPONENT: service_media
+  IMAGE: service_media
 
 jobs:
 

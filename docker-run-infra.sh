@@ -1,3 +1,3 @@
 #!/bin/bash -e
 
-docker-compose -f docker-compose-infra.yml up
+docker-compose -f docker-compose-infra.yaml up

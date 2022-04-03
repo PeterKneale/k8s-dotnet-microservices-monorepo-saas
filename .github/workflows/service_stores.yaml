@@ -1,4 +1,4 @@
-name: service_media
+name: service_stores
 
 on:
   workflow_dispatch:
@@ -9,8 +9,8 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/services/media/**
-      - .github/workflows/service_media.yml
+      - src/services/stores/**
+      - .github/workflows/service_stores.yaml
 
   pull_request:
     branches:
@@ -18,12 +18,12 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/services/media/**
-      - .github/workflows/service_media.yml
+      - src/services/stores/**
+      - .github/workflows/service_stores.yaml
 
 env:
-  COMPONENT: service_media
-  IMAGE: service_media
+  COMPONENT: service_stores
+  IMAGE: service_stores
 
 jobs:
 

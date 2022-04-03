@@ -10,7 +10,7 @@ on:
     paths:
       - src/building_blocks/**
       - src/frontends/registration/**
-      - .github/workflows/frontend_registration.yml
+      - .github/workflows/frontend_registration.yaml
 
   pull_request:
     branches:
@@ -19,7 +19,7 @@ on:
     paths:
       - src/building_blocks/**
       - src/frontends/registration/**
-      - .github/workflows/frontend_registration.yml
+      - .github/workflows/frontend_registration.yaml
 
 env:
   COMPONENT: frontend_registration

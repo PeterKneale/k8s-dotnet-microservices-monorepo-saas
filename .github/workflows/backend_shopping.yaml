@@ -1,4 +1,4 @@
-name: ingress_public
+name: backend_shopping
 
 on:
   workflow_dispatch:
@@ -9,8 +9,8 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/ingress/public/**
-      - .github/workflows/ingress_public.yml
+      - src/backends/shopping/**
+      - .github/workflows/backend_shopping.yaml
 
   pull_request:
     branches:
@@ -18,12 +18,12 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/ingress/public/**
-      - .github/workflows/ingress_public.yml
+      - src/backends/shopping/**
+      - .github/workflows/backend_shopping.yaml
 
 env:
-  COMPONENT: ingress_public
-  IMAGE: ingress_public
+  COMPONENT: backend_shopping
+  IMAGE: backend_shopping
 
 jobs:
 
@@ -33,6 +33,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - uses: ./.github/workflows/composite/build
+        with:
+          component: ${{ env.COMPONENT }}
+          registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}
+      - uses: ./.github/workflows/composite/unit_test
         with:
           component: ${{ env.COMPONENT }}
           registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}

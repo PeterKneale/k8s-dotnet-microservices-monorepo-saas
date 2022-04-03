@@ -1,4 +1,4 @@
-name: frontend_management
+name: service_search
 
 on:
   workflow_dispatch:
@@ -9,8 +9,8 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/frontends/management/**
-      - .github/workflows/frontend_management.yml
+      - src/services/search/**
+      - .github/workflows/service_search.yaml
 
   pull_request:
     branches:
@@ -18,12 +18,12 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/frontends/management/**
-      - .github/workflows/frontend_management.yml
+      - src/services/search/**
+      - .github/workflows/service_search.yaml
 
 env:
-  COMPONENT: frontend_management
-  IMAGE: frontend_management
+  COMPONENT: service_search
+  IMAGE: service_search
 
 jobs:
 

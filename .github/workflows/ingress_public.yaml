@@ -1,4 +1,4 @@
-name: service_accounts
+name: ingress_public
 
 on:
   workflow_dispatch:
@@ -9,8 +9,8 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/services/accounts/**
-      - .github/workflows/service_accounts.yml
+      - src/ingress/public/**
+      - .github/workflows/ingress_public.yaml
 
   pull_request:
     branches:
@@ -18,12 +18,12 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/services/accounts/**
-      - .github/workflows/service_accounts.yml
+      - src/ingress/public/**
+      - .github/workflows/ingress_public.yaml
 
 env:
-  COMPONENT: service_accounts
-  IMAGE: service_accounts
+  COMPONENT: ingress_public
+  IMAGE: ingress_public
 
 jobs:
 
@@ -33,10 +33,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - uses: ./.github/workflows/composite/build
-        with:
-          component: ${{ env.COMPONENT }}
-          registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}
-      - uses: ./.github/workflows/composite/unit_test
         with:
           component: ${{ env.COMPONENT }}
           registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}

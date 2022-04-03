@@ -10,7 +10,7 @@ on:
     paths:
       - src/building_blocks/**
       - src/frontends/marketing/**
-      - .github/workflows/frontend_marketing.yml
+      - .github/workflows/frontend_marketing.yaml
 
   pull_request:
     branches:
@@ -19,7 +19,7 @@ on:
     paths:
       - src/building_blocks/**
       - src/frontends/marketing/**
-      - .github/workflows/frontend_marketing.yml
+      - .github/workflows/frontend_marketing.yaml
 
 env:
   COMPONENT: frontend_marketing
