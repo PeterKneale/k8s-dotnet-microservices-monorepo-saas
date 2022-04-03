@@ -108,6 +108,8 @@ Custom domain names for example stores
 - [example-store-5.xyz](http://example-store-5.xyz)
 - [example-store-6.xyz](http://example-store-6.xyz)
 
+[![DigitalOcean Referral Badge](https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%202.svg)](https://www.digitalocean.com/?refcode=86a9c64ead8b&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
+
 # Solution Diagrams
 
 # Context
