@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+
 // Enable W3C Trace Context support for distributed tracing
 Activity.DefaultIdFormat = ActivityIdFormat.W3C;
 
