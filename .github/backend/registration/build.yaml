@@ -1,4 +1,4 @@
-name: frontend_marketing
+name: backend_registration_build
 
 on:
   workflow_dispatch:
@@ -9,8 +9,8 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/frontends/marketing/**
-      - .github/workflows/frontend_marketing.yaml
+      - src/backends/registration/**
+      - .github/workflows/backend_registration.yaml
 
   pull_request:
     branches:
@@ -18,12 +18,12 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/frontends/marketing/**
-      - .github/workflows/frontend_marketing.yaml
+      - src/backends/registration/**
+      - .github/workflows/backend_registration.yaml
 
 env:
-  COMPONENT: frontend_marketing
-  IMAGE: frontend_marketing
+  COMPONENT: backend_registration
+  IMAGE: backend_registration
 
 jobs:
 
@@ -33,6 +33,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - uses: ./.github/workflows/composite/build
+        with:
+          component: ${{ env.COMPONENT }}
+          registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}
+      - uses: ./.github/workflows/composite/unit_test
         with:
           component: ${{ env.COMPONENT }}
           registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}

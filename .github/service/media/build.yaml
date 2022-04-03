@@ -1,4 +1,4 @@
-name: service_search
+name: service_media_build
 
 on:
   workflow_dispatch:
@@ -9,8 +9,8 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/services/search/**
-      - .github/workflows/service_search.yaml
+      - src/services/media/**
+      - .github/workflows/service_media.yaml
 
   pull_request:
     branches:
@@ -18,12 +18,12 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/services/search/**
-      - .github/workflows/service_search.yaml
+      - src/services/media/**
+      - .github/workflows/service_media.yaml
 
 env:
-  COMPONENT: service_search
-  IMAGE: service_search
+  COMPONENT: service_media
+  IMAGE: service_media
 
 jobs:
 

@@ -1,4 +1,4 @@
-name: service_carts
+name: service_stores_build
 
 on:
   workflow_dispatch:
@@ -9,8 +9,8 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/services/carts/**
-      - .github/workflows/service_carts.yaml
+      - src/services/stores/**
+      - .github/workflows/service_stores.yaml
 
   pull_request:
     branches:
@@ -18,12 +18,12 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/services/carts/**
-      - .github/workflows/service_carts.yaml
+      - src/services/stores/**
+      - .github/workflows/service_stores.yaml
 
 env:
-  COMPONENT: service_carts
-  IMAGE: service_carts
+  COMPONENT: service_stores
+  IMAGE: service_stores
 
 jobs:
 

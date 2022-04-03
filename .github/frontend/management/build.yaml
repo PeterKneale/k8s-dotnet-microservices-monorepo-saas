@@ -1,4 +1,4 @@
-name: service_accounts
+name: frontend_management_build
 
 on:
   workflow_dispatch:
@@ -9,8 +9,8 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/services/accounts/**
-      - .github/workflows/service_accounts.yaml
+      - src/frontends/management/**
+      - .github/workflows/frontend_management.yaml
 
   pull_request:
     branches:
@@ -18,12 +18,12 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/services/accounts/**
-      - .github/workflows/service_accounts.yaml
+      - src/frontends/management/**
+      - .github/workflows/frontend_management.yaml
 
 env:
-  COMPONENT: service_accounts
-  IMAGE: service_accounts
+  COMPONENT: frontend_management
+  IMAGE: frontend_management
 
 jobs:
 

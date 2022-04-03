@@ -1,4 +1,4 @@
-name: frontend_management
+name: frontend_admin_build
 
 on:
   workflow_dispatch:
@@ -9,8 +9,8 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/frontends/management/**
-      - .github/workflows/frontend_management.yaml
+      - src/frontends/admin/**
+      - .github/workflows/frontend_admin.yaml
 
   pull_request:
     branches:
@@ -18,16 +18,17 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/frontends/management/**
-      - .github/workflows/frontend_management.yaml
+      - src/frontends/admin/**
+      - .github/workflows/frontend_admin.yaml
 
 env:
-  COMPONENT: frontend_management
-  IMAGE: frontend_management
+  COMPONENT: frontend_admin
+  IMAGE: frontend_admin
 
 jobs:
 
   build:
+    if: ${{ github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -42,6 +43,7 @@ jobs:
           registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}
 
   push:
+    if: ${{ github.event_name != 'pull_request' }}
     needs: [build]
     runs-on: ubuntu-latest
     steps:

@@ -1,4 +1,4 @@
-name: frontend_shopping
+name: service_catalog_build
 
 on:
   workflow_dispatch:
@@ -9,8 +9,8 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/frontends/shopping/**
-      - .github/workflows/frontend_shopping.yaml
+      - src/services/catalog/**
+      - .github/workflows/service_catalog.yaml
 
   pull_request:
     branches:
@@ -18,12 +18,12 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/frontends/shopping/**
-      - .github/workflows/frontend_shopping.yaml
+      - src/services/catalog/**
+      - .github/workflows/service_catalog.yaml
 
 env:
-  COMPONENT: frontend_shopping
-  IMAGE: frontend_shopping
+  COMPONENT: service_catalog
+  IMAGE: service_catalog
 
 jobs:
 

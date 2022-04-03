@@ -1,4 +1,4 @@
-name: frontend_registration
+name: backend_shopping_build
 
 on:
   workflow_dispatch:
@@ -9,8 +9,8 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/frontends/registration/**
-      - .github/workflows/frontend_registration.yaml
+      - src/backends/shopping/**
+      - .github/workflows/backend_shopping.yaml
 
   pull_request:
     branches:
@@ -18,12 +18,12 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/frontends/registration/**
-      - .github/workflows/frontend_registration.yaml
+      - src/backends/shopping/**
+      - .github/workflows/backend_shopping.yaml
 
 env:
-  COMPONENT: frontend_registration
-  IMAGE: frontend_registration
+  COMPONENT: backend_shopping
+  IMAGE: backend_shopping
 
 jobs:
 

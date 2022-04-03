@@ -1,4 +1,4 @@
-name: service_catalog
+name: service_search_build
 
 on:
   workflow_dispatch:
@@ -9,8 +9,8 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/services/catalog/**
-      - .github/workflows/service_catalog.yaml
+      - src/services/search/**
+      - .github/workflows/service_search.yaml
 
   pull_request:
     branches:
@@ -18,12 +18,12 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/services/catalog/**
-      - .github/workflows/service_catalog.yaml
+      - src/services/search/**
+      - .github/workflows/service_search.yaml
 
 env:
-  COMPONENT: service_catalog
-  IMAGE: service_catalog
+  COMPONENT: service_search
+  IMAGE: service_search
 
 jobs:
 

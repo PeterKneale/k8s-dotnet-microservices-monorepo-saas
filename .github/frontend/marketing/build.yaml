@@ -1,4 +1,4 @@
-name: frontend_admin
+name: frontend_marketing_build
 
 on:
   workflow_dispatch:
@@ -9,8 +9,8 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/frontends/admin/**
-      - .github/workflows/frontend_admin.yaml
+      - src/frontends/marketing/**
+      - .github/workflows/frontend_marketing.yaml
 
   pull_request:
     branches:
@@ -18,17 +18,16 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/frontends/admin/**
-      - .github/workflows/frontend_admin.yaml
+      - src/frontends/marketing/**
+      - .github/workflows/frontend_marketing.yaml
 
 env:
-  COMPONENT: frontend_admin
-  IMAGE: frontend_admin
+  COMPONENT: frontend_marketing
+  IMAGE: frontend_marketing
 
 jobs:
 
   build:
-    if: ${{ github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -37,13 +36,8 @@ jobs:
         with:
           component: ${{ env.COMPONENT }}
           registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}
-      - uses: ./.github/workflows/composite/unit_test
-        with:
-          component: ${{ env.COMPONENT }}
-          registry_endpoint: ${{ secrets.REGISTRY_ENDPOINT }}
 
   push:
-    if: ${{ github.event_name != 'pull_request' }}
     needs: [build]
     runs-on: ubuntu-latest
     steps:

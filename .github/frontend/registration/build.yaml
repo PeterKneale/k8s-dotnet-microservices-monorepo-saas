@@ -1,4 +1,4 @@
-name: service_media
+name: frontend_registration_build
 
 on:
   workflow_dispatch:
@@ -9,8 +9,8 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/services/media/**
-      - .github/workflows/service_media.yaml
+      - src/frontends/registration/**
+      - .github/workflows/frontend_registration.yaml
 
   pull_request:
     branches:
@@ -18,12 +18,12 @@ on:
 
     paths:
       - src/building_blocks/**
-      - src/services/media/**
-      - .github/workflows/service_media.yaml
+      - src/frontends/registration/**
+      - .github/workflows/frontend_registration.yaml
 
 env:
-  COMPONENT: service_media
-  IMAGE: service_media
+  COMPONENT: frontend_registration
+  IMAGE: frontend_registration
 
 jobs:
 
