@@ -6,51 +6,29 @@ package Accounts;
 
 import "google/protobuf/empty.proto";
 
-service AccountsApi {
+service AccountsApplicationApi {
   // commands
-  rpc AddAccount (AddAccountRequest) returns (google.protobuf.Empty);
   rpc AddUser (AddUserRequest) returns (google.protobuf.Empty);
-  rpc VerifyUser(VerifyUserRequest) returns (google.protobuf.Empty);
   // queries
   rpc GetAccount (GetAccountRequest) returns (Account);
   rpc GetUser (GetUserRequest) returns (User);
-  rpc GetEmailVerificationToken (GetEmailVerificationTokenRequest) returns (EmailVerificationToken);
-  rpc ListAccounts (ListAccountRequest) returns (AccountsReply);
   rpc ListUsers (ListUsersRequest) returns (UsersReply);
 }
 
 // commands
-message AddAccountRequest {
-  string account_id = 1;
-  string name = 2;
-}
 message AddUserRequest{
   string user_id = 2;
   string email = 1;
 }
-message VerifyUserRequest{
-  string email = 1;
-  string token = 2;
-  string password = 3;
-}
 
 // queries
 message GetAccountRequest{
-  string account_id = 1;
 }
 message GetUserRequest{
   string user_id = 1;
 }
-message GetEmailVerificationTokenRequest{
-  string user_id = 1;
-}
-message ListAccountRequest{
-}
 message ListUsersRequest{
   
-}
-message AccountsReply{
-  repeated Account Accounts = 1;
 }
 message UsersReply{
   repeated User Users = 1;
@@ -65,7 +43,4 @@ message Account{
 message User{
   string user_id = 1;
   string email = 2;
-}
-message EmailVerificationToken{
-  string token = 1;
 }

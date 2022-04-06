@@ -31,38 +31,22 @@ namespace Registration.FunctionalTests
             var random = new Random().Next(10000);
             var name = $"apple{random}";
             var email = $"apple{random}@example.com";
-            
-            // users always add okay
-            var sequenceUserService = new MockSequence();
-            _fixture.AccountsService
-                .InSequence(sequenceUserService)
-                .Setup(x => x.AddUserAsync(It.IsAny<string>(),It.IsAny<AddUserRequest>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.CompletedTask);
-            _fixture.AccountsService
-                .InSequence(sequenceUserService)
-                .Setup(x => x.AddUserAsync(It.IsAny<string>(),It.IsAny<AddUserRequest>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.CompletedTask);
-            _fixture.AccountsService
-                .InSequence(sequenceUserService)
-                .Setup(x => x.AddUserAsync(It.IsAny<string>(),It.IsAny<AddUserRequest>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.CompletedTask);
-            
-            
+
             // accounts has a transient failure the first try
             var sequenceAccountsService = new MockSequence();
             _fixture.AccountsService
                 .InSequence(sequenceAccountsService)
-                .Setup(x => x.AddAccountAsync(It.IsAny<AddAccountRequest>(), It.IsAny<CancellationToken>()))
-                .ThrowsAsync(new Exception("Transient failure")); 
+                .Setup(x => x.ProvisionAccountAsync(It.IsAny<ProvisionAccountRequest>(), It.IsAny<CancellationToken>()))
+                .ThrowsAsync(new Exception("Transient failure"));
             _fixture.AccountsService
                 .InSequence(sequenceAccountsService)
-                .Setup(x => x.AddAccountAsync(It.IsAny<AddAccountRequest>(), It.IsAny<CancellationToken>()))
+                .Setup(x => x.ProvisionAccountAsync(It.IsAny<ProvisionAccountRequest>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.CompletedTask);
             _fixture.AccountsService
                 .InSequence(sequenceAccountsService)
-                .Setup(x => x.AddAccountAsync(It.IsAny<AddAccountRequest>(), It.IsAny<CancellationToken>()))
+                .Setup(x => x.ProvisionAccountAsync(It.IsAny<ProvisionAccountRequest>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.CompletedTask);
-            
+
             // stores has a transient failure the second try
             var sequenceStoresService = new MockSequence();
             _fixture.StoresService
@@ -93,9 +77,7 @@ namespace Registration.FunctionalTests
                 _fixture.StoresService.Verify(ms => ms
                     .AddStoreAsync(It.IsAny<string>(), It.IsAny<AddStoreRequest>(), It.IsAny<CancellationToken>()), Times.Exactly(3));
                 _fixture.AccountsService.Verify(ms => ms
-                    .AddAccountAsync(It.IsAny<AddAccountRequest>(), It.IsAny<CancellationToken>()), Times.Exactly(3));
-                _fixture.AccountsService.Verify(ms => ms
-                    .AddUserAsync(It.IsAny<string>(),It.IsAny<AddUserRequest>(), It.IsAny<CancellationToken>()), Times.Exactly(3));
+                    .ProvisionAccountAsync(It.IsAny<ProvisionAccountRequest>(), It.IsAny<CancellationToken>()), Times.Exactly(3));
             }
 
             // assert

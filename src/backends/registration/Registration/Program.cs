@@ -64,7 +64,7 @@ builder.Services.AddMassTransit(x => {
 builder.Services.AddMassTransitHostedService();
 
 builder.Services.AddGrpcClient<StoresApi.StoresApiClient>(o => { o.Address = builder.Configuration.GetStoresServiceGrpcUri(); });
-builder.Services.AddGrpcClient<AccountsApi.AccountsApiClient>(o => { o.Address = builder.Configuration.GetAccountsServiceGrpcUri(); });
+builder.Services.AddGrpcClient<AccountsPlatformApi.AccountsPlatformApiClient>(o => { o.Address = builder.Configuration.GetAccountsServiceGrpcUri(); });
 builder.Services.AddScoped<IRegistrationQueue, RegistrationQueue>();
 builder.Services.AddScoped<IStoresServiceGateway, StoresServiceGateway>();
 builder.Services.AddScoped<IAccountsServiceGateway, AccountsServiceGateway>();

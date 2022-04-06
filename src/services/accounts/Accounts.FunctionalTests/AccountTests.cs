@@ -11,23 +11,23 @@ namespace Accounts.FunctionalTests
     [Collection(nameof(Fixture))]
     public class AccountTests
     {
-        private readonly AccountsApi.AccountsApiClient _client;
+        private readonly AccountsPlatformApi.AccountsPlatformApiClient _client;
 
         public AccountTests(Fixture api, ITestOutputHelper outputHelper)
         {
             api.OutputHelper = outputHelper;
-            _client = api.GetClient();
+            _client = api.GetPlatformClient();
         }
 
         [Fact]
-        public async Task GetAccountByIdAsync_AccountDoesNotExist_Returns404()
+        public async Task GetAccountSummaryAsync_AccountDoesNotExist_Returns404()
         {
             // Arrange
             var tenantId = Guid.NewGuid().ToString();
 
             // Act
             Func<Task> act = async () => {
-                await _client.GetAccountAsync(new GetAccountRequest
+                await _client.GetAccountSummaryAsync(new GetAccountSummaryRequest
                 {
                     AccountId = tenantId
                 });
@@ -40,20 +40,20 @@ namespace Accounts.FunctionalTests
         }
 
         [Fact]
-        public async Task AddAccount_AccountDoesNotExist_ReturnsOK()
+        public async Task ProvisionAccount_AccountDoesNotExist_ReturnsOK()
         {
             // Arrange
             var tenantId = Guid.NewGuid().ToString();
 
             // Act
-            await _client.AddAccountAsync(new AddAccountRequest
+            await _client.ProvisionAccountAsync(new ProvisionAccountRequest
             {
                 AccountId = tenantId,
                 Name = "x"
             });
 
             // Assert
-            var tenant = await _client.GetAccountAsync(new GetAccountRequest
+            var tenant = await _client.GetAccountSummaryAsync(new GetAccountSummaryRequest
             {
                 AccountId = tenantId
             });
@@ -67,14 +67,14 @@ namespace Accounts.FunctionalTests
             var tenantId = Guid.NewGuid().ToString();
 
             // Act
-            await _client.AddAccountAsync(new AddAccountRequest
+            await _client.ProvisionAccountAsync(new ProvisionAccountRequest
             {
                 AccountId = tenantId,
                 Name = "x"
             });
 
             // Assert
-            var tenants = await _client.ListAccountsAsync(new ListAccountRequest());
+            var tenants = await _client.ListAccountSummariesAsync(new ListAccountSummariesRequest());
             tenants.Accounts.Should().ContainSingle(x => x.AccountId == tenantId);
         }
     }

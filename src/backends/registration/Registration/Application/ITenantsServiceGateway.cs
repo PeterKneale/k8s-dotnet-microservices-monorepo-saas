@@ -6,7 +6,6 @@ namespace Registration.Application
 {
     public interface IAccountsServiceGateway
     {
-        Task AddAccountAsync(AddAccountRequest request, CancellationToken token);
-        Task AddUserAsync(string accountId, AddUserRequest request, CancellationToken token);
+        Task ProvisionAccountAsync(ProvisionAccountRequest request, CancellationToken token);
     }
 }

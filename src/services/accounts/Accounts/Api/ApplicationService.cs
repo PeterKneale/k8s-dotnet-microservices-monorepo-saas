@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using BuildingBlocks.Application.Exceptions;
@@ -6,24 +7,21 @@ using Grpc.Core;
 using MediatR;
 using Accounts.Application;
 using Accounts.Domain;
+using BuildingBlocks.Infrastructure.AccountContext;
 
 namespace Accounts.Api
 {
-    public class AccountsApiService : AccountsApi.AccountsApiBase
+    public class AccountsApplicationService : AccountsApplicationApi.AccountsApplicationApiBase
     {
         private readonly IMediator _mediator;
         private readonly IReadRepository _reader;
+        private readonly string _accountId;
 
-        public AccountsApiService(IMediator mediator, IReadRepository reader)
+        public AccountsApplicationService(IMediator mediator, IReadRepository reader, IAccountContextGetter account)
         {
             _mediator = mediator;
             _reader = reader;
-        }
-
-        public override async Task<Empty> AddAccount(AddAccountRequest request, ServerCallContext context)
-        {
-            await _mediator.Send(new AddAccount.Command(request.AccountId, request.Name));
-            return new Empty();
+            _accountId = account.GetAccountId() ?? throw new Exception("Account context is required");
         }
 
         public override async Task<Empty> AddUser(AddUserRequest request, ServerCallContext context)
@@ -31,19 +29,13 @@ namespace Accounts.Api
             await _mediator.Send(new AddUser.Command(request.UserId, request.Email));
             return new Empty();
         }
-
-        public override async Task<Empty> VerifyUser(VerifyUserRequest request, ServerCallContext context)
-        {
-            await _mediator.Send(new VerifyUser.Command(request.Email, request.Token, request.Password));
-            return new Empty();
-        }
-
+        
         public override async Task<Account> GetAccount(GetAccountRequest request, ServerCallContext context)
         {
-            var account = await _reader.GetAccountByIdAsync(request.AccountId);
+            var account = await _reader.GetAccountByIdAsync(_accountId);
             if (account == null)
             {
-                throw new NotFoundException(nameof(Account), request.AccountId);
+                throw new NotFoundException(nameof(Account), _accountId);
             }
             return new Account {AccountId = account.AccountId, Name = account.Name};
         }
@@ -59,25 +51,7 @@ namespace Accounts.Api
         }
 
         // todo; add service to service role check (admin only)
-        public override async Task<EmailVerificationToken> GetEmailVerificationToken(GetEmailVerificationTokenRequest request, ServerCallContext context)
-        {
-            var user = await _reader.GetUserByIdAsync(request.UserId);
-            if (user == null)
-            {
-                throw new NotFoundException(nameof(User), request.UserId);
-            }
-            return new EmailVerificationToken {Token = user.EmailVerificationToken};
-        }
-
-        // todo; add service to service role check (admin only)
-        public override async Task<AccountsReply> ListAccounts(ListAccountRequest request, ServerCallContext context)
-        {
-            var accounts = await _reader.ListAccounts();
-            return new AccountsReply
-            {
-                Accounts = {accounts.Select(x => new Account {AccountId = x.AccountId, Name = x.Name})}
-            };
-        }
+        
         public override async Task<UsersReply> ListUsers(ListUsersRequest request, ServerCallContext context)
         {
             var users = await _reader.ListUsers();

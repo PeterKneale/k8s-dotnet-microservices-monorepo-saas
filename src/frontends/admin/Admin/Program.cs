@@ -62,7 +62,7 @@ builder.Services.Configure<ForwardedHeadersOptions>(options => {
     options.ForwardedHeaders = ForwardedHeaders.XForwardedProto | ForwardedHeaders.XForwardedHost;
 });
 
-builder.Services.AddGrpcClient<AccountsApi.AccountsApiClient>(o => { o.Address = builder.Configuration.GetAccountsServiceGrpcUri(); });
+builder.Services.AddGrpcClient<AccountsPlatformApi.AccountsPlatformApiClient>(o => { o.Address = builder.Configuration.GetAccountsServiceGrpcUri(); });
 builder.Services.AddGrpcClient<StoresApi.StoresApiClient>(o => { o.Address = builder.Configuration.GetStoresServiceGrpcUri(); });
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

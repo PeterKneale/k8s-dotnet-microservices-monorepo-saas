@@ -8,7 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Protobuf Include="Api\accounts.proto" ProtoRoot="Api" GrpcServices="Both" />
+    <Protobuf Include="Api\application.proto" ProtoRoot="Api" GrpcServices="Both" />
+    <Protobuf Include="Api\platform.proto" ProtoRoot="Api" GrpcServices="Both" />
   </ItemGroup>
 
   <ItemGroup>

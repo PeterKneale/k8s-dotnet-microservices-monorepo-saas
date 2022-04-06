@@ -28,7 +28,7 @@
 
   <ItemGroup>
     <Protobuf Include="..\..\..\services\stores\Stores\Api\stores.proto" ProtoRoot="..\..\..\services\stores\Stores\Api\" GrpcServices="Client" />
-    <Protobuf Include="..\..\..\services\accounts\Accounts\Api\accounts.proto" ProtoRoot="..\..\..\services\accounts\Accounts\Api\" GrpcServices="Client" />
+    <Protobuf Include="..\..\..\services\accounts\Accounts\Api\platform.proto" ProtoRoot="..\..\..\services\accounts\Accounts\Api\" GrpcServices="Client" />
   </ItemGroup>
   
   <ItemGroup>

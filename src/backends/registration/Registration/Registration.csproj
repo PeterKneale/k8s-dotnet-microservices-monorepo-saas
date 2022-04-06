@@ -26,17 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="..\..\..\services\accounts\Accounts\Api\accounts.proto">
-      <GrpcServices>Client</GrpcServices>
-      <Access>Public</Access>
-      <ProtoCompile>True</ProtoCompile>
-      <ProtoRoot>..\..\..\services\accounts\Accounts\Api\</ProtoRoot>
-      <CompileOutputs>True</CompileOutputs>
-      <OutputDir>obj\Debug\net6.0\</OutputDir>
-      <Generator>MSBuild:Compile</Generator>
-      <Link>Api\accounts.proto</Link>
-    </Protobuf>
     <Protobuf Include="Api\registration.proto" ProtoRoot="Api" GrpcServices="Both" />
+    <Protobuf Include="..\..\..\services\accounts\Accounts\Api\platform.proto" ProtoRoot="..\..\..\services\accounts\Accounts\Api\" GrpcServices="Client" />
     <Protobuf Include="..\..\..\services\stores\Stores\Api\stores.proto" ProtoRoot="..\..\..\services\stores\Stores\Api\" GrpcServices="Client" />
   </ItemGroup>
   
