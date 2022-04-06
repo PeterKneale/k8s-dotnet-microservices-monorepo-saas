@@ -13,26 +13,28 @@ namespace Accounts.FunctionalTests
     [Collection(nameof(Fixture))]
     public class UserTests
     {
-        private readonly AccountsApi.AccountsApiClient _client;
+        private readonly AccountsApplicationApi.AccountsApplicationApiClient _client;
 
         public UserTests(Fixture api, ITestOutputHelper outputHelper)
         {
             api.OutputHelper = outputHelper;
-            _client = api.GetClient();
+            _client = api.GetApplicationClient();
         }
 
         [Fact]
         public async Task GetUserByIdAsync_UserDoesNotExist_Returns404()
         {
             // Arrange
+            var tenantId = Guid.NewGuid().ToString();
             var userId = Guid.NewGuid().ToString();
+            var headers = new Metadata {new(MetaDataConstants.AccountId, tenantId)};
 
             // Act
             Func<Task> act = async () => {
                 await _client.GetUserAsync(new GetUserRequest
                 {
                     UserId = userId
-                });
+                }, headers);
             };
 
             // Assert
@@ -61,7 +63,7 @@ namespace Accounts.FunctionalTests
             var user = await _client.GetUserAsync(new GetUserRequest
             {
                 UserId = userId
-            });
+            }, headers);
             user.UserId.Should().Be(userId);
             user.Email.Should().Be(email);
         }

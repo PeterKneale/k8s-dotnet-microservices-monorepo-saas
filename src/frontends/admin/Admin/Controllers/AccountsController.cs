@@ -6,14 +6,14 @@ namespace Admin.Controllers
 {
     public class AccountsController : Controller
     {
-        private readonly AccountsApi.AccountsApiClient _client;
-        
-        public AccountsController(AccountsApi.AccountsApiClient client)
+        private readonly AccountsPlatformApi.AccountsPlatformApiClient _client;
+
+        public AccountsController(AccountsPlatformApi.AccountsPlatformApiClient client)
         {
             _client = client;
         }
-        
-        public async Task<IActionResult> Index() => 
-            View(await _client.ListAccountsAsync(new ListAccountRequest()));
+
+        public async Task<IActionResult> Index() =>
+            View(await _client.ListAccountSummariesAsync(new ListAccountSummariesRequest()));
     }
 }

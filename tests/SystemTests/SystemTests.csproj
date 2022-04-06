@@ -43,7 +43,8 @@
     <ItemGroup>
         <Protobuf Include="..\..\src\services\catalog\Catalog\Api\catalog.proto" ProtoRoot="..\..\src\services\catalog\Catalog\Api" GrpcServices="Client" />
         <Protobuf Include="..\..\src\services\stores\Stores\Api\stores.proto" ProtoRoot="..\..\src\services\stores\Stores\Api" GrpcServices="Client" />
-        <Protobuf Include="..\..\src\services\accounts\Accounts\Api\accounts.proto" ProtoRoot="..\..\src\services\accounts\Accounts\Api" GrpcServices="Client" />
+        <Protobuf Include="..\..\src\services\accounts\Accounts\Api\application.proto" ProtoRoot="..\..\src\services\accounts\Accounts\Api" GrpcServices="Client" />
+        <Protobuf Include="..\..\src\services\accounts\Accounts\Api\platform.proto" ProtoRoot="..\..\src\services\accounts\Accounts\Api" GrpcServices="Client" />
         <Protobuf Include="..\..\src\backends\shopping\Shopping\Api\shopping.proto" ProtoRoot="..\..\src\backends\shopping\Shopping\Api" GrpcServices="Client" />
         <Protobuf Include="..\..\src\backends\registration\Registration\Api\registration.proto" ProtoRoot="..\..\src\backends\registration\Registration\Api" GrpcServices="Client" />
     </ItemGroup>

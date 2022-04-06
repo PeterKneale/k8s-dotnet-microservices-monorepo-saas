@@ -33,7 +33,7 @@ namespace SystemTests.Helpers
             services.AddGrpcClient<StoresApi.StoresApiClient>(o => {
                 o.Address = configuration.GetStoresServiceGrpcUri();
             });
-            services.AddGrpcClient<AccountsApi.AccountsApiClient>(o => {
+            services.AddGrpcClient<AccountsPlatformApi.AccountsPlatformApiClient>(o => {
                 o.Address = configuration.GetAccountsServiceGrpcUri();
             });
             services.AddGrpcClient<ShoppingApi.ShoppingApiClient>(o => {

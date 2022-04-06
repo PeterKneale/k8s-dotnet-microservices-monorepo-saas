@@ -29,16 +29,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Protobuf Include="..\..\..\services\accounts\Accounts\Api\accounts.proto">
-          <GrpcServices>Client</GrpcServices>
-          <Access>Public</Access>
-          <ProtoCompile>True</ProtoCompile>
-          <ProtoRoot>..\..\..\services\accounts\Accounts\Api\</ProtoRoot>
-          <CompileOutputs>True</CompileOutputs>
-          <OutputDir>obj\Debug\net6.0\</OutputDir>
-          <Generator>MSBuild:Compile</Generator>
-          <Link>Api\accounts.proto</Link>
-        </Protobuf>
+        <Protobuf Include="..\..\..\services\accounts\Accounts\Api\application.proto" GrpcServices="Client"/>
         <Protobuf Include="Api\shopping.proto" ProtoRoot="Api" GrpcServices="Both" />
     </ItemGroup>
     

@@ -1,4 +1,5 @@
 ﻿using Accounts.Api;
+using Baseline;
 using Grpc.Net.Client;
 using MartinCostello.Logging.XUnit;
 using Microsoft.AspNetCore.Hosting;
@@ -8,7 +9,7 @@ using Xunit.Abstractions;
 
 namespace Accounts.FunctionalTests
 {
-    public class Fixture : WebApplicationFactory<AccountsApiService>, ITestOutputHelperAccessor
+    public class Fixture : WebApplicationFactory<AccountsApplicationService>, ITestOutputHelperAccessor
     {
         private readonly GrpcChannel _channel;
 
@@ -28,7 +29,9 @@ namespace Accounts.FunctionalTests
             builder.ConfigureLogging(x => x.AddXUnit(this));
         }
         
-        public AccountsApi.AccountsApiClient GetClient() => new(_channel);
+        public AccountsApplicationApi.AccountsApplicationApiClient GetApplicationClient() => new(_channel);
+        
+        public AccountsPlatformApi.AccountsPlatformApiClient GetPlatformClient() => new(_channel);
 
         protected override void Dispose(bool disposing)
         {

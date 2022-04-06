@@ -32,13 +32,9 @@ namespace Registration.FunctionalTests
             var email = $"apple{random}@example.com";
 
             _fixture.AccountsService
-                .Setup(x => x.AddAccountAsync(It.IsAny<AddAccountRequest>(), It.IsAny<CancellationToken>()))
+                .Setup(x => x.ProvisionAccountAsync(It.IsAny<ProvisionAccountRequest>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.CompletedTask);
             
-            _fixture.AccountsService
-                .Setup(x => x.AddUserAsync(It.IsAny<string>(), It.IsAny<AddUserRequest>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.CompletedTask);
-
             _fixture.StoresService
                 .Setup(x => x.AddStoreAsync(It.IsAny<string>(), It.IsAny<AddStoreRequest>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.CompletedTask);
