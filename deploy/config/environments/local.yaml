@@ -1,2 +1,2 @@
 environment:
-  Logging__LogLevel__Default: Debug
+  Logging__LogLevel__Default: Information
