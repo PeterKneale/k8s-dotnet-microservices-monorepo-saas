@@ -344,6 +344,7 @@ echo $DIGITALOCEAN_TOKEN | doctl auth init --context saas
 
 # K8s
 
+## Digital Ocean
 - Setup cluster in Digital Ocean
 - Install add-ons `NGINX Ingress Controller` and `Cert-Manager`
 - run `k8s-install.sh` in `/deploy/infra/digitalocean`
@@ -353,9 +354,11 @@ echo $DIGITALOCEAN_TOKEN | doctl auth init --context saas
 Accessing a resource in the k8s cluster can be performed by using kubectl's port forwarding feature
 Forwarding the local port 8080 to the below services will make them available on [http://localhost:8080](http://localhost:8080)
 
-- Kibana
+
+- Dashboard
     ```shell
-    kubectl port-forward--namespace development svc/infra-kibana 8080:5601
+    kubectl -n default port-forward svc/infra-dashboard-kubernetes-dashboard 8443:443
+    kubectl describe secret -n kube-system | grep deployment -A 12
     ```
 
 - A service
