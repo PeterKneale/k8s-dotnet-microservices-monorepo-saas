@@ -21,7 +21,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
-using Microsoft.Extensions.Configuration;
 using Stores.Api;
 
 // Enable W3C Trace Context support for distributed tracing
@@ -33,6 +32,7 @@ AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2Support", true);
 
 // Build
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.LogToConsole();
 
 // Logging
 builder.Services.AddLogging(c => {

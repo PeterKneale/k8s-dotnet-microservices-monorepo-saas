@@ -27,6 +27,7 @@ AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2Support", true);
 
 // Build
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.LogToConsole();
 
 // Logging
 builder.Services.AddLogging(c => {

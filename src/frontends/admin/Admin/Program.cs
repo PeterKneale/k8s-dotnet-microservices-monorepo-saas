@@ -17,8 +17,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-var x = 1;
-
 // Enable W3C Trace Context support for distributed tracing
 Activity.DefaultIdFormat = ActivityIdFormat.W3C;
 
@@ -28,6 +26,7 @@ AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2Support", true);
 
 // Build
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.LogToConsole();
 
 // Logging
 builder.Services.AddLogging(c => {

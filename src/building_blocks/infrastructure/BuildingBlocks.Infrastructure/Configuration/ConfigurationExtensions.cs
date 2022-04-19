@@ -5,6 +5,11 @@ namespace BuildingBlocks.Infrastructure.Configuration
 {
     public static class ConfigurationExtensions
     {
+        public static void LogToConsole(this IConfigurationRoot configurationRoot)
+        {
+            Console.WriteLine(configurationRoot.GetDebugView());
+        }
+        
         public static int GetInt(this IConfiguration configuration, string key, int defaultValue)
         {
             var setting = configuration.GetString(key, defaultValue.ToString());
