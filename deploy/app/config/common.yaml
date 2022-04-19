@@ -3,7 +3,7 @@ environment:
   SAAS_FRONTEND_MANAGEMENT_HOST: frontend-management-saas
   SAAS_FRONTEND_MARKETING_HOST: frontend-marketing-saas
   SAAS_FRONTEND_REGISTRATION_HOST: frontend-registration-saas
-  SAAS_FRONTEND_SHOPPING_HOST: frontend-shoppping-saas
+  SAAS_FRONTEND_SHOPPING_HOST: frontend-shopping-saas
   SAAS_BACKEND_REGISTRATION_HOST: backend-registration-saas
   SAAS_BACKEND_SHOPPING_HOST: backend-shopping-saas
   SAAS_SERVICE_ACCOUNTS_HOST: service-accounts-saas
