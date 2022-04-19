@@ -25,6 +25,7 @@ AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport
 AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2Support", true);
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.LogToConsole();
 
 // Logging
 builder.Services.AddLogging(c => {

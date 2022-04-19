@@ -23,11 +23,6 @@ using Search.Infrastructure.Behaviors;
 using Search.Infrastructure.Consumers;
 using Search.Infrastructure.Index;
 
-foreach (DictionaryEntry env in Environment.GetEnvironmentVariables())
-{
-    Console.WriteLine($"{env.Key}: {env.Value}");
-}
-
 // Enable W3C Trace Context support for distributed tracing
 Activity.DefaultIdFormat = ActivityIdFormat.W3C;
 
@@ -37,6 +32,7 @@ AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2Support", true);
 
 // Build
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.LogToConsole();
 
 // Logging
 builder.Services.AddLogging(c => {
