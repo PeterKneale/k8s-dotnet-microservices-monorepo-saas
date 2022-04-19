@@ -36,7 +36,7 @@ builder.Configuration.LogToConsole();
 
 // Logging
 builder.Services.AddLogging(c => {
-    c.AddSimpleConsole(opt=>{
+    c.AddSimpleConsole(opt => {
         opt.SingleLine = true;
         opt.IncludeScopes = true;
     });
@@ -71,7 +71,12 @@ builder.Services.AddMassTransit(x => {
         });
     });
 });
-builder.Services.AddMassTransitHostedService();
+builder.Services.Configure<MassTransitHostOptions>(options =>
+{
+    options.WaitUntilStarted = true;
+    options.StartTimeout = TimeSpan.FromSeconds(30);
+    options.StopTimeout = TimeSpan.FromSeconds(30);
+});
 
 // Elastic search
 var settings = new ConnectionSettings(builder.Configuration.GetElasticSearchUri())
@@ -83,7 +88,6 @@ var settings = new ConnectionSettings(builder.Configuration.GetElasticSearchUri(
     .PrettyJson();
 builder.Services.AddSingleton<IElasticClient>(new ElasticClient(settings));
 
-
 // GRPC Server
 builder.Services.AddGrpc(c => {
     c.Interceptors.Add<GrpcExceptionInterceptor>();
@@ -93,8 +97,8 @@ builder.Services.AddGrpc(c => {
 
 // Health
 builder.Services.AddHealthChecks()
-    .AddElasticsearch(builder.Configuration.GetElasticSearchUri().ToString(), tags: new[] {"ready"}, timeout:TimeSpan.FromSeconds(1))
-    .AddRabbitMQ(builder.Configuration.GetRabbitUri(), tags: new[] {"ready"}, timeout:TimeSpan.FromSeconds(1));
+    .AddElasticsearch(builder.Configuration.GetElasticSearchUri().ToString(), name: "elasticsearch", tags: new[] {"ready"}, timeout: TimeSpan.FromSeconds(1))
+    .AddRabbitMQ(builder.Configuration.GetRabbitUri(), name: "rabbitmq", tags: new[] {"ready"}, timeout: TimeSpan.FromSeconds(1));
 
 // Ports
 builder.WebHost.ConfigureKestrel(opt => {

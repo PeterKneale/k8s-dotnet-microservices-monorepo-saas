@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Net;
 using BuildingBlocks.Infrastructure.Configuration;
 using BuildingBlocks.Infrastructure.HealthChecks;
-using GreenPipes;
 using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -62,7 +61,12 @@ builder.Services.AddMassTransit(x => {
         });
     });
 });
-builder.Services.AddMassTransitHostedService();
+builder.Services.Configure<MassTransitHostOptions>(options =>
+{
+    options.WaitUntilStarted = true;
+    options.StartTimeout = TimeSpan.FromSeconds(30);
+    options.StopTimeout = TimeSpan.FromSeconds(30);
+});
 
 builder.Services.AddGrpcClient<StoresApi.StoresApiClient>(o => { o.Address = builder.Configuration.GetStoresServiceGrpcUri(); });
 builder.Services.AddGrpcClient<AccountsPlatformApi.AccountsPlatformApiClient>(o => { o.Address = builder.Configuration.GetAccountsServiceGrpcUri(); });

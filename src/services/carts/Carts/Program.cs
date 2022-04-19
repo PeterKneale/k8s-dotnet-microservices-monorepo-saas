@@ -13,6 +13,7 @@ using Carts.Infrastructure.Behaviors;
 using Carts.Infrastructure.Database;
 using Carts.Infrastructure.Repository;
 using FluentValidation;
+using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,7 +34,7 @@ builder.Configuration.LogToConsole();
 
 // Logging
 builder.Services.AddLogging(c => {
-    c.AddSimpleConsole(opt=>{
+    c.AddSimpleConsole(opt => {
         opt.SingleLine = true;
         opt.IncludeScopes = true;
     });
@@ -47,7 +48,7 @@ builder.Services.AddValidatorsFromAssembly(assembly);
 // Infrastructure
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 builder.Services.AddScoped<ICartRepository, CartRepository>();
-builder.Services.AddScoped<IDbConnectionFactory, DbConnectionFactory>(x => 
+builder.Services.AddScoped<IDbConnectionFactory, DbConnectionFactory>(x =>
     new DbConnectionFactory(builder.Configuration.GetPostgresConnectionString())
 );
 
@@ -55,7 +56,7 @@ builder.Services.AddScoped<IDbConnectionFactory, DbConnectionFactory>(x =>
 builder.Services.AddScopedAccountContext();
 
 // Database migrations
-builder.Services.AddSingleton(new MigrationExecutor( builder.Configuration));
+builder.Services.AddSingleton(new MigrationExecutor(builder.Configuration));
 
 // GRPC Server
 builder.Services.AddGrpc(c => {
@@ -66,8 +67,25 @@ builder.Services.AddGrpc(c => {
 
 // Health
 builder.Services.AddHealthChecks()
-    .AddNpgSql(builder.Configuration.GetPostgresConnectionString(), tags: new[] {"ready"}, timeout:TimeSpan.FromSeconds(1))
-    .AddRabbitMQ(builder.Configuration.GetRabbitUri(), tags: new[] {"ready"}, timeout:TimeSpan.FromSeconds(1));
+    .AddNpgSql(builder.Configuration.GetPostgresConnectionString(), name: "postgresql", tags: new[] {"ready"}, timeout: TimeSpan.FromSeconds(1))
+    .AddRabbitMQ(builder.Configuration.GetRabbitUri(), name: "rabbitmq", tags: new[] {"ready"}, timeout: TimeSpan.FromSeconds(1));
+
+// Bus
+builder.Services.AddMassTransit(x => {
+    x.UsingRabbitMq((context, cfg) => {
+        cfg.Host(builder.Configuration.GetRabbitHost(), "/", h => {
+            h.Username(builder.Configuration.GetRabbitUserName());
+            h.Password(builder.Configuration.GetRabbitPassword());
+        });
+        cfg.ConfigureEndpoints(context);
+    });
+});
+builder.Services.Configure<MassTransitHostOptions>(options =>
+{
+    options.WaitUntilStarted = true;
+    options.StartTimeout = TimeSpan.FromSeconds(30);
+    options.StopTimeout = TimeSpan.FromSeconds(30);
+});
 
 // Ports
 builder.WebHost.ConfigureKestrel(opt => {
@@ -88,4 +106,3 @@ executor.Up();
 
 app.MapGrpcService<CartsApiService>();
 app.Run();
-
