@@ -9,6 +9,7 @@ namespace BuildingBlocks.Infrastructure.Configuration
         {
             Console.WriteLine("********************************************************");
             Console.WriteLine("Configuration Diagnostics:");
+            Console.WriteLine("********************************************************");
             Console.WriteLine(configurationRoot.GetDebugView());
             Console.WriteLine("********************************************************");
 
