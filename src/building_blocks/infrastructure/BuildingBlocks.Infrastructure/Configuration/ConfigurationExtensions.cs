@@ -7,7 +7,11 @@ namespace BuildingBlocks.Infrastructure.Configuration
     {
         public static void LogToConsole(this IConfigurationRoot configurationRoot)
         {
+            Console.WriteLine("********************************************************");
+            Console.WriteLine("Configuration Diagnostics:");
             Console.WriteLine(configurationRoot.GetDebugView());
+            Console.WriteLine("********************************************************");
+
         }
         
         public static int GetInt(this IConfiguration configuration, string key, int defaultValue)

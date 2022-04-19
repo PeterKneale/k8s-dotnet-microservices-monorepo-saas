@@ -36,12 +36,12 @@ namespace BuildingBlocks.Infrastructure.Configuration
             new($"http://{configuration.GetHost(type, name)}:{configuration.GetHttpPort(type, name)}");
 
         private static string GetHost(this IConfiguration configuration, string type, string name) =>
-            configuration.GetString($"{type}_{name}_HOST", DefaultHost);
+            configuration.GetString($"SAAS_{type}_{name}_HOST", DefaultHost);
 
         private static int GetHttpPort(this IConfiguration configuration, string type, string name) =>
-            configuration.GetInt($"{type}_{name}_PORT_HTTP", DefaultHttpPort);
+            configuration.GetInt($"SAAS_{type}_{name}_PORT_HTTP", DefaultHttpPort);
 
         private static int GetGrpcPort(this IConfiguration configuration, string type, string name) =>
-            configuration.GetInt($"{type}_{name}_PORT_GRPC", DefaultGrpcPort);
+            configuration.GetInt($"SAAS_{type}_{name}_PORT_GRPC", DefaultGrpcPort);
     }
 }
