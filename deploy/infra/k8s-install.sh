@@ -27,6 +27,7 @@ do
 
     echo "✨ creating infra"
     helm upgrade --install --namespace $env infra-elasticsearch    bitnami/elasticsearch   -f elasticsearch.yaml
+    helm upgrade --install --namespace $env infra-fluentd          bitnami/fluentd         -f fluentd.yaml
     helm upgrade --install --namespace $env infra-postgresql       bitnami/postgresql      -f postgresql.yaml
     helm upgrade --install --namespace $env infra-rabbitmq         bitnami/rabbitmq        -f rabbitmq.yaml
     helm upgrade --install --namespace $env infra-minio            bitnami/minio           -f minio.yaml
