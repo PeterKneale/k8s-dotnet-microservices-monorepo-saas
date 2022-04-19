@@ -5,11 +5,11 @@ on:
     branches:
       - main
     paths:
-      - deploy/config/environments/common.yaml
-      - deploy/config/environments/development.yaml
-      - deploy/config/frontends/common.yaml
-      - deploy/config/frontends/management/common.yaml
-      - deploy/config/frontends/management/development.yaml
+      - deploy/app/config/environments/common.yaml
+      - deploy/app/config/environments/development.yaml
+      - deploy/app/config/frontends/common.yaml
+      - deploy/app/config/frontends/management/common.yaml
+      - deploy/app/config/frontends/management/development.yaml
 
 env:
   COMPONENT_NAME: management
