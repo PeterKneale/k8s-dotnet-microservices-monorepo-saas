@@ -1,0 +1,7 @@
+master:
+  replicas: 1
+  heapSize: "512m"
+coordinating:
+  replicas: 0
+data:
+  replicas: 0

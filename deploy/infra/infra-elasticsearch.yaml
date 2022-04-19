@@ -1,9 +1,0 @@
-master:
-  replicas: 1
-  heapSize: "512m"
-coordinating:
-  replicas: 1
-  heapSize: "512m"
-data:
-  replicas: 1
-  heapSize: "512m"

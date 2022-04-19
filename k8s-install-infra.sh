@@ -22,7 +22,6 @@ echo "✨ creating pre-requisite config"
 
 kubectl apply -f ./deploy/infra/infra-dashboard-rbac.yaml
 kubectl apply -f ./deploy/infra/infra-dashboard-serviceaccount.yaml
-kubectl apply -f ./deploy/infra/infra-fluentd-config.yaml
 
 echo "✨ creating infra"
 helm install infra-dashboard        kubernetes-dashboard/kubernetes-dashboard
@@ -33,7 +32,6 @@ helm install infra-rabbitmq         bitnami/rabbitmq        -f ./deploy/infra/in
 helm install infra-elasticsearch    bitnami/elasticsearch   -f ./deploy/infra/infra-elasticsearch.yaml
 helm install infra-kibana           bitnami/kibana          -f ./deploy/infra/infra-kibana.yaml
 helm install infra-minio            bitnami/minio           -f ./deploy/infra/infra-minio.yaml
-helm install infra-fluentd          bitnami/fluentd         -f ./deploy/infra/infra-fluentd.yaml
 
 echo "✨ installing post-requisite config"
 kubectl apply -f ./deploy/infra-cert-manager-cert.yaml

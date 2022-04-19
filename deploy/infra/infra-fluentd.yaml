@@ -1,4 +1,0 @@
-aggregator:
-  configMap: infra-fluentd-config
-image:
-  tag: 1.14.2-debian-10-r24
