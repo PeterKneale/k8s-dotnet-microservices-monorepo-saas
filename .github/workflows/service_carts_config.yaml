@@ -5,11 +5,11 @@ on:
     branches:
       - main
     paths:
-      - deploy/config/environments/common.yaml
-      - deploy/config/environments/development.yaml
-      - deploy/config/services/common.yaml
-      - deploy/config/services/carts/common.yaml
-      - deploy/config/services/carts/development.yaml
+      - deploy/app/config/environments/common.yaml
+      - deploy/app/config/environments/development.yaml
+      - deploy/app/config/services/common.yaml
+      - deploy/app/config/services/carts/common.yaml
+      - deploy/app/config/services/carts/development.yaml
 
 env:
   COMPONENT_NAME: carts

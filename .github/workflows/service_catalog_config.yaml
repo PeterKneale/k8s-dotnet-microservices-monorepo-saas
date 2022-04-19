@@ -5,11 +5,11 @@ on:
     branches:
       - main
     paths:
-      - deploy/config/environments/common.yaml
-      - deploy/config/environments/development.yaml
-      - deploy/config/services/common.yaml
-      - deploy/config/services/catalog/common.yaml
-      - deploy/config/services/catalog/development.yaml
+      - deploy/app/config/environments/common.yaml
+      - deploy/app/config/environments/development.yaml
+      - deploy/app/config/services/common.yaml
+      - deploy/app/config/services/catalog/common.yaml
+      - deploy/app/config/services/catalog/development.yaml
 
 env:
   COMPONENT_NAME: catalog
