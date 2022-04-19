@@ -22,6 +22,9 @@ do
         --docker-username=$GITHUB_USERNAME \
         --docker-password=$GITHUB_TOKEN
     
+    echo "✨ creating configs"
+    kubectl apply --namespace $env -f fluentd-config.yaml
+
     echo "✨ creating infra"
     helm upgrade --install --namespace $env infra-elasticsearch    bitnami/elasticsearch   -f elasticsearch.yaml
     helm upgrade --install --namespace $env infra-postgresql       bitnami/postgresql      -f postgresql.yaml

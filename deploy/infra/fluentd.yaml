@@ -1,0 +1,2 @@
+aggregator:
+  configMap: fluentd-config
