@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - deploy/app/config/environments/common.yaml
+      - deploy/app/config/common.yaml
       - deploy/app/config/environments/development.yaml
       - deploy/app/config/services/common.yaml
       - deploy/app/config/services/catalog/common.yaml
