@@ -9,4 +9,4 @@ do
 done
 
 echo "✨ uninstalling config"
-kubectl delete -f cert-manager-issuer.yaml
+kubectl delete -f cert-manager-issuer.yaml --ignore-not-found=true
