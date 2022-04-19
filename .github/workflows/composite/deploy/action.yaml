@@ -39,8 +39,9 @@ runs:
       helm upgrade \
         --install ${{ inputs.component_type }}-${{ inputs.component_name }} \
         --namespace ${{ inputs.environment }} \
+        --debug \
         ./deploy/app/chart \
-          -f ./deploy/app/config/environments/common.yaml \
+          -f ./deploy/app/config/common.yaml \
           -f ./deploy/app/config/environments/${{ inputs.environment }}.yaml \
           -f ./deploy/app/config/${{ inputs.component_type }}s/common.yaml \
           -f ./deploy/app/config/${{ inputs.component_type }}s/${{ inputs.component_name }}/common.yaml \
