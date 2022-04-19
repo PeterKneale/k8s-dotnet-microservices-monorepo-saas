@@ -1,3 +1,5 @@
+global:
+  kibanaEnabled: true
 master:
   replicas: 1
   heapSize: "512m"
