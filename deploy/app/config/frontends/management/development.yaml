@@ -1,5 +1,7 @@
 name: management
 ingress:
+  annotations:
+    cert-manager.io/issuer: letsencrypt-nginx
   hosts:
     - host: management.ecommerce-store-builder.dev
       paths:

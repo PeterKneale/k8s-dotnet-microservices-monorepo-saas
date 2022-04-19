@@ -22,7 +22,6 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Marten" Version="5.1.0" />
-        <PackageReference Include="MassTransit.AspNetCore" Version="7.3.1" />
         <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.1" />
         <PackageReference Include="MediatR" Version="10.0.1" />
         <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
