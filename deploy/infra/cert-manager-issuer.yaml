@@ -4,13 +4,13 @@
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
-  name: issuer
+  name: letsencrypt-nginx
 spec:
   acme:
     email: peterkneale@gmail.com
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
-      name: issuer-private-key
+      name: letsencrypt-nginx-private-key
     solvers:
       - http01:
           ingress:

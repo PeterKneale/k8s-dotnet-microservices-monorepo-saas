@@ -1,5 +1,7 @@
 name: shopping
 ingress:
+  annotations:
+    cert-manager.io/issuer: letsencrypt-nginx
   hosts:
     - host: shopping.ecommerce-store-builder.dev
       paths:

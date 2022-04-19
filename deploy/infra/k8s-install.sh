@@ -25,15 +25,14 @@ do
     echo "✨ creating configs"
     kubectl apply --namespace $env -f fluentd-config.yaml
 
+    echo "✨ installing certificate issuer"
+    kubectl apply -f cert-manager-issuer.yaml --namespace $env
+
     echo "✨ creating infra"
     helm upgrade --install --namespace $env infra-elasticsearch    bitnami/elasticsearch   -f elasticsearch.yaml
-    helm upgrade --install --namespace $env infra-fluentd          bitnami/fluentd         -f fluentd.yaml
     helm upgrade --install --namespace $env infra-postgresql       bitnami/postgresql      -f postgresql.yaml
     helm upgrade --install --namespace $env infra-rabbitmq         bitnami/rabbitmq        -f rabbitmq.yaml
     helm upgrade --install --namespace $env infra-minio            bitnami/minio           -f minio.yaml
     
     echo "✔ installed $env"
 done
-
-echo "✨ installing certificate issuer"
-kubectl apply -f cert-manager-issuer.yaml
