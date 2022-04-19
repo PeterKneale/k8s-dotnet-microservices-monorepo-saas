@@ -346,7 +346,7 @@ echo $DIGITALOCEAN_TOKEN | doctl auth init --context saas
 
 - Setup cluster in Digital Ocean
 - Install add-ons `NGINX Ingress Controller` and `Cert-Manager`
-- run `install.sh` in `/deploy/infra/digitalocean`
+- run `k8s-install.sh` in `/deploy/infra/digitalocean`
 
 ## Accessing cluster resources
 
