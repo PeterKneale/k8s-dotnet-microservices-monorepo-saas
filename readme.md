@@ -343,6 +343,11 @@ echo $DIGITALOCEAN_TOKEN | doctl auth init --context saas
 ```
 
 # K8s
+
+- Setup cluster in Digital Ocean
+- Install add-ons `NGINX Ingress Controller` and `Cert-Manager`
+- run `install.sh` in `/deploy/infra/digitalocean`
+
 ## Accessing cluster resources
 
 Accessing a resource in the k8s cluster can be performed by using kubectl's port forwarding feature
@@ -350,22 +355,12 @@ Forwarding the local port 8080 to the below services will make them available on
 
 - Kibana
     ```shell
-    kubectl port-forward svc/infra-kibana 8080:5601
-    ```
-
-- Prometheus Web Pane
-    ```shell
-    kubectl port-forward svc/kube-prometheus-stack-prometheus 8080:9090 -n kube-prometheus-stack
-    ```
-
-- Grafana Web Panel
-    ```shell
-    kubectl port-forward svc/kube-prometheus-stack-grafana 8080:80 -n kube-prometheus-stack
+    kubectl port-forward--namespace development svc/infra-kibana 8080:5601
     ```
 
 - A service
     ```shell
-    kubectl port-forward svc/service-accounts-saas 8080:80
+    kubectl port-forward --namespace development svc/service-accounts-saas 8080:80
     ```
     ```shell
     $ curl localhost:8080/health/alive

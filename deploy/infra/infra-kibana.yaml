@@ -1,4 +1,0 @@
-elasticsearch:
-  hosts: 
-    - infra-elasticsearch-coordinating-only
-  port: 9200
