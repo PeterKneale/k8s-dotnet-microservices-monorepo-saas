@@ -68,8 +68,8 @@ builder.Services.AddGrpc(c => {
 
 // Health
 builder.Services.AddHealthChecks()
-    .AddNpgSql(builder.Configuration.GetPostgresConnectionString(), tags: new[] {"ready"}, timeout:TimeSpan.FromSeconds(1))
-    .AddRabbitMQ(builder.Configuration.GetRabbitUri(), tags: new[] {"ready"}, timeout:TimeSpan.FromSeconds(1));
+    .AddNpgSql(builder.Configuration.GetPostgresConnectionString(), name: "postgresql", tags: new[] {"ready"}, timeout: TimeSpan.FromSeconds(1))
+    .AddRabbitMQ(builder.Configuration.GetRabbitUri(), name: "rabbitmq", tags: new[] {"ready"}, timeout:TimeSpan.FromSeconds(1));
 
 // Bus
 builder.Services.AddMassTransit(x => {
@@ -81,7 +81,12 @@ builder.Services.AddMassTransit(x => {
         cfg.ConfigureEndpoints(context);
     });
 });
-builder.Services.AddMassTransitHostedService();
+builder.Services.Configure<MassTransitHostOptions>(options =>
+{
+    options.WaitUntilStarted = true;
+    options.StartTimeout = TimeSpan.FromSeconds(30);
+    options.StopTimeout = TimeSpan.FromSeconds(30);
+});
 
 // Ports
 builder.WebHost.ConfigureKestrel(opt => {

@@ -34,7 +34,7 @@ builder.Configuration.LogToConsole();
 
 // Logging
 builder.Services.AddLogging(c => {
-    c.AddSimpleConsole(opt=>{
+    c.AddSimpleConsole(opt => {
         opt.SingleLine = true;
         opt.IncludeScopes = true;
     });
@@ -48,7 +48,7 @@ builder.Services.AddValidatorsFromAssembly(assembly);
 // Infrastructure
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 builder.Services.AddScoped<IStoreRepository, StoreRepository>();
-builder.Services.AddScoped<IDbConnectionFactory, DbConnectionFactory>(x => 
+builder.Services.AddScoped<IDbConnectionFactory, DbConnectionFactory>(x =>
     new DbConnectionFactory(builder.Configuration.GetPostgresConnectionString())
 );
 
@@ -62,9 +62,15 @@ builder.Services.AddMassTransit(x => {
         cfg.ConfigureEndpoints(context);
     });
 });
+builder.Services.Configure<MassTransitHostOptions>(options =>
+{
+    options.WaitUntilStarted = true;
+    options.StartTimeout = TimeSpan.FromSeconds(30);
+    options.StopTimeout = TimeSpan.FromSeconds(30);
+});
 
 // Database migrations
-builder.Services.AddSingleton(new MigrationExecutor( builder.Configuration));
+builder.Services.AddSingleton(new MigrationExecutor(builder.Configuration));
 
 // GRPC Server
 builder.Services.AddGrpc(c => {
@@ -75,8 +81,8 @@ builder.Services.AddGrpc(c => {
 
 // Health
 builder.Services.AddHealthChecks()
-    .AddNpgSql(builder.Configuration.GetPostgresConnectionString(), tags: new[] {"ready"}, timeout:TimeSpan.FromSeconds(1))
-    .AddRabbitMQ(builder.Configuration.GetRabbitUri(), tags: new[] {"ready"}, timeout:TimeSpan.FromSeconds(1));
+    .AddNpgSql(builder.Configuration.GetPostgresConnectionString(), name: "postgresql", tags: new[] {"ready"}, timeout: TimeSpan.FromSeconds(1))
+    .AddRabbitMQ(builder.Configuration.GetRabbitUri(), name: "rabbitmq", tags: new[] {"ready"}, timeout: TimeSpan.FromSeconds(1));
 
 // Ports
 builder.WebHost.ConfigureKestrel(opt => {

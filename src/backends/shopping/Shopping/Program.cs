@@ -28,6 +28,7 @@ using Shopping.Application.Data;
 using Shopping.Application.Services;
 using Shopping.Infrastructure.DataSources;
 using Shopping.Infrastructure.Gateways;
+using Weasel.Core;
 using Weasel.Postgresql;
 
 // Enable W3C Trace Context support for distributed tracing
@@ -83,7 +84,12 @@ builder.Services.AddMassTransit(x => {
         });
     });
 });
-builder.Services.AddMassTransitHostedService();
+builder.Services.Configure<MassTransitHostOptions>(options =>
+{
+    options.WaitUntilStarted = true;
+    options.StartTimeout = TimeSpan.FromSeconds(30);
+    options.StopTimeout = TimeSpan.FromSeconds(30);
+});
 
 // Persistence
 builder.Services.AddScoped<IDataReader, MartenDataReader>();

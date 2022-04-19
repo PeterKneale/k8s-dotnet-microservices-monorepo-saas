@@ -31,7 +31,7 @@ builder.Configuration.LogToConsole();
 
 // Logging
 builder.Services.AddLogging(c => {
-    c.AddSimpleConsole(opt=>{
+    c.AddSimpleConsole(opt => {
         opt.SingleLine = true;
         opt.IncludeScopes = true;
     });
@@ -47,7 +47,7 @@ builder.Services.AddSingleton<IGalleryUploadService, GalleryUploadService>();
 builder.Services.AddSingleton<IMinioClientFactory, MinioClientFactory>();
 
 builder.Services.AddHealthChecks()
-    .AddUrlGroup(new Uri(builder.Configuration.GetMinioUri(), new Uri("/minio/health/live", UriKind.Relative)), tags: new[] {"ready"}, timeout: TimeSpan.FromSeconds(1));
+    .AddUrlGroup(new Uri(builder.Configuration.GetMinioUri(), new Uri("/minio/health/live", UriKind.Relative)), name: "minio", tags: new[] {"ready"}, timeout: TimeSpan.FromSeconds(1));
 
 builder.WebHost.ConfigureKestrel(opt => {
     // Operate one port in HTTP/1.1 mode for k8s health-checks etc

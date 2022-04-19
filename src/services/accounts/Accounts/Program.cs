@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Weasel.Core;
 using Weasel.Postgresql;
 
 // Enable W3C Trace Context support for distributed tracing
@@ -35,7 +36,7 @@ builder.Configuration.LogToConsole();
 
 // Logging
 builder.Services.AddLogging(c => {
-    c.AddSimpleConsole(opt=>{
+    c.AddSimpleConsole(opt => {
         opt.SingleLine = true;
         opt.IncludeScopes = true;
     });
@@ -54,8 +55,7 @@ builder.Services.AddScopedAccountContext();
 // Infrastructure
 builder.Services.AddScoped<IWriteRepository, WriteRepository>();
 builder.Services.AddScoped<IReadRepository, ReadRepository>();
-builder.Services.AddMarten(options =>
-{
+builder.Services.AddMarten(options => {
     options.Connection(builder.Configuration.GetPostgresConnectionString());
     options.DatabaseSchemaName = builder.Configuration.GetPostgresSchema();
     options.AutoCreateSchemaObjects = AutoCreate.All;
@@ -72,6 +72,12 @@ builder.Services.AddMassTransit(x => {
         cfg.ConfigureEndpoints(context);
     });
 });
+builder.Services.Configure<MassTransitHostOptions>(options =>
+{
+    options.WaitUntilStarted = true;
+    options.StartTimeout = TimeSpan.FromSeconds(30);
+    options.StopTimeout = TimeSpan.FromSeconds(30);
+});
 
 // GRPC Server
 builder.Services.AddGrpc(c => {
@@ -82,8 +88,8 @@ builder.Services.AddGrpc(c => {
 
 // Health
 builder.Services.AddHealthChecks()
-    //.AddNpgSql(builder.Configuration.GetPostgresConnectionString(), tags: new[] {"ready"}, timeout: TimeSpan.FromSeconds(1))
-    .AddRabbitMQ(builder.Configuration.GetRabbitUri(), tags: new[] {"ready"}, timeout: TimeSpan.FromSeconds(1));
+    .AddNpgSql(builder.Configuration.GetPostgresConnectionString(), name: "postgresql", tags: new[] {"ready"}, timeout: TimeSpan.FromSeconds(1))
+    .AddRabbitMQ(builder.Configuration.GetRabbitUri(), name: "rabbitmq", tags: new[] {"ready"}, timeout: TimeSpan.FromSeconds(1));
 
 // Ports
 builder.WebHost.ConfigureKestrel(opt => {

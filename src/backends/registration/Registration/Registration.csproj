@@ -8,20 +8,20 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="Ardalis.GuardClauses" Version="4.0.0" />
-    <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="6.0.1" />
-    <PackageReference Include="AspNetCore.HealthChecks.Rabbitmq" Version="6.0.1" />
-    <PackageReference Include="FluentValidation" Version="10.3.6" />
+    <PackageReference Include="Ardalis.GuardClauses" Version="4.0.1" />
+    <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="6.0.2" />
+    <PackageReference Include="AspNetCore.HealthChecks.Rabbitmq" Version="6.0.2" />
+    <PackageReference Include="FluentValidation" Version="10.4.0" />
     <PackageReference Include="Google.Api.CommonProtos" Version="2.5.0" />
-    <PackageReference Include="Grpc.AspNetCore" Version="2.42.0" />
-    <PackageReference Include="Grpc.Net.Client" Version="2.42.0" />
-    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.42.0" />
-    <PackageReference Include="Grpc.Tools" Version="2.43.0">
+    <PackageReference Include="Grpc.AspNetCore" Version="2.45.0" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.45.0" />
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.45.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.45.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="MassTransit.AspNetCore" Version="7.3.1" />
-    <PackageReference Include="MassTransit.RabbitMQ" Version="7.3.1" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.1" />
     <PackageReference Include="Polly" Version="7.2.3" />
   </ItemGroup>
 
