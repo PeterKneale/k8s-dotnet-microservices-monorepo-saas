@@ -28,7 +28,7 @@ runs:
     run: doctl kubernetes cluster kubeconfig save saas
   
   # Deploys a cart using the below hierarchy of configuration (ex, frontend deployed to development)
-  # - config/environments/common
+  # - config/common
   # - config/environments/development
   # - config/frontends/common
   # - config/frontends/admin/common
@@ -36,13 +36,11 @@ runs:
   - name: Deploy Chart
     shell: bash
     run: |
-      helm upgrade \
-        --install ${{ inputs.component_type }}-${{ inputs.component_name }} \
-        --namespace ${{ inputs.environment }} \
-        --debug \
-        ./deploy/app/chart \
-          -f ./deploy/app/config/common.yaml \
-          -f ./deploy/app/config/environments/${{ inputs.environment }}.yaml \
-          -f ./deploy/app/config/${{ inputs.component_type }}s/common.yaml \
-          -f ./deploy/app/config/${{ inputs.component_type }}s/${{ inputs.component_name }}/common.yaml \
-          -f ./deploy/app/config/${{ inputs.component_type }}s/${{ inputs.component_name }}/${{ inputs.environment }}.yaml
+      helm upgrade --install --namespace ${{ inputs.environment }} --debug \
+        -f deploy/app/config/common.yaml \
+        -f deploy/app/config/environments/${{ inputs.environment }}.yaml \
+        -f deploy/app/config/${{ inputs.component_type }}s/common.yaml \
+        -f deploy/app/config/${{ inputs.component_type }}s/${{ inputs.component_name }}/common.yaml \
+        -f deploy/app/config/${{ inputs.component_type }}s/${{ inputs.component_name }}/${{ inputs.environment }}.yaml \
+         ${{ inputs.component_type }}-${{ inputs.component_name }} \
+        deploy/app/chart

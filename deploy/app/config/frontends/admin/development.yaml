@@ -1,5 +1,4 @@
 name: admin
-environment:
 ingress:
   hosts:
     - host: admin.ecommerce-store-builder.dev
