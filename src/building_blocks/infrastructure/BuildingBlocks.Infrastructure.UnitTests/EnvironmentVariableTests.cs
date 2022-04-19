@@ -43,9 +43,9 @@ namespace BuildingBlocks.Infrastructure.UnitTests
                 .ToDictionary(kv => kv[0].Trim(), kv => kv[1].Trim());
 
         private static string GetK8SEnvVars() => @"
-            SAAS_INFRA_RABBITMQ_HOST=rabbit_host
-            SAAS_INFRA_RABBITMQ_PORT=1234
-            SAAS_INFRA_ELASTICSEARCH_HOST=elastic_host
-            SAAS_INFRA_ELASTICSEARCH_PORT=5678";
+            INFRA_RABBITMQ_HOST=rabbit_host
+            INFRA_RABBITMQ_PORT=1234
+            INFRA_ELASTICSEARCH_HOST=elastic_host
+            INFRA_ELASTICSEARCH_PORT=5678";
     }
 }

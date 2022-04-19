@@ -11,19 +11,19 @@ namespace BuildingBlocks.Infrastructure.Configuration
         private const string DefaultDatabasePassword = "password";
 
         private static string GetPostgresHost(this IConfiguration configuration) => 
-            configuration.GetString("SAAS_INFRA_POSTGRESQL_HOST", DefaultDatabaseHost);
+            configuration.GetString("INFRA_POSTGRESQL_HOST", DefaultDatabaseHost);
 
         private static string GetPostgresDatabase(this IConfiguration configuration) => 
-            configuration.GetString("SAAS_INFRA_POSTGRESQL_DATABASE",DefaultDatabaseName);
+            configuration.GetString("INFRA_POSTGRESQL_DATABASE",DefaultDatabaseName);
 
         private static string GetPostgresUserName(this IConfiguration configuration) => 
-            configuration.GetString("SAAS_INFRA_POSTGRESQL_USERNAME", DefaultDatabaseUserName);
+            configuration.GetString("INFRA_POSTGRESQL_USERNAME", DefaultDatabaseUserName);
 
         private static string GetPostgresPassword(this IConfiguration configuration) => 
-            configuration.GetString("SAAS_INFRA_POSTGRESQL_PASSWORD", DefaultDatabasePassword);
+            configuration.GetString("INFRA_POSTGRESQL_PASSWORD", DefaultDatabasePassword);
 
         public static string GetPostgresSchema(this IConfiguration configuration) => 
-            configuration.GetString("SAAS_INFRA_POSTGRESQL_SCHEMA", DefaultDatabaseSchema);
+            configuration.GetString("INFRA_POSTGRESQL_SCHEMA", DefaultDatabaseSchema);
         
         public static string GetPostgresConnectionString(this IConfiguration configuration)
         {
